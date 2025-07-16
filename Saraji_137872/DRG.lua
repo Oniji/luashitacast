@@ -10,19 +10,19 @@ local sets = {
     -- Idle Set
 
     Idle_Priority = {
-        Main = {'Orichalcum Lance', 'Dreizack', 'Spear of Trials', 'Gnd.Kgt. Lance', 'Mythril Lance', 'Peregrine','Ryl.Sqr. Halberd', 'Obelisk Lance', 'Fuscina'},
+        Main = {'Orichalcum Lance', 'Gnd.Kgt. Lance', 'Mythril Lance', 'Peregrine', 'Ryl.Sqr. Halberd', 'Obelisk Lance', 'Fuscina'},
         Head = {'Wym. Armet +1', 'Optical Hat', 'Walkure Mask', 'Centurion\'s Visor'},
         Ear1 = {'Brutal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle earring +1'},
         Ear2 = {'Beastly Earring', 'Spike Earring', 'Beetle earring +1'},
         Neck = {'Peacock Amulet', 'Spike necklace'},
         Body = {'Barone Corazza', 'Scorpion Harness', 'Brigandine', 'Ctr. Scale Mail', 'Beetle Harness +1'},
-        Hands = {'Wyrm Fng.Gnt.', 'Drachen Fng. Gnt.', 'Battle gloves'},
+        Hands = {'Homam Manopolas', 'Wyrm Fng.Gnt.', 'Drachen Fng. Gnt.', 'Battle gloves'},
         Ring1 = {'Toreador\'s Ring','Sniper\'s Ring', 'Balance Ring'},
         Ring2 = {'Rajas Ring', 'Balance Ring'},
         Back = {'Forager\'s Mantle', 'Nomad\'s Mantle'},
         Waist = {'Swift Belt', 'Life Belt', 'Tilt Belt', 'Brave Belt'},
-        Legs = {'Barone Cosciales', 'Drachen Brais', 'Republic Subligar'},
-        Feet = {'Wyrm Greaves', 'Drachen Greaves', 'Ctr. Greaves'},
+        Legs = {'Homam Cosciales', 'Barone Cosciales', 'Drachen Brais', 'Republic Subligar'},
+        Feet = {'Homam Gambieras', 'Wyrm Greaves', 'Drachen Greaves', 'Ctr. Greaves'},
         Range = 'remove',
         Ammo = {'Tiphia Sting', 'Mille. Sachet'}
     },
@@ -30,115 +30,148 @@ local sets = {
     -- TP Sets
 
     TP_Priority = { -- Default: High Accuracy
-        Main = {'Orichalcum Lance', 'Dreizack', 'Spear of Trials', 'Gnd.Kgt. Lance', 'Mythril Lance', 'Peregrine','Ryl.Sqr. Halberd', 'Obelisk Lance', 'Fuscina'},
-        Head = {'Optical Hat', 'Walkure Mask', 'Centurion\'s Visor'},
+        Main = {'Orichalcum Lance', 'Gnd.Kgt. Lance', 'Mythril Lance', 'Peregrine', 'Ryl.Sqr. Halberd', 'Obelisk Lance', 'Fuscina'},
+        Head = {'Homam Zucchetto', 'Optical Hat', 'Walkure Mask', 'Centurion\'s Visor'},
         Ear1 = {'Brutal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle earring +1'},
         Ear2 = {'Beastly Earring', 'Spike Earring', 'Beetle earring +1'},
         Neck = {'Peacock Amulet', 'Spike necklace'},
         Body = {'Scorpion Harness', 'Brigandine', 'Ctr. Scale Mail', 'Beetle Harness +1'},
-        Hands = {'Wyrm Fng.Gnt.', 'Drachen Fng. Gnt.', 'Battle gloves'},
+        Hands = {'Homam Manopolas', 'Wyrm Fng.Gnt.', 'Drachen Fng. Gnt.', 'Battle gloves'},
         Ring1 = {'Toreador\'s Ring','Sniper\'s Ring', 'Balance Ring'},
         Ring2 = {'Rajas Ring', 'Balance Ring'},
         Back = {'Forager\'s Mantle', 'Nomad\'s Mantle'},
-        Waist = {'Swift Belt', 'Life Belt', 'Tilt Belt', 'Brave Belt'},
-        Legs = {'Barone Cosciales', 'Drachen Brais', 'Republic Subligar'},
-        Feet = {'Wyrm Greaves', 'Drachen Greaves', 'Ctr. Greaves'},
+        Waist = {'Life Belt', 'Tilt Belt', 'Brave Belt'},
+        Legs = {'Homam Cosciales', 'Barone Cosciales', 'Drachen Brais', 'Republic Subligar'},
+        Feet = {'Homam Gambieras', 'Wyrm Greaves', 'Drachen Greaves', 'Ctr. Greaves'},
         Range = 'remove',
         Ammo = {'Tiphia Sting', 'Mille. Sachet'}
     },
     TP_MediumAccuracy = {
-        Head = 'Wym. Armet +1',
+        Head = 'Homam Zucchetto',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Beastly Earring',
         Neck = 'Peacock Amulet',
         Body = 'Barone Corazza',
-        Hands = 'Wyrm Fng.Gnt.',
+        Hands = 'Homam Manopolas',
         Ring1 = 'Toreador\'s Ring',
         Ring2 = 'Rajas Ring',
         Back = 'Forager\'s Mantle',
         Waist = 'Swift Belt',
-        Legs = 'Barone Cosciales',
-        Feet = 'Wyrm Greaves',
+        Legs = 'Homam Cosciales', 
+        Feet = 'Homam Gambieras',
         Range = 'remove',
         Ammo = 'Tiphia Sting',
     },
     TP_LowAccuracy = {
-        Head = 'Wym. Armet +1',
-        Ear1 = {'Brutal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle earring +1'},
-        Ear2 = {'Beastly Earring', 'Spike Earring', 'Beetle earring +1'},
-        Neck = {'Peacock Amulet', 'Spike necklace'},
-        Body = {'Barone Corazza', 'Scorpion Harness', 'Brigandine', 'Ctr. Scale Mail', 'Beetle Harness +1'},
-        Hands = {'Wyrm Fng.Gnt.', 'Custom F Gloves'},
+        Head = 'Homam Zucchetto',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Beastly Earring',
+        Neck = 'Peacock Amulet',
+        Body = 'Barone Corazza',
+        Hands = 'Homam Manopolas',
         Ring1 = 'Toreador\'s Ring',
-        Ring2 = {'Rajas Ring', 'Balance Ring'},
-        Back = {'Forager\'s Mantle', 'Nomad\'s Mantle'},
-        Waist = {'Swift Belt', 'Sword Belt'},
-        Legs = {'Barone Cosciales', 'Drachen Brais', 'Republic Subligar'},
-        Feet = {'Wyrm Greaves', 'Drachen Greaves', 'Ctr. Greaves'},
+        Ring2 = 'Rajas Ring',
+        Back = 'Forager\'s Mantle',
+        Waist = 'Swift Belt',
+        Legs = 'Homam Cosciales',
+        Feet = 'Homam Gambieras',
         Range = 'remove',
-        Ammo = {'Tiphia Sting', 'Mille. Sachet'}
+        Ammo = 'Tiphia Sting',
     },
 
     -- Weaponskill Sets
 
-    WS_Priority = { -- Default: Low Accuracy | High Damage
+    WS = { -- Default: Low Accuracy | High Damage
         Head = 'Wym. Armet +1',
         Neck = 'Spike necklace',
-        Body = 'Barone Corazza',
-        Ring1 = 'Puissance ring',
+        Body = 'Drachen Mail',
+        -- Ring1 = 'Flame Ring',
         Ring2 = 'Rajas Ring',
-        Hands = 'Custom F Gloves',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Beastly Earring',
+        Back = 'Forager\'s Mantle',
+        Hands = 'Hecatomb Mittens',
         Waist = 'Warwolf Belt',
         Legs = 'Barone Cosciales', 
-        Feet = 'Rutter Sabatons'
+        Feet = 'Hct. Leggings',
+        Ammo = 'Tiphia Sting',
     },
-    WS_MediumAccuracy_Priority = {
+    WS_MediumAccuracy = {
         Head = 'Wym. Armet +1',
-        Body = 'Barone Corazza',
+        Body = 'Drachen Mail',
+        -- Ring1 = 'Flame Ring',
+        Ring2 = 'Rajas Ring',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Beastly Earring',
+        Back = 'Forager\'s Mantle',
         Neck = 'Peacock Amulet',
-        Hands = 'Custom F Gloves',
+        Hands = 'Hecatomb Mittens',
         Waist = 'Warwolf Belt',
         Legs = 'Barone Cosciales',
-        Feet = 'Rutter Sabatons'
+        Feet = 'Hct. Leggings',
+        Ammo = 'Tiphia Sting',
     },
-    WS_HighAccuracy_Priority = {
-        Head = 'Optical Hat',
+    WS_HighAccuracy = {
+        Head = 'Wym. Armet +1',
         Body = 'Scorpion Harness',
         Neck = 'Peacock Amulet',
-        Hands = 'Wyrm Fng.Gnt.',
-        Waist = 'Warwolf Belt',
+        Hands = 'Hecatomb Mittens',
+        Waist = 'Wyrm Belt',
         Legs = 'Barone Cosciales',
-        Feet = 'Rutter Sabatons',
-        Ring1 = 'Toreador\'s Ring'
+        Feet = 'Hct. Leggings',
+        Ring1 = 'Toreador\'s Ring',
+        -- Ring1 = 'Flame Ring',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Beastly Earring',
+        Back = 'Forager\'s Mantle',
+        Ring2 = 'Rajas Ring',
+        Ammo = 'Tiphia Sting',
     },
-    WS_STR = {
-        Hands = 'Enkelados\'s Brc.'
-    },
-    Resting_Priority = {
-        Feet = 'Wyrm Greaves'
+    Resting = {
+        Feet = 'Wyrm Greaves',
+        Ear2 = 'Relaxing Earring',
     },
     -- Do not put gear here that you cannot equip or cannot use
     -- As any fastcast gear listed here will be factored in for midcast delay 
     Precast = { 
         --Ear1 = 'Loquacious Earring',
+        Head = 'Homam Zucchetto',
+        Hands = 'Homam Manopolas',
+        Legs = 'Homam cosciales',
+        Feet = 'Homam Gambieras',
         Waist = 'Swift Belt'
     },
     Interim = { -- Equipped between Precast and Midcast (after delay)
         --Head = 'Drachen Armet',
-        Ear2 = 'Ethereal Earring'
+        Ear2 = 'Ethereal Earring',
+        Head = 'Drachen Armet',
+        Hands = 'Homam Manopolas',
+        Legs = 'Wyrm Brais',
+        Feet = 'Homam Gambieras',
     },
     Midcast = { -- Just before dragon determines whether to heal or not
-        Head = 'Drachen Armet'
+        Head = 'Drachen Armet',
+        Body = 'Wyrm Mail',
+        Hands = 'Homam Manopolas',
+        Legs = 'Homam cosciales',
+        Feet = 'Homam Gambieras',
+        Ammo = 'Happy Egg',
+        Ring1 = 'Bomb Queen Ring' -- 75
     },
 
     -- Utility Sets
 
     MaxMP = {
         Neck = 'Uggalepih Pendant',
-        Ring1 = 'Astral Ring',
+        Ring1 = 'Ether Ring',
         Ring2 = 'Astral Ring',
-        Hands = 'Custom F Gloves',
-        Feet = 'Custom F Boots'
+        Ear1 = 'Phantom Earring',
+        Ear2 = 'Morion Earring',
+        Head = 'Homam Zucchetto',
+        Hands = 'Homam Manopolas',
+        Legs = 'Homam Cosciales',
+        Feet = 'Homam Gambieras',
+        Ammo = 'Fortune Egg'
     },
     DragonRegen = {
         Body = 'Drachen Mail'
@@ -170,9 +203,13 @@ local sets = {
     AncientCircle = {
         Legs = 'Drachen Brais'
     },
+    CallWyvern = {
+        Body = 'Wyrm Mail'
+    },
     Jump = {
         Head = 'Wym. Armet +1',
         Body = 'Barone Corazza',
+        Hands = 'Hecatomb Mittens',
         Legs = 'Barone Cosciales',
         Feet = 'Drachen Greaves',
         Ear1 = 'Brutal Earring',
@@ -187,6 +224,9 @@ local sets = {
     },
     Blunt = {
         Main = 'Bourdonasse'
+    },
+    Staff = {
+        Main = 'Primate Staff'
     },
 
     -- Situation Sets
@@ -235,7 +275,6 @@ local sets = {
         Ammo = 'Happy Egg'
     },
     Solo = {
-        Body = 'Barone Corazza',
         Ear2 = 'Ethereal Earring'
     }
 };
@@ -256,11 +295,12 @@ local WSmode = {
 local Settings = {
     UseSolo = false,
     UseBlunt = false,
+    UseStaff = false,
     UseMaxMP = false,
     TPmode = nil,
     WSmode = nil,
     CurrentSubJob = nil,
-    CurrentLevel = 0
+    CurrentLevel = 0,
 };
 
 
@@ -323,6 +363,10 @@ profile.HandleCommand = function(args)
     elseif (args[1] == 'blunt') then
         Settings.UseBlunt = not Settings.UseBlunt;
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Use Blunt Weapon ->> ' .. tostring(Settings.UseBlunt):gsub("^%l", string.upper) .. ' ]--');
+        return;
+    elseif (args[1] == 'staff') then
+        Settings.UseStaff = not Settings.UseStaff;
+        AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Use Staff Weapon ->> ' .. tostring(Settings.UseStaff):gsub("^%l", string.upper) .. ' ]--');
         return;
     elseif (args[1] == 'solo') then
         Settings.UseSolo = not Settings.UseSolo;
@@ -409,6 +453,10 @@ profile.HandleDefault = function()
         gFunc.EquipSet(sets.Blunt);
     end
 
+    if Settings.UseStaff then
+        gFunc.EquipSet(sets.Staff);
+    end
+
     if Settings.UseMaxMP then
         gFunc.EquipSet(sets.MaxMP);
     end
@@ -426,6 +474,11 @@ profile.HandleDefault = function()
         end
 	end
 
+    -- Rest Staff on 0 TP only
+    if player.Status == 'Resting' and player.TP <= 0 and player.MainJobLevel >= 51  then
+        gFunc.Equip('main', 'Pluto\'s Staff');
+    end
+    
     shared.GearOverride();
 
 end
@@ -444,6 +497,8 @@ profile.HandleAbility = function()
         gFunc.EquipSet(sets.SpiritLink);
     elseif (action.Name == 'Steady Wing') then
         gFunc.EquipSet(sets.SteadyWing);
+    elseif (action.Name == 'Call Wyvern') then
+        gFunc.EquipSet(sets.CallWyvern);
     end
 
 end
@@ -485,10 +540,12 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet(sets.WS);
         end
         shared.CurrentSet = 'WS';
+    elseif (action.Name == 'Wheeling Thrust') then
+        gFunc.EquipSet(sets.WS);
+        gFunc.Equip('Neck', 'Light Gorget');
     else
         gFunc.EquipSet(sets.WS); -- Ignore accuracy mode. Most of the remaining useful WS have innate accuracy bonus on Horizon
     end
-
 end
 
 
@@ -546,6 +603,7 @@ end
 
 profile.LevelCheck = function()
     local myLevel = AshitaCore:GetMemoryManager():GetPlayer():GetMainJobLevel();
+    --local myLevel = 50;
     if (myLevel ~= Settings.CurrentLevel) then
         gFunc.EvaluateLevels(profile.Sets, myLevel);
         Settings.CurrentLevel = myLevel;

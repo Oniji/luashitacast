@@ -10,69 +10,96 @@ local sets = {
     Idle_Priority = {
         Main = {'Earth Staff', 'Solid Wand', 'Yew Wand +1', 'Willow Wand +1'},
         --Sub = {'Targe +1', 'Aspis'},
-        Ammo = 'Morion Tathlum',
-        Neck = {'Justice Badge'},
-        Ear1 = {'Moldavite Earring', 'Morion Earring', 'Onyx Earring'},
-        Ear2 = {'Morion Earring', 'Onyx Earring'},
-        Head = {'Electrum Hairpin', 'Silver Hairpin'},
-        Body = {'Tct.Mgc. Coat', 'Baron\'s Saio', 'Mage\'s Tunic', 'Ryl.Ftm. Tunic'},
-        Hands = {'Devotee\'s Mitts', 'Angler\'s Gloves', 'Chocobo Gloves'},
+        Ammo = {'Phtm. Tathlum', 'Morion Tathlum'},
+        Neck = {'Uggalepih Pendant', 'Justice Badge'},
+        Ear1 = {'Moldavite Earring','Moldavite Earring', 'Morion Earring', 'Onyx Earring'},
+        Ear2 = {'Phantom Earring', 'Morion Earring', 'Onyx Earring'},
+        Head = {'Duelist\'s Chapeau', 'Warlock\'s Chapeau', 'Electrum Hairpin', 'Silver Hairpin'},
+        Body = {'Warlock\'s Tabard','Tct.Mgc. Coat', 'Baron\'s Saio', 'Mage\'s Tunic', 'Ryl.Ftm. Tunic'},
+        Hands = {'Duelist\'s Gloves', 'Devotee\'s Mitts', 'Angler\'s Gloves', 'Chocobo Gloves'},
         Ring1 = {'Astral Ring'},
-        Ring2 = {'Astral Ring'},
-        Back = {'White Cape +1', 'Rabbit Mantle'},
-        Waist = {'Shaman\'s Belt', 'Friar\'s Rope', 'Leather Belt'},
-        Legs = {'Custom Pants', 'Mage\'s Slacks', 'Angler\'s Hose', 'Chocobo Hose'},
-        Feet = {'Custom F Boots', 'Angler\'s Boots', 'Chocobo Boots'}
+        Ring2 = {'Ether Ring', 'Astral Ring'},
+        Back = {'Prism Cape', 'White Cape +1', 'Rabbit Mantle'},
+        Waist = {'Penitent\'s Rope', 'Shaman\'s Belt', 'Friar\'s Rope', 'Leather Belt'},
+        Legs = {'Zenith Slacks', 'Warlock\'s Tights', 'Custom Pants', 'Mage\'s Slacks', 'Angler\'s Hose', 'Chocobo Hose'},
+        Feet = {'Duelist\'s Boots', 'Warlock\'s Boots', 'Custom F Boots', 'Angler\'s Boots', 'Chocobo Boots'}
     },
     MND_Priority = {
-        Body = {'Baron\'s Saio'},
+        Head = {'Duelist\'s Chapeau', 'Warlock\'s Chapeau', 'Electrum Hairpin', 'Silver Hairpin'},
+        Body = {'Errant Hpl.', 'Baron\'s Saio'},
         Neck = {'Justice Badge'},
-        Waist = {'Friar\'s Rope'},
+        Waist = {'Penitent\'s Rope', 'Friar\'s Rope'},
         Hands = {'Devotee\'s Mitts'},
-        Legs = {'Custom Pants'},
-        Back = {'White Cape +1'},
-        Feet = {'Angler\'s Boots'}
+        Legs = {'Errant Slops', 'Warlock\'s Tights', 'Custom Pants'},
+        Back = {'Prism Cape', 'White Cape +1'},
+        Feet = {'Duelist\'s Boots', 'Warlock\'s Boots', 'Angler\'s Boots'}
     },
     MND_Ring_Priority = {
         Ring1 = {'Solace Ring', 'Saintly Ring'},
         Ring2 = {'Solace Ring', 'Saintly Ring'}
     },
     INT_Priority = {
+        Ammo = {'Phtm. Tathlum', 'Morion Tathlum'},
         Neck = {'Black Neckerchief'},
-        Body = {'Mage\'s Tunic'},
+        Head = {'Warlock\'s Chapeau'},
+        Body = {'Errant Hpl.', 'Warlock\'s Tabard', 'Mage\'s Tunic'},
         Ear1 = {'Morion Earring'},
         Ear2 = {'Morion Earring'},
         Hands = {'Angler\'s Gloves'},
-        Legs = {'Magic Cuisses', 'Mage\'s Slacks'},
-        Waist = {'Shaman\'s Belt'},
+        Legs = {'Errant Slops', 'Magic Cuisses', 'Mage\'s Slacks'},
+        Waist = {'Penitent\'s Rope', 'Shaman\'s Belt'},
         Feet = {'Custom F Boots'},
-        Back = {'Black Cape +1'}
+        Back = {'Prism Cape', 'Black Cape +1'}
     },
     INT_Ring_Priority = {
-        Ring1 = {'Wisdom Ring', 'Eremite\'s Ring'},
-        Ring2 = {'Wisdom Ring', 'Eremite\'s Ring'}
+        Ring1 = {'Genius Ring', 'Wisdom Ring', 'Eremite\'s Ring'},
+        Ring2 = {'Genius Ring', 'Wisdom Ring', 'Eremite\'s Ring'}
     },
     Nuke_Priority = {
-        Neck = {'Black Neckerchief'},
-        Body = {'Mage\'s Tunic'},
+        Ammo = {'Phtm. Tathlum', 'Morion Tathlum'},
+        Neck = {'Elemental Torque', 'Black Neckerchief'},
+        Head = {'Warlock\'s Chapeau'},
+        Body = {'Warlock\'s Tabard', 'Mage\'s Tunic'},
         Ear1 = {'Moldavite Earring', 'Morion Earring'},
-        Ear2 = {'Morion Earring'},
-        Hands = {'Seer\'s Mitts +1', 'Angler\'s Gloves'},
-        Legs = {'Magic Cuisses', 'Mage\'s Slacks'},
-        Waist = {'Shaman\'s Belt'},
-        Feet = {'Custom F Boots'},
-        Back = {'Black Cape +1'},
+        Ear2 = {'Phantom Earring', 'Morion Earring'},
+        Hands = {'Zenith Mitts', 'Seer\'s Mitts +1', 'Angler\'s Gloves'},
+        Legs = {'Errant Slops', 'Magic Cuisses', 'Mage\'s Slacks'},
+        Waist = {'Penitent\'s Rope', 'Shaman\'s Belt'},
+        Feet = {'Duelist\'s Boots', 'Custom F Boots'},
+        Back = {'Prism Cape', 'Black Cape +1'},
     },
     Healing_Priority = {
+        Head = {'Duelist\'s Chapeau', 'Warlock\'s Chapeau'},
         Body = {'Baron\'s Saio'},
         Neck = {'Justice Badge'},
-        Waist = {'Friar\'s Rope'},
+        Waist = {'Penitent\'s Rope', 'Friar\'s Rope'},
         Hands = {'Devotee\'s Mitts'},
-        Legs = {'Custom Pants'},
-        Back = {'White Cape +1'}
+        Legs = {'Warlock\'s Tights', 'Custom Pants'},
+        Feet = {'Crow Gaiters'},
+        Back = {'Prism Cape', 'White Cape +1'}
     },
-    Resting_Priority = {
-        Legs = {'Baron\'s Slops'}
+    Enhancing = {
+        Hands = 'Duelist\'s Gloves',
+        Legs = 'Warlock\'s Tights',
+    },
+    Enfeebling = {
+        Head = 'Duelist\'s Chapeau', -- 15
+        Body = 'Warlock\'s Tabard', -- 15
+        Legs = 'Nashira Seraweels', -- 5
+    },
+    Resting = {
+        Main = 'Pluto\'s Staff', -- 10
+        Head = 'Duelist\'s Chapeau', -- Refresh
+        Body = 'Errant Hpl.', -- 5
+        Legs = 'Baron\'s Slops', -- 1
+        Ear2 = 'Relaxing Earring', -- 2
+        Waist = 'Hierarch Belt', -- 2
+    },
+    SIRD = {
+        Body = 'Warlock\'s Tabard'
+    },
+    FastCast = {
+        Head = 'Warlock\'s Chapeau'
     }
 };
 profile.Sets = sets;
@@ -177,6 +204,7 @@ profile.HandleMidcast = function()
                 gFunc.EquipSet(sets.INT_Ring);
             end
         end
+        gFunc.EquipSet(sets.Enfeebling);
     elseif (action.Skill == 'Elemental Magic') then
         if (ElementalDebuffs:contains(action.Name)) then
             gFunc.EquipSet(sets.INT);
@@ -194,6 +222,8 @@ profile.HandleMidcast = function()
         if (mpdeficit > 50) then
             gFunc.EquipSet(sets.MND_Ring);
         end
+    elseif (action.Skill == 'Elemental Magic') then
+        gFunc.EquipSet(sets.Enhancing);
     end
 
     if (Settings.CurrentLevel >= 51) then

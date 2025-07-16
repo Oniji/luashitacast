@@ -90,6 +90,10 @@ aliases.Common_Load = function()
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias /s4 /ma "Shell IV" <stpc>');
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias /s5 /ma "Shell V" <stpc>');
 
+        -- Spells | Debuffs --
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /po /ma "Poison" <t>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /po2 /ma "Poison II" <t>');
+
         -- Spells | Enspells --
 
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ens /ma "Enstone" <me>');
@@ -103,7 +107,14 @@ aliases.Common_Load = function()
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias /isp /ma "Ice Spikes" <me>');
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ssp /ma "Shock Spikes" <me>');
 
-
+        -- Spells | Heals --
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c1 /ma "Cure" <stpc>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c2 /ma "Cure II" <stpc>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c3 /ma "Cure III" <stpc>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c4 /ma "Cure IV" <stpc>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c5 /ma "Cure V" <stpc>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c6 /ma "Cure VI" <stpc>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /regen /ma "Regen" <stpc>');
 
         -- Spells | Dispels --
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bn /ma "Blindna" <stpc>');
@@ -295,6 +306,14 @@ aliases.Common_Unload = function()
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bb');
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bt');
 
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c1');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c2');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c3');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c4');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c5');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c6');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /regen');
+
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /er');
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sil');
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /dia');
@@ -325,6 +344,9 @@ aliases.Common_Unload = function()
 
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /es');
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ds');
+
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /po');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /po2');
 
         -- Spells | Ninjitsu -- 
         AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ut1');
@@ -418,6 +440,7 @@ aliases.DRG_Load = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /mmp /lac fwd maxmp');
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2hr /ja "Spirit Surge" <me>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /blunt /lac fwd blunt');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /staff /lac fwd staff');
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /solo /lac fwd solo');
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tpcycle /lac fwd tpcycle');
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /wscycle /lac fwd wscycle');
@@ -443,10 +466,14 @@ end
 
 aliases.BLM_Load = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2hr /ja "Manafont" <me>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sorcring /lac fwd sorcring');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /idle /lac fwd idle');
 end
 
 aliases.BLM_Unload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2hr');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sorcring');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /idle');
 end
 
 --[[ RDM ]]--

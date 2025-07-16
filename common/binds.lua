@@ -146,11 +146,13 @@ binds.DRG_Load = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind e /ja "Jump" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +e /ja "High Jump" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind c /ja "Super Jump" <t>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind t /range <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind t /ma "Silence" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind f /ma "Erase" <stpc>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 9 /mmp');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind [ /solo');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +[ /tpcycle');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +] /wscycle');
+    
 end
 
 -- DRG - Weaponskills
@@ -240,6 +242,8 @@ binds.DRG_Unload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind [');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind +[');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind +]');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind t');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind f');
 end
 
 binds.DRG_WS_Unload = function()
@@ -302,16 +306,18 @@ end
 --[[ BLM ]]--
 
 binds.BLM_Load = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !1 /ma "Bio II" <t>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !2 /ma "Paralyze" <t>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !3 /ma "Slow" <t>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !4 /ma "Frost" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !1 /ma "Poison II" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !2 /ma "Bio II" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !3 /ma "Paralyze" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind !4 /ma "Burn" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !5 /ma "Choke" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !6 /ma "Shock" <t>');
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^1 /ma "Drain" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^2 /ma "Aspir" <t>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^3 /ma "Curaga" <stpc>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^4 /ma "Cure III" <stpc>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^3 /ma "Cure III" <stpc>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^4 /ma "Regen" <stpc>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^5 /ma "Curaga" <stpc>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^7 /ma "Sneak" <stpc>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^8 /ma "Invisible" <stpc>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind ^9 /ma "Tonko: Ichi" <me>');
@@ -319,17 +325,22 @@ binds.BLM_Load = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +7 /ma "Blink" <me>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +8 /ma "Stoneskin" <me>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +9 /ma "Aquaveil" <me>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind +0 /ma "Phalanx" <me>');
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind e /ma "Stun" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind f /ma "Silence" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +f /ma "Bind" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind t /ma "Silence" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind x /ja "Elemental Seal" <me>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +x /p <rc="Elemental Seal">');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind c /ma "Sleep II" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind g /ma "Gravity" <t>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind +g /ma "Sleep" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind c /ma "Sleep II" <t>');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind +c /ma "Sleepga II" <t>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind !c /ma "Sleepga" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind v /ma "Sleep" <t>');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind +v /ma "Sleepga" <t>');
+
+
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 9 /sorcring');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind 0 /lockstyleset 30');
 
 end
@@ -355,6 +366,7 @@ binds.BLM_Unload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind !3');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind !4');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind !5');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind !6');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^1');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^2');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^3');
@@ -362,6 +374,7 @@ binds.BLM_Unload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^7');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^8');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^9');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ^0');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind e');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind f');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind +f');
@@ -370,8 +383,10 @@ binds.BLM_Unload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind +x');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind c');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind +c');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind +g');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind !c');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind t');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind v');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind +v');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind 9');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind 0');
 end
 

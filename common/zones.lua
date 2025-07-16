@@ -49,6 +49,27 @@ local zone_nation = {
     ["Ru'Lude Gardens"] = true
 };
 
+local zone_town = {
+    ["Port Windurst"] = true,
+    ["Windurst Walls"] = true,
+    ["Windurst Waters"] = true,
+    ["Windurst Woods"] = true,
+    ["Heavens Tower"] = true,
+    ["Northern San d'Oria"] = true,
+    ["Southern San d'Oria"] = true,
+    ["Port San d'Oria"] = true,
+    ["Chateau d'Oraguille"] = true,
+    ["Bastok Markets"] = true,
+    ["Port Bastok"] = true,
+    ["Bastok Mines"] = true,
+    ["Metalworks"] = true,
+    ["Lower Jeuno"] = true,
+    ["Upper Jeuno"] = true,
+    ["Port Jeuno"] = true,
+    ["Ru'Lude Gardens"] = true
+};
+
+
 zones.sets = sets;
 
 zones.CityGear = function()
@@ -70,6 +91,11 @@ end
 
 zones.GetOutsideControl = function()
     return not lib:GetInsideControl();
+end
+
+zones.IsInTown = function()
+    local zone = gData.GetEnvironment().Area;
+    return zone_town[zone];
 end
 
 return zones;

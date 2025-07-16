@@ -13,6 +13,14 @@ local buffer = 250; -- extra buffer to account for latency
 local minimumcast = 1; -- Minimum cast time to apply midcast delay
 local lockthrottle = 15; -- delay before allowing lockstyle (seconds)
 
+local HP_BLM_RDM = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
+local HP_BLM_WHM = 980; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 744HP is 0.76 Threshold. 236 deficit
+local HP_BLM_NIN = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
+
+local MP_BLM_RDM = 730; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+local MP_BLM_WHM = 749; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+local MP_BLM_NIN = 671; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+
 local fontSettings = {
     visible = true,
     font_family = 'Consolas',
@@ -43,8 +51,8 @@ local sets = {
         Hands = 'Angler\'s gloves',
         Legs = 'Angler\'s hose',
         Feet = 'Angler\'s boots',
-        Range = 'Halcyon Rod',
-        Ammo = 'Worm Lure'
+        Range = 'Lu Shang\'s F. Rod',
+        Ammo = 'Fly Lure'
     },
     Logging = {
         Body = 'Field Tunica',
@@ -69,7 +77,7 @@ local ElementalStaffTable = T{
     ['Ice'] = 'Aquilo\'s Staff',
     ['Thunder'] = 'Jupiter\'s Staff',
     ['Light'] = 'Light Staff',
-    ['Dark'] = 'Dark Staff'
+    ['Dark'] = 'Pluto\'s Staff'
 };
 
 local ElementalWeakness = T{
@@ -86,12 +94,12 @@ local ElementalWeakness = T{
 local ElementalObis = T{
     ['Earth'] = {'Dorin Obi', false},
     ['Wind'] = {'Furin Obi', false},
-    ['Ice'] = {'Hyorin Obi', false},
+    ['Ice'] = {'Hyorin Obi', true},
     ['Fire'] = {'Karin Obi', false},
     ['Water'] = {'Suirin Obi', false},
-    ['Lightning'] = {'Rairin Obi', false},
+    ['Thunder'] = {'Rairin Obi', true},
     ['Light'] = {'Korin Obi', false},
-    ['Dark'] = {'Anrin Obi', false}
+    ['Dark'] = {'Anrin Obi', true}
 };
 
 local LockStyleSets = T{
@@ -158,11 +166,12 @@ local Settings = {
     CurrentSet = 'None',
     LastLocked = nil,
     UseNaked = false,
-    UseElementalObis = false,
+    UseElementalObis = true,
     UseWarpCudgel = false,
     UseReraiseGorget = false,
     UseExpRing = false,
     GearMode = nil,
+    Extras = '', -- Text for displaying additional job information
 };
 
 shared.OnLoad = function()
@@ -194,6 +203,8 @@ shared.OnLoad = function()
         for key, value in pairs(cycles) do
             display = display .. key .. ': ' .. '|cFF5FFF5F|' .. value.Array[value.Index] .. '|r \n'
         end
+        display = display .. Settings.Extras;
+
         shared.FontObject.text = display;
     end)
 
@@ -338,17 +349,43 @@ shared.UggPendantCheck = function(action)
         return;
     end
     -- Only do slow, thorough equipment check if MP will go under an over-estimated threshold
-    if action.MppAftercast <= 51 then
+    local mpPercent = 0;
+    local nukeMaxMP = 0;
+    if player.MainJob == "BLM" and player.SubJob == "RDM" then
+        mpPercent = action.MpAftercast / MP_BLM_RDM;
+        nukeMaxMP = MP_BLM_RDM;
+    elseif player.MainJob == "BLM" and player.SubJob == "WHM" then
+        mpPercent = action.MpAftercast / MP_BLM_WHM;
+        nukeMaxMP = MP_BLM_WHM;
+    elseif player.MainJob == "BLM" and player.SubJob == "NIN" then
+        mpPercent = action.MpAftercast / MP_BLM_NIN;
+        nukeMaxMP = MP_BLM_NIN;
+    else
+        mpPercent = 100;
+    end
+    if verbose then print("MP Percent: " .. mpPercent .. ". Nuke Max MP: " .. nukeMaxMP); end
+    if mpPercent < 51 and nukeMaxMP ~= 0 then
+        --[[ Was used to calculate MaxMP on the fly, however, it would always calculate based on equipped set at the time which is usually either Idle or Precast and not Nuke
+        This can be adjusted in the future to make it only look at Nuke set. But would need to pass the nuke set as a second argument
+        Also, need to update the MP gear list
+        Also, need to "add MP" for any pieces on the equipped nuke set that are convert pieces.
+        For now, hardcoding MP values... (not ideal)
         local equipment = gData.GetEquipment();
         local subMpTotal = 0;
         for k,v in pairs(equipment) do
             if VisibleSlot[k] == nil and SubtractMP[v.Name] then
                 subMpTotal = subMpTotal + SubtractMP[v.Name];
             end
-        end
-        local finalMPP = (player.MP - action.MpCost)/(player.MaxMP - subMpTotal); -- MPP excluding MP from non-visible gear
+        end 
+        local finalMPP = (player.MP - action.MpCost)/(maxMP - subMpTotal); -- MPP excluding MP from non-visible gear
         if finalMPP <= 0.51 then
-            --AshitaCore:GetChatManager():QueueCommand(-1, '/echo Ugg Pendant True. Current: ' .. player.MP .. ', Cost: ' .. action.MpCost .. ', MaxMP: ' .. player.MaxMP .. ', SubTotal: ' .. subMpTotal .. ', FinalMPP: ' .. finalMPP);
+            if verbose then print('Ugg Pendant True. Current: ' .. player.MP .. ', Cost: ' .. action.MpCost .. ', MaxMP: ' .. player.MaxMP .. ', SubTotal: ' .. subMpTotal .. ', FinalMPP: ' .. finalMPP); end
+            gFunc.Equip('Neck', 'Uggalepih Pendant');
+        end
+        ]]
+        local finalMPP = (player.MP - action.MpCost) / nukeMaxMP; -- MPP excluding MP from non-visible gear
+        if finalMPP <= 0.51 then
+            if verbose then print('Ugg Pendant True. Current: ' .. player.MP .. ', Cost: ' .. action.MpCost .. ', MaxMP: ' .. nukeMaxMP .. ', FinalMPP: ' .. finalMPP); end
             gFunc.Equip('Neck', 'Uggalepih Pendant');
         end
     end
@@ -416,15 +453,18 @@ shared.SpellMatchDay = function(spell)
     return (spell.Element == environment.DayElement);
 end
 
-shared.ObiCheck = function(spell)
+shared.ObiCheck = function(spell, yellowSet)
     if not Settings.UseElementalObis then
         return;
     end
     local environment = gData.GetEnvironment();
     if spell.Element == environment.WeatherElement or spell.Element == environment.DayElement then
+        print(spell.Element);
         local elemental_obi = ElementalObis[spell.Element];
         if elemental_obi[2] then -- Do you have the relevant Obi?
             gFunc.Equip('Waist', elemental_obi[1]);
+            gFunc.EquipSet(yellowSet); -- Add more -HP to make up for normal yellow HP belt
+            if verbose then print("Using Obi: " .. elemental_obi[1] .. " . Element: " .. spell.Element); end
         end
     end
 end
@@ -493,13 +533,18 @@ shared.GetCycleNext = function(name)
     return ctable.Array[nextIndex];
 end
 
-shared.SetMidcastDelay = function(precastset)
+shared.SetMidcastDelay = function(precastset, yellowhpset)
     local player = gData.GetPlayer();
     local action = gData.GetAction();
     local casttime = action.CastTime;
     local weakenedstate = gData.GetBuffCount('Weakness');
     local chainspellstate = gData.GetBuffCount('Chainspell');
     local fastcast = 0;
+
+    -- Forces yellow hp gear
+    local function DelayYellow()
+        gFunc.ForceEquipSet(yellowhpset);
+    end
 
     -- Skip midcast delay if short cast or weakened
     if casttime < minimumcast or weakenedstate >= 1 or chainspellstate >= 1 then
@@ -521,8 +566,22 @@ shared.SetMidcastDelay = function(precastset)
 
     if midcastdelay > minimumcast then
         gFunc.SetMidDelay(midcastdelay); -- seconds
-        if verbose then print('Action: ' .. action.Name .. ' | Cast Time (s): ' .. action.CastTime/1000 .. ' | Mid Cast Delay (s): ' .. midcastdelay); end
     end
+
+    -- Sorc Ring Latent Gear Swap (1 sec before midcast gear gets put on)
+    local yellowhpdelay = midcastdelay - 1;
+    if yellowhpdelay < 0 then
+        yellowhpdelay = 0;
+    end
+    if yellowhpset then
+        if yellowhpdelay == 0 then
+            gFunc.ForceEquipSet(yellowhpset);
+        else
+            DelayYellow:once(yellowhpdelay);
+        end
+    end
+
+    if verbose then print('Action: ' .. action.Name .. ' | Cast Time (s): ' .. action.CastTime/1000 .. ' | Yellow Gearswap Delay (s): ' .. yellowhpdelay .. ' | Mid Cast Delay (s): ' .. midcastdelay); end
 
 end
 
@@ -585,6 +644,7 @@ shared.Display = function()
         for key, value in pairs(cycles) do
             display = display .. key .. ': ' .. '|cFF5FFF5F|' .. value.Array[value.Index] .. '|r \n'
         end
+        display = display .. Settings.Extras;
         shared.FontObject.text = display;
     end)
 end
@@ -602,8 +662,20 @@ end
 shared.CheckSets = function(sets)
     for set in sets do
         for slot, item in pairs(set) do
-            print('Set: ' .. set .. ', Slot: ' .. slot .. ', Item: ' .. item)
+            if verbose then print('Set: ' .. set .. ', Slot: ' .. slot .. ', Item: ' .. item) end
         end
+    end
+end
+
+shared.SetExtras = function(extras)
+    if extras then
+        Settings.Extras = extras;
+    end
+end
+
+shared.GetExtras = function()
+    if Settings.Extras then
+        return Settings.Extras;
     end
 end
 
