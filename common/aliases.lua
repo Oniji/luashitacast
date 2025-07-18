@@ -4,488 +4,531 @@ local aliases = {};
 
 aliases.Common_Load = function()
 
-        -- Party Related --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /add /pcmd add');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /leave /pcmd leave');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /disband /pcmd breakup');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /leader /pcmd leader');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /kick /pcmd kick');
+    -- Assist and Targetnpc
+    aliases.add('/assist', '/lac fwd gearmode');
 
-        -- Addon Related --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dig1 /addon load hgather');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dig0 /addon unload hgather');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /digclear /hgather clear');
+    -- Lockstyle --
+    aliases.add('/lsfsh', '/lac fwd lsfsh');
+    aliases.add('/lsbot', '/lac fwd lsbot');
+    aliases.add('/lsdig', '/lac fwd lsdig');
+    aliases.add('/lsblm', '/lac fwd lsblm');
+    aliases.add('/lsdrg', '/lac fwd lsdrg');
+    aliases.add('/lsrdm', '/lac fwd lsrdm');
 
-        -- Gear-Swaps --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /main /lac fwd main');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /fishing /lac fwd fishing');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /digging /lac fwd digging');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /logging /lac fwd logging');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /logging /lac fwd gearmode');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /warpcudgel /lac fwd warpcudgel');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /empband /lac fwd empband');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /gorget /lac fwd gorget');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /naked /lac fwd naked');
-    
-        -- Items --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /iwarp /item "Instant Warp" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cwarp /item "Warp Cudgel" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /eband /item "Emperor Band" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /prism /item "Prism Powder" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /oil /item "Silent Oil" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ecd /item "Echo Drops" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /eyd /item "Eye Drops" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pp /item "Poison Potion" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /hw /item "Holy Water" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /aj /item "Apple Juice" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /mj /item "Melon Juice" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /yag /item "Yagudo Drink" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /icarus /item "Icarus Wing" <me>');
+    -- Party Related --
+    aliases.add('/add', '/pcmd add');
+    aliases.add('/leave', '/pcmd leave');
+    aliases.add('/disband', '/pcmd breakup');
+    aliases.add('/leader', '/pcmd leader');
+    aliases.add('/kick', '/pcmd kick');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /prom1 /item "Hysteroanima" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /prom2 /item "Psychoanima" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /prom3 /item "Terroanima" <t>');
+    -- Addon Related --
+    aliases.add('/dig1', '/addon load hgather');
+    aliases.add('/dig0', '/addon unload hgather');
+    aliases.add('/digclear', '/hgather clear');
 
-        -- Food -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tuna /item "Tuna Sushi" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sole /item "Sole Sushi" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /squid /item "Squid Sushi" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /taco /item "Tavnazian Taco" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /apple /item "Apple Pie" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /apple1 /item "Apple Pie +1" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /melon /item "Melon Pie" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /melon1 /item "Melon Pie +1" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /mith /item "Meat Mithkabob" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /chief /item "Meat Chiefkabob" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rice /item "Rice Dumpling" <me>');
+    -- Gear-Swaps --
+    aliases.add('/main', '/lac fwd main');
+    aliases.add('/fishing', '/lac fwd fishing');
+    aliases.add('/digging', '/lac fwd digging');
+    aliases.add('/logging', '/lac fwd logging');
+    aliases.add('/logging', '/lac fwd gearmode');
+    aliases.add('/warpcudgel', '/lac fwd warpcudgel');
+    aliases.add('/empband', '/lac fwd empband');
+    aliases.add('/gorget', '/lac fwd gorget');
+    aliases.add('/naked', '/lac fwd naked');
 
-        -- Spells | Teleport -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /holla /ma "Teleport-Holla" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dem /ma "Teleport-Dem" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /mea /ma "Teleport-Mea" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /yhoat /ma "Teleport-Yhoat" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /altep /ma "Teleport-Altep" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /warp /ma Warp <me>');
+    -- Items --
+    aliases.add('/iwarp', '/item "Instant Warp" <me>');
+    aliases.add('/cwarp', '/item "Warp Cudgel" <me>');
+    aliases.add('/eband', '/item "Emperor Band" <me>');
+    aliases.add('/prism', '/item "Prism Powder" <me>');
+    aliases.add('/oil', '/item "Silent Oil" <me>');
+    aliases.add('/ecd', '/item "Echo Drops" <me>');
+    aliases.add('/eyd', '/item "Eye Drops" <me>');
+    aliases.add('/pp', '/item "Poison Potion" <me>');
+    aliases.add('/hw', '/item "Holy Water" <me>');
+    aliases.add('/aj', '/item "Apple Juice" <me>');
+    aliases.add('/mj', '/item "Melon Juice" <me>');
+    aliases.add('/yag', '/item "Yagudo Drink" <me>');
+    aliases.add('/icarus', '/item "Icarus Wing" <me>');
 
-        -- Spells | Protect/Shell -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pr1 /ma "Protectra" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pr2 /ma "Protectra II" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pr3 /ma "Protectra III" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pr4 /ma "Protectra IV" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pr5 /ma "Protectra V" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sr1 /ma "Shellra" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sr2 /ma "Shellra II" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sr3 /ma "Shellra III" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sr4 /ma "Shellra IV" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sr5 /ma "Shellra V" <me>');
+    aliases.add('/prom1', '/item "Hysteroanima" <t>');
+    aliases.add('/prom2', '/item "Psychoanima" <t>');
+    aliases.add('/prom3', '/item "Terroanima" <t>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /p1 /ma "Protect" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /p2 /ma "Protect II" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /p3 /ma "Protect III" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /p4 /ma "Protect IV" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /p5 /ma "Protect V" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /s1 /ma "Shell" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /s2 /ma "Shell II" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /s3 /ma "Shell III" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /s4 /ma "Shell IV" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /s5 /ma "Shell V" <stpc>');
+    -- Food -- 
+    aliases.add('/tuna', '/item "Tuna Sushi" <me>');
+    aliases.add('/sole', '/item "Sole Sushi" <me>');
+    aliases.add('/squid', '/item "Squid Sushi" <me>');
+    aliases.add('/taco', '/item "Tavnazian Taco" <me>');
+    aliases.add('/apple', '/item "Apple Pie" <me>');
+    aliases.add('/apple1', '/item "Apple Pie +1" <me>');
+    aliases.add('/melon', '/item "Melon Pie" <me>');
+    aliases.add('/melon1', '/item "Melon Pie +1" <me>');
+    aliases.add('/mith', '/item "Meat Mithkabob" <me>');
+    aliases.add('/chief', '/item "Meat Chiefkabob" <me>');
+    aliases.add('/rice', '/item "Rice Dumpling" <me>');
 
-        -- Spells | Debuffs --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /po /ma "Poison" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /po2 /ma "Poison II" <t>');
+    -- Spells | Teleport -- 
+    aliases.add('/holla', '/ma "Teleport-Holla" <me>');
+    aliases.add('/dem', '/ma "Teleport-Dem" <me>');
+    aliases.add('/mea', '/ma "Teleport-Mea" <me>');
+    aliases.add('/yhoat', '/ma "Teleport-Yhoat" <me>');
+    aliases.add('/altep', '/ma "Teleport-Altep" <me>');
+    aliases.add('/warp', '/ma Warp <me>');
 
-        -- Spells | Enspells --
+    -- Spells | Protect/Shell -- 
+    aliases.add('/pr1', '/ma "Protectra" <me>');
+    aliases.add('/pr2', '/ma "Protectra II" <me>');
+    aliases.add('/pr3', '/ma "Protectra III" <me>');
+    aliases.add('/pr4', '/ma "Protectra IV" <me>');
+    aliases.add('/pr5', '/ma "Protectra V" <me>');
+    aliases.add('/sr1', '/ma "Shellra" <me>');
+    aliases.add('/sr2', '/ma "Shellra II" <me>');
+    aliases.add('/sr3', '/ma "Shellra III" <me>');
+    aliases.add('/sr4', '/ma "Shellra IV" <me>');
+    aliases.add('/sr5', '/ma "Shellra V" <me>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ens /ma "Enstone" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /enw /ma "Enwater" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ena /ma "Enaero" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /enf /ma "Enfire" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /enb /ma "Enblizzard" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ent /ma "Enthunder" <me>');
+    aliases.add('/p1', '/ma "Protect" <stpc>');
+    aliases.add('/p2', '/ma "Protect II" <stpc>');
+    aliases.add('/p3', '/ma "Protect III" <stpc>');
+    aliases.add('/p4', '/ma "Protect IV" <stpc>');
+    aliases.add('/p5', '/ma "Protect V" <stpc>');
+    aliases.add('/s1', '/ma "Shell" <stpc>');
+    aliases.add('/s2', '/ma "Shell II" <stpc>');
+    aliases.add('/s3', '/ma "Shell III" <stpc>');
+    aliases.add('/s4', '/ma "Shell IV" <stpc>');
+    aliases.add('/s5', '/ma "Shell V" <stpc>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bsp /ma "Blaze Spikes" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /isp /ma "Ice Spikes" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ssp /ma "Shock Spikes" <me>');
+    -- Spells | Debuffs --
+    aliases.add('/po', '/ma "Poison" <t>');
+    aliases.add('/po2', '/ma "Poison II" <t>');
 
-        -- Spells | Heals --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c1 /ma "Cure" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c2 /ma "Cure II" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c3 /ma "Cure III" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c4 /ma "Cure IV" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c5 /ma "Cure V" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /c6 /ma "Cure VI" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /regen /ma "Regen" <stpc>');
+    -- Spells | Enspells --
 
-        -- Spells | Dispels --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bn /ma "Blindna" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cn /ma "Cursna" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pon /ma "Poisona" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sn /ma "Silena" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pan /ma "Paralyna" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /r1 /ma "Raise" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rr /ma "Reraise" <me>');
-    
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /blink /ma "Blink" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ss /ma "Stoneskin" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /aqua /ma "Aquaveil" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ph /ma "Phalanx" <me>');
-    
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bs /ma "Barstonra" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bw /ma "Barwatera" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ba /ma "Baraera" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bf /ma "Barfira" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bb /ma "Barblizzara" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bt /ma "Barthundra" <me>');
+    aliases.add('/ens', '/ma "Enstone" <me>');
+    aliases.add('/enw', '/ma "Enwater" <me>');
+    aliases.add('/ena', '/ma "Enaero" <me>');
+    aliases.add('/enf', '/ma "Enfire" <me>');
+    aliases.add('/enb', '/ma "Enblizzard" <me>');
+    aliases.add('/ent', '/ma "Enthunder" <me>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /er /ma "Erase" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sil /ma "Silence" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dia /ma "Dia" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dia2 /ma "Dia II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bio /ma "Bio" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bio2 /ma "Bio II" <t>');
+    aliases.add('/bsp', '/ma "Blaze Spikes" <me>');
+    aliases.add('/isp', '/ma "Ice Spikes" <me>');
+    aliases.add('/ssp', '/ma "Shock Spikes" <me>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /frost /ma "Frost" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rasp /ma "Rasp" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /choke /ma "Choke" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /drown /ma "Drown" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /shock /ma "Shock" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /burn /ma "Burn" <t>');
+    -- Spells | Heals --
+    aliases.add('/c1', '/ma "Cure" <stpc>');
+    aliases.add('/c2', '/ma "Cure II" <stpc>');
+    aliases.add('/c3', '/ma "Cure III" <stpc>');
+    aliases.add('/c4', '/ma "Cure IV" <stpc>');
+    aliases.add('/c5', '/ma "Cure V" <stpc>');
+    aliases.add('/c6', '/ma "Cure VI" <stpc>');
+    aliases.add('/regen', '/ma "Regen" <stpc>');
 
-        -- Spells | Utility --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /d2 /ma "Warp II" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tractor /ma "Tractor" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /escape /ma "Escape" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sneak /ma "Sneak" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /invis /ma "Invisible" <stpc>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sl1 /ma "Sleep" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sl2 /ma "Sleep II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /slg1 /ma "Sleepga" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /slg2 /ma "Sleepga II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /grav /ma "Gravity" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /blind /ma "Blind" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bind /ma "Bind" <t>');
+    -- Spells | Dispels --
+    aliases.add('/bn', '/ma "Blindna" <stpc>');
+    aliases.add('/cn', '/ma "Cursna" <stpc>');
+    aliases.add('/pon', '/ma "Poisona" <stpc>');
+    aliases.add('/sn', '/ma "Silena" <stpc>');
+    aliases.add('/pan', '/ma "Paralyna" <stpc>');
+    aliases.add('/r1', '/ma "Raise" <stpc>');
+    aliases.add('/rr', '/ma "Reraise" <me>');
 
-        -- Spells | Ninjitsu -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ut1 /nin "Utsusemi: Ichi"');
-    
-        -- Job Abilities ---
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /es /ja "Elemental Seal" <me>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /ds /ja "Divine Seal" <me>');
+    aliases.add('/blink', '/ma "Blink" <me>');
+    aliases.add('/ss', '/ma "Stoneskin" <me>');
+    aliases.add('/aqua', '/ma "Aquaveil" <me>');
+    aliases.add('/ph', '/ma "Phalanx" <me>');
 
-        -- Spells | Nukes (Single-Target) -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /1b /ma "Blizzard" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2b /ma "Blizzard II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /3b /ma "Blizzard III" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /4b /ma "Blizzard IV" <t>');
+    aliases.add('/bs', '/ma "Barstonra" <me>');
+    aliases.add('/bw', '/ma "Barwatera" <me>');
+    aliases.add('/ba', '/ma "Baraera" <me>');
+    aliases.add('/bf', '/ma "Barfira" <me>');
+    aliases.add('/bb', '/ma "Barblizzara" <me>');
+    aliases.add('/bt', '/ma "Barthundra" <me>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /1t /ma "Thunder" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2t /ma "Thunder II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /3t /ma "Thunder III" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /4t /ma "Thunder IV" <t>');
+    aliases.add('/er', '/ma "Erase" <stpc>');
+    aliases.add('/sil', '/ma "Silence" <t>');
+    aliases.add('/dia', '/ma "Dia" <t>');
+    aliases.add('/dia2', '/ma "Dia II" <t>');
+    aliases.add('/bio', '/ma "Bio" <t>');
+    aliases.add('/bio2', '/ma "Bio II" <t>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /1f /ma "Fire" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2f /ma "Fire II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /3f /ma "Fire III" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /4f /ma "Fire IV" <t>');
+    aliases.add('/frost', '/ma "Frost" <t>');
+    aliases.add('/rasp', '/ma "Rasp" <t>');
+    aliases.add('/choke', '/ma "Choke" <t>');
+    aliases.add('/drown', '/ma "Drown" <t>');
+    aliases.add('/shock', '/ma "Shock" <t>');
+    aliases.add('/burn', '/ma "Burn" <t>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /1a /ma "Aero" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2a /ma "Aero II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /3a /ma "Aero III" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /4a /ma "Aero IV" <t>');
+    -- Spells | Utility --
+    aliases.add('/d2', '/ma "Warp II" <stpc>');
+    aliases.add('/tractor', '/ma "Tractor" <stpc>');
+    aliases.add('/escape', '/ma "Escape" <me>');
+    aliases.add('/sneak', '/ma "Sneak" <stpc>');
+    aliases.add('/invis', '/ma "Invisible" <stpc>');
+    aliases.add('/sl1', '/ma "Sleep" <t>');
+    aliases.add('/sl2', '/ma "Sleep II" <t>');
+    aliases.add('/slg1', '/ma "Sleepga" <t>');
+    aliases.add('/slg2', '/ma "Sleepga II" <t>');
+    aliases.add('/grav', '/ma "Gravity" <t>');
+    aliases.add('/blind', '/ma "Blind" <t>');
+    aliases.add('/bind', '/ma "Bind" <t>');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /1w /ma "Water" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2w /ma "Water II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /3w /ma "Water III" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /4w /ma "Water IV" <t>');
+    -- Spells | Ninjitsu -- 
+    aliases.add('/ut1', '/nin "Utsusemi: Ichi"');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /1s /ma "Stone" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2s /ma "Stone II" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /3s /ma "Stone III" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /4s /ma "Stone IV" <t>');
+    -- Job Abilities ---
+    aliases.add('/es', '/ja "Elemental Seal" <me>');
+    aliases.add('/ds', '/ja "Divine Seal" <me>');
+
+    -- Spells | Nukes (Single-Target) -- 
+    aliases.add('/1b', '/ma "Blizzard" <t>');
+    aliases.add('/2b', '/ma "Blizzard II" <t>');
+    aliases.add('/3b', '/ma "Blizzard III" <t>');
+    aliases.add('/4b', '/ma "Blizzard IV" <t>');
+
+    aliases.add('/1t', '/ma "Thunder" <t>');
+    aliases.add('/2t', '/ma "Thunder II" <t>');
+    aliases.add('/3t', '/ma "Thunder III" <t>');
+    aliases.add('/4t', '/ma "Thunder IV" <t>');
+
+    aliases.add('/1f', '/ma "Fire" <t>');
+    aliases.add('/2f', '/ma "Fire II" <t>');
+    aliases.add('/3f', '/ma "Fire III" <t>');
+    aliases.add('/4f', '/ma "Fire IV" <t>');
+
+    aliases.add('/1a', '/ma "Aero" <t>');
+    aliases.add('/2a', '/ma "Aero II" <t>');
+    aliases.add('/3a', '/ma "Aero III" <t>');
+    aliases.add('/4a', '/ma "Aero IV" <t>');
+
+    aliases.add('/1w', '/ma "Water" <t>');
+    aliases.add('/2w', '/ma "Water II" <t>');
+    aliases.add('/3w', '/ma "Water III" <t>');
+    aliases.add('/4w', '/ma "Water IV" <t>');
+
+    aliases.add('/1s', '/ma "Stone" <t>');
+    aliases.add('/2s', '/ma "Stone II" <t>');
+    aliases.add('/3s', '/ma "Stone III" <t>');
+    aliases.add('/4s', '/ma "Stone IV" <t>');
 
     -- Spells | Nukes (Ancient) -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /fr /ma "Freeze" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /qu /ma "Quake" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /flo /ma "Flood" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /bu /ma "Burst" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /to /ma "Tornado" <t>');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias /fla /ma "Flare" <t>');
+    aliases.add('/fr', '/ma "Freeze" <t>');
+    aliases.add('/qu', '/ma "Quake" <t>');
+    aliases.add('/flo', '/ma "Flood" <t>');
+    aliases.add('/bu', '/ma "Burst" <t>');
+    aliases.add('/to', '/ma "Tornado" <t>');
+    aliases.add('/fla', '/ma "Flare" <t>');
 end
 
 aliases.Common_Unload = function()
 
-        -- Gear-Swaps --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /main');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /fishing');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /digging');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /logging');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /gearmode');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /warpcudgel');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /empband');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /gorget');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /naked');
-    
-        -- Items --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /iwarp');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /cwarp');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /eband');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /oil');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /prism');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /eyd');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ecd');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pp');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /hw');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /mj');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /eye');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /icarus');
+    -- Gear-Swaps --
+    aliases.remove('/main');
+    aliases.remove('/fishing');
+    aliases.remove('/digging');
+    aliases.remove('/logging');
+    aliases.remove('/gearmode');
+    aliases.remove('/warpcudgel');
+    aliases.remove('/empband');
+    aliases.remove('/gorget');
+    aliases.remove('/naked');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /prom1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /prom2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /prom3');
+    -- Lockstyle --
+    aliases.remove('/lsfsh');
+    aliases.remove('/lsbot');
+    aliases.remove('/lsdig');
+    aliases.remove('/lsblm');
+    aliases.remove('/lsdrg');
+    aliases.remove('/lsrdm');
 
-        -- Food --
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /tuna');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sole');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /squid');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /taco');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /apple');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /apple1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /melon');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /melon1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /mith');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /chief');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /rice');
 
-        -- Spells -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /warp');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /holla');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /dem');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /mea');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /yhoat');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /altep');
+    -- Items --
+    aliases.remove('/iwarp');
+    aliases.remove('/cwarp');
+    aliases.remove('/eband');
+    aliases.remove('/oil');
+    aliases.remove('/prism');
+    aliases.remove('/eyd');
+    aliases.remove('/ecd');
+    aliases.remove('/pp');
+    aliases.remove('/hw');
+    aliases.remove('/mj');
+    aliases.remove('/eye');
+    aliases.remove('/icarus');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pr1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pr2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pr3');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pr4');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pr5');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sr1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sr2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sr3');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sr4');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sr5');
+    aliases.remove('/prom1');
+    aliases.remove('/prom2');
+    aliases.remove('/prom3');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /p1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /p2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /p3');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /p4');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /p5');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /s1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /s2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /s3');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /s4');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /s5');
+    -- Food --
+    aliases.remove('/tuna');
+    aliases.remove('/sole');
+    aliases.remove('/squid');
+    aliases.remove('/taco');
+    aliases.remove('/apple');
+    aliases.remove('/apple1');
+    aliases.remove('/melon');
+    aliases.remove('/melon1');
+    aliases.remove('/mith');
+    aliases.remove('/chief');
+    aliases.remove('/rice');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bn');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /cn');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pon');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sn');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /pan');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /r1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /rr');
-    
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /blink');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ss');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /aqua');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ph');
-    
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bs');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bw');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ba');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bf');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bb');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bt');
+    -- Spells -- 
+    aliases.remove('/warp');
+    aliases.remove('/holla');
+    aliases.remove('/dem');
+    aliases.remove('/mea');
+    aliases.remove('/yhoat');
+    aliases.remove('/altep');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c3');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c4');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c5');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /c6');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /regen');
+    aliases.remove('/pr1');
+    aliases.remove('/pr2');
+    aliases.remove('/pr3');
+    aliases.remove('/pr4');
+    aliases.remove('/pr5');
+    aliases.remove('/sr1');
+    aliases.remove('/sr2');
+    aliases.remove('/sr3');
+    aliases.remove('/sr4');
+    aliases.remove('/sr5');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /er');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sil');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /dia');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /dia2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bio');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bio2');
+    aliases.remove('/p1');
+    aliases.remove('/p2');
+    aliases.remove('/p3');
+    aliases.remove('/p4');
+    aliases.remove('/p5');
+    aliases.remove('/s1');
+    aliases.remove('/s2');
+    aliases.remove('/s3');
+    aliases.remove('/s4');
+    aliases.remove('/s5');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sl1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sl2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /slg1');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /slg2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /grav');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /blind');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bind');
+    aliases.remove('/bn');
+    aliases.remove('/cn');
+    aliases.remove('/pon');
+    aliases.remove('/sn');
+    aliases.remove('/pan');
+    aliases.remove('/r1');
+    aliases.remove('/rr');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /d2');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /tractor');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /escape');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sneak');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /invis');
+    aliases.remove('/blink');
+    aliases.remove('/ss');
+    aliases.remove('/aqua');
+    aliases.remove('/ph');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /frost');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /rasp');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /choke');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /burn');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /shock');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /drown');
+    aliases.remove('/bs');
+    aliases.remove('/bw');
+    aliases.remove('/ba');
+    aliases.remove('/bf');
+    aliases.remove('/bb');
+    aliases.remove('/bt');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /es');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ds');
+    aliases.remove('/c1');
+    aliases.remove('/c2');
+    aliases.remove('/c3');
+    aliases.remove('/c4');
+    aliases.remove('/c5');
+    aliases.remove('/c6');
+    aliases.remove('/regen');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /po');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /po2');
+    aliases.remove('/er');
+    aliases.remove('/sil');
+    aliases.remove('/dia');
+    aliases.remove('/dia2');
+    aliases.remove('/bio');
+    aliases.remove('/bio2');
 
-        -- Spells | Ninjitsu -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ut1');
+    aliases.remove('/sl1');
+    aliases.remove('/sl2');
+    aliases.remove('/slg1');
+    aliases.remove('/slg2');
+    aliases.remove('/grav');
+    aliases.remove('/blind');
+    aliases.remove('/bind');
 
-        -- Spells | Nukes (Single-Target) -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /1b');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2b');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /3b');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /4b');
+    aliases.remove('/d2');
+    aliases.remove('/tractor');
+    aliases.remove('/escape');
+    aliases.remove('/sneak');
+    aliases.remove('/invis');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /1t');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2t');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /3t');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /4t');
+    aliases.remove('/frost');
+    aliases.remove('/rasp');
+    aliases.remove('/choke');
+    aliases.remove('/burn');
+    aliases.remove('/shock');
+    aliases.remove('/drown');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /1f');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2f');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /3f');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /4f');
+    aliases.remove('/es');
+    aliases.remove('/ds');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /1a');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2a');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /3a');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /4a');
+    aliases.remove('/po');
+    aliases.remove('/po2');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /1w');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2w');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /3w');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /4w');
+    -- Spells | Ninjitsu -- 
+    aliases.remove('/ut1');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /1s');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2s');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /3s');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /4s');
+    -- Spells | Nukes (Single-Target) -- 
+    aliases.remove('/1b');
+    aliases.remove('/2b');
+    aliases.remove('/3b');
+    aliases.remove('/4b');
 
-        -- Spells | Nukes (Ancient) -- 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /fr');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bu');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /qu');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /flo');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /fla');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /to');
+    aliases.remove('/1t');
+    aliases.remove('/2t');
+    aliases.remove('/3t');
+    aliases.remove('/4t');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ens');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /enw');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ena');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /enf');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /enb');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ent');
+    aliases.remove('/1f');
+    aliases.remove('/2f');
+    aliases.remove('/3f');
+    aliases.remove('/4f');
 
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /isp');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /bsp');
-        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /ssp');
+    aliases.remove('/1a');
+    aliases.remove('/2a');
+    aliases.remove('/3a');
+    aliases.remove('/4a');
+
+    aliases.remove('/1w');
+    aliases.remove('/2w');
+    aliases.remove('/3w');
+    aliases.remove('/4w');
+
+    aliases.remove('/1s');
+    aliases.remove('/2s');
+    aliases.remove('/3s');
+    aliases.remove('/4s');
+
+    -- Spells | Nukes (Ancient) -- 
+    aliases.remove('/fr');
+    aliases.remove('/bu');
+    aliases.remove('/qu');
+    aliases.remove('/flo');
+    aliases.remove('/fla');
+    aliases.remove('/to');
+
+    aliases.remove('/ens');
+    aliases.remove('/enw');
+    aliases.remove('/ena');
+    aliases.remove('/enf');
+    aliases.remove('/enb');
+    aliases.remove('/ent');
+
+    aliases.remove('/isp');
+    aliases.remove('/bsp');
+    aliases.remove('/ssp');
 
 end
 
 --[[ BST ]]--
 
 aliases.BST_Load = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /maxmp /lac fwd maxmp');
+    aliases.add('/maxmp', '/lac fwd maxmp');
 end
 
 aliases.BST_Unload = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /maxmp');
+    aliases.remove('/maxmp');
 end
 
 --[[ THF ]]--
 
 aliases.THF_Load = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2hr /ja "Perfect Dodge" <me>');
+    aliases.add('/2hr', '/ja "Perfect Dodge" <me>');
 
 end
 
 aliases.THF_Unload = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2hr');
+    aliases.remove('/2hr');
 end
 
 --[[ WHM ]]--
 
 aliases.WHM_Load= function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2hr /ja "Benediction" <me>');
+    aliases.add('/2hr', '/ja "Benediction" <me>');
 end
 
 aliases.WHM_Unload= function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2hr');
+    aliases.remove('/2hr');
 end
 
 --[[ DRG ]]--
 
 aliases.DRG_Load = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /mmp /lac fwd maxmp');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2hr /ja "Spirit Surge" <me>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /blunt /lac fwd blunt');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /staff /lac fwd staff');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /solo /lac fwd solo');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tpcycle /lac fwd tpcycle');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /wscycle /lac fwd wscycle');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /easy /lac fwd easy');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /even /lac fwd even');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tough /lac fwd tough');
+    aliases.add('/mmp', '/lac fwd maxmp');
+    aliases.add('/2hr', '/ja "Spirit Surge" <me>');
+    aliases.add('/blunt', '/lac fwd blunt');
+    aliases.add('/staff', '/lac fwd staff');
+    aliases.add('/solo', '/lac fwd solo');
+    aliases.add('/tpcycle', '/lac fwd tpcycle');
+    aliases.add('/wscycle', '/lac fwd wscycle');
+    aliases.add('/easy', '/lac fwd easy');
+    aliases.add('/even', '/lac fwd even');
+    aliases.add('/tough', '/lac fwd tough');
 end
 
 aliases.DRG_Unload = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2hr');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /mmp');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /blunt');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /solo');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /tpcycle');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /wscycle');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /easy');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /even');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /tough');
+    aliases.remove('/2hr');
+    aliases.remove('/mmp');
+    aliases.remove('/blunt');
+    aliases.remove('/solo');
+    aliases.remove('/tpcycle');
+    aliases.remove('/wscycle');
+    aliases.remove('/easy');
+    aliases.remove('/even');
+    aliases.remove('/tough');
 
 end
 
 --[[ BLM ]]--
 
 aliases.BLM_Load = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2hr /ja "Manafont" <me>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sorcring /lac fwd sorcring');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /idle /lac fwd idle');
+    aliases.add('/2hr', '/ja "Manafont" <me>');
+    aliases.add('/sorcring', '/lac fwd sorcring');
+    aliases.add('/idle', '/lac fwd idle');
 end
 
 aliases.BLM_Unload = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2hr');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /sorcring');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /idle');
+    aliases.remove('/2hr');
+    aliases.remove('/sorcring');
+    aliases.remove('/idle');
 end
 
 --[[ RDM ]]--
 
 aliases.RDM_Load = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /2hr /ja "Chainspell" <me>');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /convert /ja "Convert" <me>');
+    aliases.add('/2hr', '/ja "Chainspell" <me>');
+    aliases.add('/convert', '/ja "Convert" <me>');
 end
 
 aliases.RDM_Unload = function()
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /2hr');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /convert');
+    aliases.remove('/2hr');
+    aliases.remove('/convert');
+end
+
+--[[ SMN ]]--
+
+aliases.SMN_Load = function()
+    aliases.add('/2hr', '/ja "Astral Flow" <me>');
+    aliases.add('/carbuncle', '/ma "Carbuncle" <me>');
+end
+
+aliases.SMN_Unload = function()
+    aliases.remove('/2hr');
+end
+
+aliases.add = function(name, command)
+    if name and command then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias ' .. name .. ' ' .. command); 
+    end
+end
+
+aliases.remove = function(command)
+    if command then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete ' .. command); 
+    end
 end
 
 return aliases;
