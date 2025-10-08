@@ -1,3 +1,7 @@
+local conquest = {};
+
+local verbose = false;
+
 --Any zone listed here will look up conquest based on the specified region.
 -- Taken from RAG's lua and modified
 local regionMap = T{
@@ -184,7 +188,7 @@ local packetData = T{
 
 local regionControllers = {}
 
-local function LookupControl(zone)
+conquest.LookupControl = function(zone)
     local region = regionMap[zone]
     if region == nil then
         local fixed = fixedControl[zone]
@@ -205,7 +209,7 @@ end
 local chat = require('chat')
 local currentNation = 'Unknown'
 local currentZone = AshitaCore:GetMemoryManager():GetParty():GetMemberZone(0)
-local currentControl = LookupControl(currentZone)
+local currentControl = conquest.LookupControl(currentZone)
 local daysUntilConquest = -1
 local packetTime  = (currentZone > 0) and 0 or 999999999
 
@@ -214,12 +218,12 @@ ashita.events.register('packet_out', 'LAC_Conquest_Module_HandleOutgoingPacket',
         if (daysUntilConquest == -1) and (currentControl ~= 'N/A') then
             local packet = struct.pack('L', 0)
             AshitaCore:GetPacketManager():AddOutgoingPacket(0x5A, packet:totable())
-            print(chat.header('Conquest') .. chat.message('Sending packet to request conquest information.'))
+            if verbose then print(chat.header('Conquest') .. chat.message('Sending packet to request conquest information.')) end
             packetTime = os.clock() + 10
         elseif (currentNation == 'Unknown') then
             local packet = struct.pack('LL', 0, 0)
             AshitaCore:GetPacketManager():AddOutgoingPacket(0x61, packet:totable())
-            print(chat.header('Conquest') .. chat.message('Sending packet to request current nation.'))
+            if verbose then print(chat.header('Conquest') .. chat.message('Sending packet to request current nation.')) end
             packetTime = os.clock() + 10
         end
     end
@@ -228,7 +232,7 @@ end)
 ashita.events.register('packet_in', 'LAC_Conquest_Module_HandleIncomingPacket', function (e)
     if (e.id == 0x00A) then
         currentZone = struct.unpack('H', e.data, 0x30 + 1)
-        currentControl = LookupControl(currentZone)
+        currentControl = conquest.LookupControl(currentZone)
         packetTime = os.clock() + 15
     elseif (e.id == 0x5E) then
         local days = struct.unpack('B', e.data, 0x8C + 1)
@@ -238,43 +242,39 @@ ashita.events.register('packet_in', 'LAC_Conquest_Module_HandleIncomingPacket', 
                 regionControllers[region.name] = controllerNames[controller]
             end
 
-            print(chat.header('Conquest') .. chat.message('Updated conquest information.'))
+            if verbose then print(chat.header('Conquest') .. chat.message('Updated conquest information.')) end
         end
 
         packetTime = os.clock() + 1
         daysUntilConquest = days
-        currentControl = LookupControl(currentZone)
+        currentControl = conquest.LookupControl(currentZone)
     elseif (e.id == 0x61) then
         local nationIndex = struct.unpack('B', e.data, 0x50 + 1)
         local newNation = controllerNames[nationIndex + 1]
         if (newNation ~= currentNation) then
             currentNation = newNation
-            print(chat.header('Conquest') .. chat.message('Updated player nation.'))
+            if verbose then print(chat.header('Conquest') .. chat.message('Updated player nation.')) end
         end
     end
 end)
 
-
-
-local lib = {}
-
-function lib:GetCurrentControl()
+conquest.GetCurrentControl = function()
     return currentControl
 end
 
-function lib:GetCurrentNation()
+conquest.GetCurrentNation = function()
     return currentNation
 end
 
-function lib:GetZoneControl(zone)
-    return LookupControl(zone)
+conquest.GetZoneControl = function(zone)
+    return conquest.LookupControl(zone)
 end
 
-function lib:GetInsideControl()
+conquest.GetInsideControl = function()
     return (currentControl == currentNation)
 end
 
-function lib:GetOutsideControl()
+conquest.GetOutsideControl = function()
     if (currentControl == 'Unknown') then
         return false
     end
@@ -282,4 +282,4 @@ function lib:GetOutsideControl()
     return (currentControl ~= currentNation)
 end
 
-return lib
+return conquest;

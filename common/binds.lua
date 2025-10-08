@@ -1,6 +1,7 @@
 local binds = {};
 
-local print_avatar_tips = true;
+local print_avatar_tips = false;
+local cure_type = '<stal>';
 
 --[[ Common ]]--
 
@@ -45,13 +46,13 @@ binds.Common_Load = function()
     binds.add('numpad2', '/fillmode 2');
     binds.add('numpad3', '/fillmode 3');
     binds.add('q', '/attack');
+    binds.add('z', '/lockon');
     binds.add('`', '/targetnpc');
     binds.add('-', '/lac disable');
     binds.add('=', '/lac enable');
     binds.add(',', '/lac fwd area');
-    if LockStyleSets[player.MainJob] then
-        binds.add('0', '/lockstyleset ' .. LockStyleSets[player.MainJob] .. ';/echo --[ Lock Style Set ->> ' .. player.MainJob .. ' ]--' );
-    end
+    binds.add('0', '/lac fwd lockstyle');
+    binds.add('.', '/lac fwd fillmodetoggle');
 end
 
 binds.Common_Unload = function()
@@ -68,11 +69,58 @@ binds.Common_Unload = function()
     binds.remove('numpad2');
     binds.remove('numpad3');
     binds.remove('q');
+    binds.remove('z');
     binds.remove('`');
     binds.remove('-');
     binds.remove('=');
     binds.remove(',');
     binds.remove('0');
+end
+
+--[[ DRK ]]--
+
+binds.DRK_Load = function()
+    binds.add('1', '/ja "Weapon Bash" <t>');
+    binds.add('2', '/ws "Dark Harvest" <t>');
+    binds.add('3', '/ja "Souleater" <me>');
+    binds.add('4', '/ja "Last Resort" <me>');
+    binds.add('5', '/ja "Provoke" <t>');
+    binds.add('6', '/ja "Arcane Circle" <me>');
+    binds.add('e', '/ra <t>');
+    binds.add('+1', '/ma "Drain" <t>');
+    binds.add('+2', '/ma "Aspir" <t>'); 
+    binds.add('^1', '/ma "Fire" <t>');
+    binds.add('^2', '/ma "Blizzard" <t>');
+    binds.add('^3', '/ma "Thunder" <t>');
+    binds.add('^4', '/ma "Aero" <t>');
+    binds.add('^5', '/ma "Water" <t>');
+    binds.add('^6', '/ma "Stone" <t>');
+    binds.add('!1', '/ma "Poison" <t>');
+    binds.add('!2', '/ma "Bio" <t>');
+    binds.add('c', '/ma "Sleep" <t>');
+    binds.add('+f', '/ma "Bind" <t>');
+end
+
+binds.DRK_Unload = function()
+    binds.remove('1');
+    binds.remove('2');
+    binds.remove('3');
+    binds.remove('4');
+    binds.remove('5');
+    binds.remove('6');
+    binds.remove('+1');
+    binds.remove('+2');
+    binds.remove('^1');
+    binds.remove('^2');
+    binds.remove('^3');
+    binds.remove('^4');
+    binds.remove('^5');
+    binds.remove('^6');
+    binds.remove('!1');
+    binds.remove('!2');
+    binds.remove('e');
+    binds.remove('c');
+    binds.remove('+f');
 end
 
 --[[ BST ]]--
@@ -81,8 +129,11 @@ binds.BST_Load = function()
     binds.add('2', '/ws "Rampage" <t>');
     binds.add('3', '/pet "Lamb Chop" <me>;/pet \"Razor Fang\" <me>');
     binds.add('4', '/ja "Reward" <me>');
-    binds.add('5', '/pet "Rage" <me>; /tt custom Pet_Rage 180');
+    binds.add('5', '/pet "Soporific" <me>');
     binds.add('6', '/pet "Sheep Song" <me>');
+    binds.add('7', '/pet "Gloeosuccus" <me>');
+    binds.add('8', '/pet "Palsy Pollen" <me>');
+
     binds.add('f', '/pet "Fight" <t>');
     binds.add('+1', '/ja "Charm" <stnpc>');
     binds.add('+2', '/ja "Call Beast" <me>'); 
@@ -118,10 +169,6 @@ end
 binds.BST_SJ_WHM_Load = function()
 
     binds.add('1', '/ma "Dia" <t>');
-    binds.add('5', '/ma "Cure" <stpc>');
-    binds.add('7', '/ma "Protectra" <me>');
-    binds.add('8', '/ma "Shellra" <me>');
-    binds.add('9', '/maxmp');
     binds.add('+7', '/ma "Blink" <me>');
     binds.add('+8', '/ma "Stoneskin" <me>');
     binds.add('^7', '/ma "Sneak" <stpc>');
@@ -213,8 +260,8 @@ binds.DRG_SJ_WHM_Load = function()
     binds.add('+7', '/ma "Blink" <me>');
     binds.add('+8', '/ma "Stoneskin" <me>');
     binds.add('+9', '/ma "Aquaveil" <me>');
-    binds.add('^7', '/ma "Sneak" <me>');
-    binds.add('^8', '/ma "Invisible" <me>');
+    binds.add('^7', '/ma "Sneak" ' .. cure_type);
+    binds.add('^8', '/ma "Invisible" ' .. cure_type);
 end
 
 binds.DRG_SJ_RDM_Load = function()
@@ -222,13 +269,14 @@ binds.DRG_SJ_RDM_Load = function()
     binds.add('2', '/ma "Dia" <t>');
     binds.add('3', '/ma "Barfire" <me>');
     binds.add('4', '/ma "Barthunder" <me>');
-    binds.add('5', '/ma "Phalanx" <stpc>');
+    binds.add('5', '/ma "Enwater" <me>');
     binds.add('+5', '/ma "Silence" <t>');
     binds.add('+7', '/ma "Blink" <me>');
     binds.add('+8', '/ma "Stoneskin" <me>');
     binds.add('+9', '/ma "Aquaveil" <me>');
-    binds.add('^7', '/ma "Sneak" <me>');
-    binds.add('^8', '/ma "Invisible" <me>');
+    binds.add('+0', '/ma "Phalanx" <me>');
+    binds.add('^7', '/ma "Sneak" ' .. cure_type);
+    binds.add('^8', '/ma "Invisible" ' .. cure_type);
 end
 
 binds.DRG_Unload = function()
@@ -266,6 +314,7 @@ binds.DRG_SJ_Unload = function()
     binds.remove('+7');
     binds.remove('+8');
     binds.remove('+9');
+    binds.remove('+0');
     binds.remove('^7');
     binds.remove('^8');
 end
@@ -312,6 +361,9 @@ binds.BLM_Load = function()
     binds.add('!4', '/ma "Burn" <t>');
     binds.add('!5', '/ma "Choke" <t>');
     binds.add('!6', '/ma "Shock" <t>');
+    binds.add('!7', '/ma "Frost" <t>');
+    binds.add('!8', '/ma "Rasp" <t>');
+    binds.add('!9', '/ma "Drown" <t>');
 
     binds.add('^1', '/ma "Drain" <t>');
     binds.add('^2', '/ma "Aspir" <t>');
@@ -334,6 +386,7 @@ binds.BLM_Load = function()
     binds.add('x', '/ja "Elemental Seal" <me>');
     binds.add('+x', '/p <rc="Elemental Seal">');
     binds.add('g', '/ma "Gravity" <t>');
+    binds.add('+g', '/ma "Dispel" <t>');
     binds.add('c', '/ma "Sleep II" <t>');
     binds.add('+c', '/ma "Sleepga II" <t>');
     binds.add('v', '/ma "Sleep" <t>');
@@ -341,8 +394,12 @@ binds.BLM_Load = function()
 
 
     binds.add('9', '/sorcring');
-    binds.add('0', '/lockstyleset 30');
 
+end
+
+binds.BLM_THF_Load = function()
+    binds.add('f', '/ja "Flee" <me>');
+    binds.add('+f', '/ja "Steal" <t>');
 end
 
 binds.BLM_Unload = function()
@@ -367,6 +424,9 @@ binds.BLM_Unload = function()
     binds.remove('!4');
     binds.remove('!5');
     binds.remove('!6');
+    binds.remove('!7');
+    binds.remove('!8');
+    binds.remove('!9');
     binds.remove('^1');
     binds.remove('^2');
     binds.remove('^3');
@@ -379,6 +439,7 @@ binds.BLM_Unload = function()
     binds.remove('f');
     binds.remove('+f');
     binds.remove('g');
+    binds.remove('+g');
     binds.remove('x');
     binds.remove('+x');
     binds.remove('c');
@@ -622,23 +683,35 @@ binds.THF_Load = function()
     binds.add('8', '/ja "Ancient Circle" <me>');
     binds.add('q', '/attack');
     binds.add('e', '/range <t>');
-    binds.add('+e', '/range <t>; /p Pulling ... <t>');
+    binds.add('+e', '/ja "Bully" <t>');
     binds.add('c', '/ja "Flee" <me>');
     binds.add('x', '/ja "Steal" <t>');
-    binds.add('+x', '/ja "Mug" <t>');
-    binds.add('1', '/echo Future Keybind SATA');
+    binds.add('1', '/ja "Sneak Attack" <me>;/wait 1.5;/ja "Trick Attack" <me>');
     binds.add('2', '/ja "Sneak Attack" <me>');
     binds.add('3', '/ja "Trick Attack" <me>');
     binds.add('4', '/ja "Hide" <me>');
+    binds.add('5', '/ja "Mug" <t>');
     binds.add('^1', '/ja "Accomplice" <stal>');
     binds.add('^2', '/ja "Collaborator" <stal>');
-    binds.add('!1', '/ja "Bully" <t>');
-    binds.add('+1', '/ws "Wasp Sting" <t>');
-    binds.add('+2', '/ws "Gust Slash" <t>');
-    binds.add('+3', '/ws "Viper Bite" <t>');
+    binds.add('!1', '/ranged_bolt');
+    binds.add('!2', '/ranged_acid_bolt');
+    binds.add('!3', '/ranged_sleep_bolt');
+    binds.add('!4', '/ranged_bloody_bolt');
+    binds.add('+1', '/ws "Dancing Edge" <t>');
+    binds.add('+2', '/ws "Shark Bite" <t>');
+    binds.add('+3', '/ws "Evisceration" <t>');
     binds.add('^7', '/item "Silent Oil" <me>');
     binds.add('^8', '/ma "Tonko: Ichi" <me>');
+end
 
+binds.THF_BST_Load = function()
+    binds.add('f', '/pet "Fight" <t>');
+    binds.add('^1', '/ja "Charm" <stnpc>');
+    binds.add('^2', '/ja "Reward" <me>');
+    binds.add('^3', '/pet "Heel" <me>');
+    binds.add('^4', '/pet "Stay" <me>');
+    binds.add('^5', '/lac fwd ammocycle');
+    binds.add('^6', '/lac fwd pettype');
 end
 
 binds.THF_Unload = function()
@@ -650,11 +723,11 @@ binds.THF_Unload = function()
     binds.remove('+e');
     binds.remove('c');
     binds.remove('x');
-    binds.remove('+x');
     binds.remove('1');
     binds.remove('2');
     binds.remove('3');
     binds.remove('4');
+    binds.remove('5');
     binds.remove('^1');
     binds.remove('^2');
     binds.remove('!1');
@@ -669,33 +742,69 @@ end
 --[[ RDM ]]--
 
 binds.RDM_Load = function()
-    binds.add('1', '/ma "Regen" <stpc>');
-    binds.add('4', '/ma "Haste" <stpc>');
-    binds.add('5', '/ma "Refresh" <stpc>');
+    binds.add('1', '/ma "Regen" ' .. cure_type);
+    binds.add('4', '/ma "Haste" ' .. cure_type);
+    binds.add('5', '/ma "Refresh" ' .. cure_type);
+    binds.add('7', '/ma "Protect IV" ' .. cure_type);
+    binds.add('8', '/ma "Shell IV" ' .. cure_type);
 
     binds.add('!1', '/ma "Slow" <t>');
     binds.add('!3', '/ma "Paralyze" <t>');
     binds.add('!4', '/ma "Blind" <t>');
 
+    binds.add('[', '/ma "Paralyna" ' .. cure_type);
+    binds.add(']', '/ma "Silena" ' .. cure_type);
+
     binds.add('+1', '/ma "Gravity" <t>');
+    binds.add('g', '/ma "Gravity" <t>');
     binds.add('+2', '/ma "Dispel" <t>');
-    binds.add('+6', '/ma "Phalanx" <me>');
+    binds.add('+6', '/ma "Enthunder" <me>');
+    binds.add('+6', '/ma "Shock Spikes" <me>');
     binds.add('+7', '/ma "Blink" <me>');
     binds.add('+8', '/ma "Stoneskin" <me>');
     binds.add('+9', '/ma "Aquaveil" <me>');
+    binds.add('+0', '/ma "Phalanx" <me>');
 
-    binds.add('^7', '/ma "Sneak" <stpc>');
-    binds.add('^8', '/ma "Invisible" <stpc>');
+    binds.add('^7', '/ma "Sneak" ' .. cure_type);
+    binds.add('^8', '/ma "Invisible" ' .. cure_type);
 
     binds.add('e', '/ma "Dia" <t>');
+    binds.add('+e', '/ma "Stun" <t>');
     binds.add('f', '/ma "Silence" <t>');
     binds.add('+f', '/ma "Bind" <t>');
-    binds.add('x', '/ja "Elemental Seal" <me>; /ja "Divine Seal" <me>');
-    binds.add('+x', '/ma "Curaga" <stpc>');
-    binds.add('c', '/ma "Sleep" <t>');
-    binds.add('!c', '/ma "Sleep II" <t>');
-    binds.add('+c', '/ma "Sleepga" <t>');
-    binds.add('+v', '/ja "Convert" <me>');
+    binds.add('+x', '/ma "Curaga II" ' .. cure_type);
+    binds.add('c', '/ma "Sleep II" <t>');
+    binds.add('+c', '/ma "Sleepga II" <t>');
+    binds.add('v', '/ma "Sleep" <t>');
+    binds.add('+v', '/ja "Sleepga" <me>');
+    binds.add('t', '/ma "Silence" <t>');
+end
+
+binds.RDM_WHM_Load = function()
+    binds.add('x', '/ja "Divine Seal" <me>');
+end
+
+binds.RDM_BLM_Load = function()
+    binds.add('x', '/ja "Elemental Seal" <me>');
+end
+
+binds.RDM_NIN_Load = function()
+    binds.add('t', '/ws "Energy Steal" <t>');
+    binds.add('+t', '/ma "Enthunder" <me>');
+    binds.add('x', '/ma "Utsusemi: Ichi" <me>');
+    binds.add('+x', '/ma "Utsusemi: Ni" <me>');
+end
+
+binds.RDM_BST_Load = function()
+    binds.add('e', '/target <scan>;/ja "Charm" <scan>');
+end
+
+binds.RDM_THF_Load = function()
+    binds.add('x', '/ja "Flee" <me>');
+end
+
+binds.RDM_DRK_Load = function()
+    binds.add('e', '/ma "Stun" <t>');
 end
 
 binds.RDM_Support_Load = function(myLevel)
@@ -733,43 +842,43 @@ binds.RDM_Support_Load = function(myLevel)
         cure_big = 4;
         cure_mid = 3;
         cure_small = 2;
-        binds.add('2', '/ma "Cure II" <stpc>');
-        binds.add('3', '/ma "Cure III" <stpc>');
-        binds.add('6', '/ma "Cure IV" <stpc>');
+        binds.add('6', '/ma "Cure II" ' .. cure_type);
+        binds.add('3', '/ma "Cure III" ' .. cure_type);
+        binds.add('2', '/ma "Cure IV" ' .. cure_type);
     else
-        binds.add('2', '/ma "Cure" <stpc>');
-        binds.add('3', '/ma "Cure II" <stpc>');
-        binds.add('6', '/ma "Cure III" <stpc>');
+        binds.add('6', '/ma "Cure" ' .. cure_type);
+        binds.add('3', '/ma "Cure II" ' .. cure_type);
+        binds.add('2', '/ma "Cure III" ' .. cure_type);
     end
 
-    -- Protect
+--[[     -- Protect
     if (myLevel >= 63) then
         prot = 4;
-        binds.add('8', '/ma "Protect IV" <stpc>');
+        binds.add('8', '/ma "Protect IV" ' .. cure_type);
     elseif (myLevel >= 47) then
         prot = 3;
-        binds.add('8', '/ma "Protect III" <stpc>');
+        binds.add('8', '/ma "Protect III" ' .. cure_type);
     elseif (myLevel >= 27) then
         prot = 2;
-        binds.add('8', '/ma "Protect II" <stpc>');
+        binds.add('8', '/ma "Protect II" ' .. cure_type);
     else
-        binds.add('8', '/ma "Protect" <stpc>');
+        binds.add('8', '/ma "Protect" ' .. cure_type);
     end
 
     -- Shell
     if (myLevel >= 68) then
         shell = 4;
-        binds.add('9', '/ma "Shell IV" <stpc>');
+        binds.add('9', '/ma "Shell IV" ' .. cure_type);
     elseif (myLevel >= 57) then
         shell = 3;
-        binds.add('9', '/ma "Shell III" <stpc>');
+        binds.add('9', '/ma "Shell III" ' .. cure_type);
     elseif (myLevel >= 37) then
         shell = 2;
-        binds.add('9', '/ma "Shell II" <stpc>');
+        binds.add('9', '/ma "Shell II" ' .. cure_type);
     else
-        binds.add('9', '/ma "Shell" <stpc>');
+        binds.add('9', '/ma "Shell" ' .. cure_type);
     end
-
+ ]]
 --[[     AshitaCore:GetChatManager():QueueCommand(-1, '/echo [ Bindings Support : Dia: ' .. dia ..
                                                                     ', Poison: ' .. poison ..
                                                                     ', Protect: ' .. prot ..
@@ -922,7 +1031,7 @@ binds.SMN_Load = function()
     -- Avatar Commands
     binds.add('v', '/pet "Release" <me>');
     binds.add('e', '/pet "Assault" <stnpc>');
-    binds.add('q', '/pet "Retreat" <me>');
+    binds.add('f', '/pet "Retreat" <me>');
 
     -- Avatars
     binds.add('+1', '/ma "Fire Spirit" <me>');
@@ -999,7 +1108,7 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('7', '/pet "Stone IV" <t>'); -- Blood Pact: Rage
         binds.add('8', '/pet "Earthen Fury" <t>'); -- Needs 2hr AOE
     elseif pet == 'Leviathan' then
-        if print_avatar_tips then print('Leviathan | 1: Refresh | 2: WS BarrDive | 3: WS TailWhip | 4: WS SpnDive | 5: Slowga | 6: Water2 | 7: Water4 | 8: 2HR AOE'); end
+        if print_avatar_tips then print('Leviathan | 1: Refresh | 2: WS BarrDive | 3: WS TailWhip | 4: WS SpnDive | 5: Slowga | 6: Wat2 | 7: Wat | 8: 2HR AOE'); end
         binds.add('1', '/pet "Spring Water" <me>'); -- Refresh Blood Pact: Ward
         binds.add('2', '/pet "Barracuda Dive" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Tail Whip" <t>'); -- Gravity - Blood Pact: Rage
@@ -1009,7 +1118,7 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('7', '/pet "Water IV" <t>'); -- Blood Pact: Rage
         binds.add('8', '/pet "Tidal Wave" <t>'); -- Needs 2hr AOE
     elseif pet == 'Shiva' then
-        if print_avatar_tips then print('Shiva | 1: Ice Spikes | 2: WS AxeKick | 3: WS DblSlap | 4: WS Rush | 5: Sleepga | 6: Water2 | 7: Water4 | 8: 2HR AOE'); end
+        if print_avatar_tips then print('Shiva | 1: Ice Spikes | 2: WS AxeKick | 3: WS DblSlap | 4: WS Rush | 5: Sleepga | 6: Bliz2 | 7: Bliz4 | 8: 2HR AOE'); end
         binds.add('1', '/pet "Frost Armor" <me>'); -- Ice Spikes Blood Pact: Ward
         binds.add('2', '/pet "Axe Kick" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Double Slap" <t>'); -- Blood Pact: Rage
@@ -1108,7 +1217,7 @@ binds.SMN_Avatar_Load = function(pet)
         if print_avatar_tips then print('Light Spirit | 1: Regen | 2: Cure (Low) | 3: Cure (High) | 4: Curaga | 5: Holy | 6: Banish | 7: Protect | 8: Shell'); end
         binds.SMN_LightSpirit_Load();
     elseif pet == 'Dark Spirit' then
-        if print_avatar_tips then print('Light Spirit | 1: Stun | 2: Dispel | 3: Sleep | 4: Sleepga | 5: Bio | 6: Drain | 7: Aspir | 8: Blind'); end
+        if print_avatar_tips then print('Dark Spirit | 1: Stun | 2: Dispel | 3: Sleep | 4: Sleepga | 5: Bio | 6: Drain | 7: Aspir | 8: Blind'); end
         binds.add('1', '/ma "Stun" <t>'); -- 37
         binds.add('2', '/ma "Dispel" <t>'); -- 32
         binds.add('6', '/ma "Drain" <t>'); -- 10
@@ -1189,13 +1298,13 @@ binds.SMN_LightSpirit_Load = function()
     end  
     -- Shell
     if level >= 68 then
-        binds.add('7', '/ma "Shell IV" <stpc>');
+        binds.add('8', '/ma "Shell IV" <stpc>');
     elseif level >= 57 then
-        binds.add('7', '/ma "Shell III" <stpc>');
+        binds.add('8', '/ma "Shell III" <stpc>');
     elseif level >= 37 then
-        binds.add('7', '/ma "Shell II" <stpc>');
+        binds.add('8', '/ma "Shell II" <stpc>');
     elseif level >= 17 then
-        binds.add('7', '/ma "Shell" <stpc>');
+        binds.add('8', '/ma "Shell" <stpc>');
     end 
     -- Banish
     if level >= 65 then
@@ -1217,6 +1326,7 @@ binds.SMN_Avatar_Unload = function()
     binds.remove('6');
     binds.remove('7');
     binds.remove('8');
+    binds.remove('9');
 end
 
 binds.SMN_Unload = function()
@@ -1302,6 +1412,37 @@ binds.Unbind_All = function()
     binds.remove('^!2');
 end
 
+binds.HELM_Load = function()
+    binds.send_command('/addon unload metrics');
+    binds.send_command('/addon load hgather');
+    binds.add('f', '/ja "Flee" <me>');
+end
+
+binds.Logging_Load = function()
+    binds.add('1', '/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;');
+    binds.add('2', '/item "Hatchet" <stnpc>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;');
+    binds.add('3', '/party x');
+    binds.add('f', '/ja "Flee" <me>');
+end
+
+binds.Digging_Load = function()
+    binds.add('e', '/dig');
+end
+
+binds.Fishing_Load = function()
+    binds.add('q', '/fish');
+end
+
+binds.HELM_Unload = function()
+    binds.remove('1');
+    binds.remove('2');
+    binds.remove('f');
+    binds.remove('e');
+    binds.remove('q');
+    binds.send_command('/addon load hgather');
+    binds.send_command('/addon unload metrics');
+end
+
 binds.add = function(key, command)
     if key and command then
         AshitaCore:GetChatManager():QueueCommand(-1, '/bind ' .. key .. ' ' .. command); 
@@ -1311,6 +1452,12 @@ end
 binds.remove = function(key)
     if key then
         AshitaCore:GetChatManager():QueueCommand(-1, '/unbind ' .. key); 
+    end
+end
+
+binds.send_command = function(command)
+    if command then
+        AshitaCore:GetChatManager():QueueCommand(-1, command); 
     end
 end
 
@@ -1358,8 +1505,8 @@ binds.Info_DreamShroud = function()
             elseif env.Time > 12 and env.Time <= 13 then
                 mab = 1;
                 mdb = 13;
-            print("Dream Shroud | Time: " .. env.Time .. " | MAB: +" .. mab .. " | MDB: +" .. mdb);
             end
+            print("Dream Shroud | Time: " .. env.Time .. " | MAB: +" .. mab .. " | MDB: +" .. mdb);
         end
 end
 

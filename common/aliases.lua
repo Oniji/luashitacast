@@ -7,6 +7,9 @@ aliases.Common_Load = function()
     -- Assist and Targetnpc
     aliases.add('/assist', '/lac fwd gearmode');
 
+    -- HELM --
+    aliases.add('/logging_binds', '/lac fwd logging_binds');
+
     -- Lockstyle --
     aliases.add('/lsfsh', '/lac fwd lsfsh');
     aliases.add('/lsbot', '/lac fwd lsbot');
@@ -26,6 +29,10 @@ aliases.Common_Load = function()
     aliases.add('/dig1', '/addon load hgather');
     aliases.add('/dig0', '/addon unload hgather');
     aliases.add('/digclear', '/hgather clear');
+    aliases.add('/au', '/addon unload');
+    aliases.add('/al', '/addon load');
+    aliases.add('/l', '/load');
+    aliases.add('/u', '/unload');
 
     -- Gear-Swaps --
     aliases.add('/main', '/lac fwd main');
@@ -37,6 +44,8 @@ aliases.Common_Load = function()
     aliases.add('/empband', '/lac fwd empband');
     aliases.add('/gorget', '/lac fwd gorget');
     aliases.add('/naked', '/lac fwd naked');
+    aliases.add('/rrh', '/lac fwd reraise_hairpin');
+    aliases.add('/hairpin', '/lac fwd reraise_hairpin');
 
     -- Items --
     aliases.add('/iwarp', '/item "Instant Warp" <me>');
@@ -135,6 +144,7 @@ aliases.Common_Load = function()
     aliases.add('/pan', '/ma "Paralyna" <stpc>');
     aliases.add('/r1', '/ma "Raise" <stpc>');
     aliases.add('/rr', '/ma "Reraise" <me>');
+    aliases.add('/dispel', '/ma "Dispel" <t>');
 
     aliases.add('/blink', '/ma "Blink" <me>');
     aliases.add('/ss', '/ma "Stoneskin" <me>');
@@ -221,6 +231,16 @@ aliases.Common_Load = function()
     aliases.add('/bu', '/ma "Burst" <t>');
     aliases.add('/to', '/ma "Tornado" <t>');
     aliases.add('/fla', '/ma "Flare" <t>');
+
+    -- Ranged/Ammo
+    aliases.add('/ranged_bolt', '/lac fwd ranged_bolt');
+    aliases.add('/ranged_acid_bolt', '/lac fwd ranged_acid_bolt');
+    aliases.add('/ranged_sleep_bolt', '/lac fwd ranged_sleep_bolt');
+    aliases.add('/ranged_bloody_bolt', '/lac fwd ranged_bloody_bolt');
+
+    -- Custom Utilities --
+    aliases.add('/zone', '/lac fwd find_zone')
+
 end
 
 aliases.Common_Unload = function()
@@ -235,6 +255,8 @@ aliases.Common_Unload = function()
     aliases.remove('/empband');
     aliases.remove('/gorget');
     aliases.remove('/naked');
+    aliases.remove('/rrh');
+    aliases.remove('/hairpin');
 
     -- Lockstyle --
     aliases.remove('/lsfsh');
@@ -244,6 +266,10 @@ aliases.Common_Unload = function()
     aliases.remove('/lsdrg');
     aliases.remove('/lsrdm');
 
+    aliases.remove('/al');
+    aliases.remove('/au');
+    aliases.remove('/l');
+    aliases.remove('/u');
 
     -- Items --
     aliases.remove('/iwarp');
@@ -421,6 +447,8 @@ aliases.Common_Unload = function()
     aliases.remove('/bsp');
     aliases.remove('/ssp');
 
+    aliases.remove('/dispel');
+
 end
 
 --[[ BST ]]--
@@ -437,11 +465,13 @@ end
 
 aliases.THF_Load = function()
     aliases.add('/2hr', '/ja "Perfect Dodge" <me>');
+    aliases.add('/th', '/lac fwd th');
 
 end
 
 aliases.THF_Unload = function()
     aliases.remove('/2hr');
+    aliases.remove('/th');
 end
 
 --[[ WHM ]]--
@@ -467,6 +497,7 @@ aliases.DRG_Load = function()
     aliases.add('/easy', '/lac fwd easy');
     aliases.add('/even', '/lac fwd even');
     aliases.add('/tough', '/lac fwd tough');
+    aliases.add('/tank', '/lac fwd tank');
 end
 
 aliases.DRG_Unload = function()
@@ -479,6 +510,7 @@ aliases.DRG_Unload = function()
     aliases.remove('/easy');
     aliases.remove('/even');
     aliases.remove('/tough');
+    aliases.remove('/tank');
 
 end
 
@@ -487,12 +519,14 @@ end
 aliases.BLM_Load = function()
     aliases.add('/2hr', '/ja "Manafont" <me>');
     aliases.add('/sorcring', '/lac fwd sorcring');
+    aliases.add('/nuke', '/lac fwd nuke');
     aliases.add('/idle', '/lac fwd idle');
 end
 
 aliases.BLM_Unload = function()
     aliases.remove('/2hr');
     aliases.remove('/sorcring');
+    aliases.remove('/nuke');
     aliases.remove('/idle');
 end
 
@@ -518,6 +552,17 @@ end
 aliases.SMN_Unload = function()
     aliases.remove('/2hr');
 end
+
+--[[ DRK ]]--
+
+aliases.DRK_Load = function()
+    aliases.add('/2hr', '/ja "Blood Weapon" <me>');
+end
+
+aliases.DRK_Unload = function()
+    aliases.remove('/2hr');
+end
+
 
 aliases.add = function(name, command)
     if name and command then

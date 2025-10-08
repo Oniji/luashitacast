@@ -76,6 +76,11 @@ local BookSetIDs = {
         setID = 1, -- default
         subjob = {}
     },
+    ["SMN"] = {
+        bookID = 5,
+        setID = 1, -- default
+        subjob = {}
+    },
 };
 
 macrobooks.SetMacroBook = function(type)
