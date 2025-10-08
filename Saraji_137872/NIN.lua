@@ -81,7 +81,6 @@ profile.OnLoad = function()
     aliases.Common_Load();
     Settings.CurrentMode = 'main';
     gSettings.AllowAddSet = true;
-    AshitaCore:GetChatManager():QueueCommand(-1, '/lockstyleset 41');
 
     shared.OnLoad();
 end

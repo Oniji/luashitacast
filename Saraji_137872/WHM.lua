@@ -49,8 +49,7 @@ profile.OnLoad = function()
     -- Setting up HandleCommand cycles and toggles
     shared.OnLoad();
 
-    local player = gData.GetPlayer();
-    shared.LockStyleSet(player.MainJob);
+    shared.LockStyleSet();
     
 end
 

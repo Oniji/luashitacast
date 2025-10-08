@@ -11,8 +11,10 @@ local sets = {
         Sub = {'Targe +1'}
     },
     Weapon_NIN_Priority = {
-        Main = {'Fransisca', 'Viking Axe', 'Cmb.Cst. Axe', 'Warrior\'s Axe', 'Battleaxe +1', 'Bone Axe +1', 'Legionnaire\'s Axe', 'Brass Axe', 'Bronze Axe' },
-        Sub = {'Tungi', 'Viking Axe', 'Barbaroi Axe', 'Warrior\'s Axe', 'Battleaxe +1'},
+        --Main = {'Fransisca', 'Tungi', 'Viking Axe', 'Cmb.Cst. Axe', 'Warrior\'s Axe', 'Battleaxe +1', 'Bone Axe +1', 'Legionnaire\'s Axe', 'Brass Axe', 'Bronze Axe' },
+        --Sub = {'Tungi', 'Viking Axe', 'Barbaroi Axe', 'Warrior\'s Axe', 'Battleaxe +1'},
+        Main = 'Viking Axe',
+        Sub = 'Viking Axe',
     },
     TP_Priority = {
         Head = {'Walkure Mask', 'Win. Headgear', 'Centurion\'s Visor', 'Beetle Mask +1', 'San. Bandana'},
@@ -89,6 +91,9 @@ local sets = {
     MaxMP = {
         Ring1 = 'Astral Ring',
         Ring2 = 'Astral Ring'
+    },
+    Fifty = {
+
     }
 };
 
@@ -144,8 +149,7 @@ profile.OnLoad = function()
     shared.CreateCycle('PetType', PetType);
     gSettings.AllowAddSet = true;
 
-    local player = gData.GetPlayer();
-    shared.LockStyleSet(player.MainJob);
+    shared.LockStyleSet();
 end
 
 
@@ -304,7 +308,7 @@ profile.SubjobCheck = function()
         end
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Sub Job Binds ->> ' .. subjob .. ' ]--');
         macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
-        shared.LockStyleSet(player.MainJob);
+        shared.LockStyleSet();
     end
 
 end
@@ -312,6 +316,7 @@ end
 profile.LevelCheck = function()
 
     local myLevel = AshitaCore:GetMemoryManager():GetPlayer():GetMainJobLevel();
+    myLevel = 50;
     if (myLevel ~= Settings.CurrentLevel) then
         gFunc.EvaluateLevels(profile.Sets, myLevel);
         Settings.CurrentLevel = myLevel;
@@ -325,7 +330,7 @@ profile.EquipJug = function()
         if Settings.CurrentLevel >= 43 then
             gFunc.Equip('ammo', 'S. Herbal Broth');
         elseif Settings.CurrentLevel >= 28 then
-            gFunc.Equip('ammo', 'Meat Broth');
+            gFunc.Equip('ammo', 'Grass. Broth');
         elseif Settings.CurrentLevel >= 23 then
             gFunc.Equip('ammo', 'Herbal Broth');
         end

@@ -10,20 +10,20 @@ local debug = true; -- verbose print output into in-game chat for debugging purp
 local sets = {
 
     Idle_Priority = {
-        Main = {'Willow Wand +1'},
-        Ammo = {'Morion Tathlum'},
-        Neck = {'Justice Badge'},
+        Main = {'Pilgrim\'s Wand', 'Willow Wand +1'},
+        Ammo = {'Morion Tathlum', 'Fortune Egg'},
+        Neck = {'Rep.Bronze Medal'},
         Ear1 = {'Onyx Earring'},
         Ear2 = {'Onyx Earring'},
-        Head = {'Silver Hairpin'},
-        Body = {'Ryl.Ftm. Tunic'},
-        Hands = {'Chocobo Gloves'},
+        Head = {'Silver Hairpin', 'Brass Hairpin'},
+        Body = {'Ducal Aketon'},
+        Hands = {'Carbuncle Mitts'},
         Ring1 = {'Astral Ring'},
         Ring2 = {'Astral Ring'},
-        Back = {'Rabbit Mantle'},
-        Waist = {'Leather Belt'},
-        Legs = {'Angler\'s Hose', 'Chocobo Hose'},
-        Feet = {'Chocobo Boots'}
+        Back = {'Cape', 'Rabbit Mantle'},
+        Waist = {'Friar\'s Rope', 'Leather Belt'},
+        Legs = {'Freesword\'s Slops', 'Angler\'s Hose', 'Chocobo Hose'},
+        Feet = {'Mage\'s Sandals', 'Light Soleas', 'Chocobo Boots'}
     },
     MND_Priority = {
         Head = {'Silver Hairpin'},
@@ -117,6 +117,8 @@ local CurrentAvatar = {
 };
 
 local Settings = {
+    DisplayThrottle = 1,
+    LastDisplayed = 0,
     CurrentAvatar = 'None',
     CurrentSubJob = nil,
     CurrentLevel = 0
@@ -146,8 +148,7 @@ profile.OnLoad = function()
     -- Setting up HandleCommand cycles and toggles
     shared.OnLoad();
 
-    local player = gData.GetPlayer();
-    shared.LockStyleSet(player.MainJob);
+    shared.LockStyleSet();
 
 end
 
@@ -187,7 +188,7 @@ profile.HandleDefault = function()
                 Settings.CurrentAvatar = pet.Name;
             end
         else
-            if debug then print('Unknown Pet Summoned...'); end
+            if debug then  print('Unknown Pet Summoned...'); end
         end
     elseif not pet and Settings.CurrentAvatar ~= 'None' then
             binds.SMN_Avatar_Load('None');
@@ -197,17 +198,21 @@ profile.HandleDefault = function()
 
     if (shared.IsNaked()) then
         shared.UnequipGear();
+        shared.SetCurrentSet('Naked');
         return;
     end
 
     local player = gData.GetPlayer();
     if (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
+        shared.SetCurrentSet('Resting');
     else
         gFunc.EquipSet(sets.Idle);
+        shared.SetCurrentSet('Idle');
     end
 
     shared.GearOverride();
+    profile.DisplaySMN();
 
 end
 
@@ -232,11 +237,13 @@ profile.HandleMidcast = function()
     if (action.Skill == 'Enfeebling Magic') then
         if (MndDebuffs:contains(action.Name)) then
             gFunc.EquipSet(sets.MND);
+            shared.SetCurrentSet('Enfeebling - MND');
             if (mpdeficit > 50) then
                 gFunc.EquipSet(sets.MND_Ring);
             end
         elseif (ElementalDebuffs:contains(action.Name)) then
             gFunc.EquipSet(sets.INT);
+            shared.SetCurrentSet('Enfeebling - INT');
             if (mpdeficit > 50) then
                 gFunc.EquipSet(sets.INT_Ring);
             end
@@ -245,21 +252,25 @@ profile.HandleMidcast = function()
     elseif (action.Skill == 'Elemental Magic') then
         if (ElementalDebuffs:contains(action.Name)) then
             gFunc.EquipSet(sets.INT);
+            shared.SetCurrentSet('Enfeebling - INT');
             if (mpdeficit > 50) then
                 gFunc.EquipSet(sets.INT_Ring);
             end
         else
             gFunc.EquipSet(sets.Nuke);
+            shared.SetCurrentSet('Nuke');
             if (mpdeficit > 50) then
                 gFunc.EquipSet(sets.INT_Ring);
             end
         end
     elseif (string.match(action.Name, 'Cure') or string.match(action.Name, 'Curaga')) then
         gFunc.EquipSet(sets.Healing);
+        shared.SetCurrentSet('Healing');
         if (mpdeficit > 50) then
             gFunc.EquipSet(sets.MND_Ring);
         end
-    elseif (action.Skill == 'Elemental Magic') then
+    elseif (action.Skill == 'Enhancing Magic') then
+        shared.SetCurrentSet('Enhancing');
         gFunc.EquipSet(sets.Enhancing);
     end
 
@@ -288,6 +299,36 @@ profile.LevelCheck = function()
         Settings.CurrentLevel = myLevel;
     end
 
+end
+
+profile.DisplaySMN = function()
+    -- Throttle
+    local diffTime = os.clock() - Settings.LastDisplayed;
+    if diffTime < Settings.DisplayThrottle then
+        return;
+    end
+    local displayString = '';
+    if Settings.CurrentAvatar == 'None' then displayString = displayString + '1: |cFF54DCF8|Carbuncle|r\n2: |cFFF44336|Ifrit|r\n3: |cFF6AA84F|Garuda|r\n4: |cFFFFD966|Titan|r\n5: |cFF3896EC|Leviathan|r\n6: |cFFC8E0F7|Shiva|r\n7: |cFF9D5CDA|Ramuh|r\n8: |cFF592789|Fenrir|r\n9: |cFF960E5E|Diabolos'
+    elseif Settings.CurrentAvatar == 'Carbuncle' then displayString = displayString + '1: |cFF5FFF5F|Prot/Shell|r\n2: |cFF5FFF5F|WS Poison Nails|r\n3: |cFF5FFF5F|ST Heal|r\n4: |cFF5FFF5F|AOE Heal|r\n5: |cFF5FFF5F|WS Meteorite (AOE)|r\n6: |cFF5FFF5F|Attr Buff|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Ifrit' then displayString = displayString + '1: |cFF5FFF5F|Attack Up|r\n2: |cFF5FFF5F|WS Punch|r\n3: |cFF5FFF5F|WS Burning Strike|r\n4: |cFF5FFF5F|WS Double Punch|r\n5: |cFF5FFF5F|Fire 2|r\n6: |cFF5FFF5F|Fire 4|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Garuda' then displayString = displayString + '1: |cFF5FFF5F|Blink|r\n2: |cFF5FFF5F|WS Claw|r\n3: |cFF5FFF5F|WS Predator Claws|r\n4: |cFF5FFF5F|Hastega|r\n5: |cFF5FFF5F|AOE Heal|r\n6: |cFF5FFF5F|Aero 2|r\n7: |cFF5FFF5F|Aero 4|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Titan' then displayString = displayString + '1: |cFF5FFF5F|Stoneskin|r\n2: |cFF5FFF5F|WS Rock Throw|r\n3: |cFF5FFF5F|WS Megalith Throw|r\n4: |cFF5FFF5F|WS Bind|r\n5: |cFF5FFF5F|WS Mountain Buster|r\n6: |cFF5FFF5F|Fire 2|r\n7: |cFF5FFF5F|Fire 4|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Leviathan' then displayString = displayString + '1: |cFF5FFF5F|Refresh|r\n2: |cFF5FFF5F|WS Barracuda Dive|r\n3: |cFF5FFF5F|WS Tail Whip|r\n4: |cFF5FFF5F|WS Spinning Dive|r\n5: |cFF5FFF5F|Slowga|r\n6: |cFF5FFF5F|Water 2|r\n7: |cFF5FFF5F|Water 4|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Shiva' then displayString = displayString + '1: |cFF5FFF5F|Ice Spikes|r\n2: |cFF5FFF5F|WS Axe Kick|r\n3: |cFF5FFF5F|WS Double Slap|r\n4: |cFF5FFF5F|WS Rush|r\n5: |cFF5FFF5F|Sleepga|r\n6: |cFF5FFF5F|Blizzard 2|r\n7: |cFF5FFF5F|Blizzard 4|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Ramuh' then displayString = displayString + '1: |cFF5FFF5F|Enthunder|r\n2: |cFF5FFF5F|WS Shock Strike|r\n3: |cFF5FFF5F|WS Thunderspark|r\n4: |cFF5FFF5F|WS Chaotic Strike|r\n5: |cFF5FFF5F|Shock Spikes|r\n6: |cFF5FFF5F|Thunder 2|r\n7: |cFF5FFF5F|Thunder 4|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Fenrir' then displayString = displayString + '1: |cFF5FFF5F|Target -acc -eva|r\n2: |cFF5FFF5F|WS Moonlit Charge (Blind)|r\n3: |cFF5FFF5F|WS Crescent Fang (Para)|r\n4: |cFF5FFF5F|WS Eclipse Bite|r\n5: |cFF5FFF5F|2x Dispel|r\n6: |cFF5FFF5F|PT +Attr|r\n7: |cFF5FFF5F|PT +acc+eva|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Diabolos' then displayString = displayString + '1: |cFF5FFF5F|MAB/MDB|r\n2: |cFF5FFF5F|WS Camisado|r\n3: |cFF5FFF5F|WS Nether Blast|r\n4: |cFF5FFF5F|WS Somnolence (Gravity)|r\n5: |cFF5FFF5F|Sleepga+DOT|r\n6: |cFF5FFF5F|Phalanx|r\n7: |cFF5FFF5F|Target -ATTR|r\n8: |cFF5FFF5F|2HR AOE'
+    elseif Settings.CurrentAvatar == 'Fire Spirit' then displayString = displayString + '1: |cFF5FFF5F|Fire (13)|r\n2: |cFF5FFF5F|Fire II (38)|r\n3: |cFF5FFF5F|Fire III (62)|r\n4: |cFF5FFF5F|Fire IV (73)|r\n5: |cFF5FFF5F|Burn (24)|r\n6: |cFF5FFF5F|Flare (60)'
+    elseif Settings.CurrentAvatar == 'Ice Spirit' then displayString = displayString + '1: |cFF5FFF5F|Blizzard (17)|r\n2: |cFF5FFF5F|Blizzard II (42)|r\n3: |cFF5FFF5F|Blizzard III (64)|r\n4: |cFF5FFF5F|Blizzard IV (74)|r\n5: |cFF5FFF5F|Frost (22)|r\n6: |cFF5FFF5F|Freeze (50)|r\n7: |cFF5FFF5F|Paralyze (4)|r\n8: |cFF5FFF5F|Bind (7)'
+    elseif Settings.CurrentAvatar == 'Thunder Spirit' then displayString = displayString + '1: |cFF5FFF5F|Thunder (21)|r\n2: |cFF5FFF5F|Thunder II (46)|r\n3: |cFF5FFF5F|Thunder III (66)|r\n4: |cFF5FFF5F|Thunder IV (75)|r\n5: |cFF5FFF5F|Shock (16)|r\n6: |cFF5FFF5F|Burst (56)'
+    elseif Settings.CurrentAvatar == 'Air Spirit' then displayString = displayString + '1: |cFF5FFF5F|Aero (9)|r\n2: |cFF5FFF5F|Aero II (34)|r\n3: |cFF5FFF5F|Aero III (59)|r\n4: |cFF5FFF5F|Aero IV (72)|r\n5: |cFF5FFF5F|Choke (20)|r\n6: |cFF5FFF5F|Tornado (52)|r\n 7: |cFF5FFF5F|Gravity (21)|r\n8: |cFF5FFF5F|Silence (15)'
+    elseif Settings.CurrentAvatar == 'Water Spirit' then displayString = displayString + '1: |cFF5FFF5F|Water (5)|r\n2: |cFF5FFF5F|Water II (30)|r\n3: |cFF5FFF5F|Water III (55)|r\n4: |cFF5FFF5F|Water IV (70)|r\n5: |cFF5FFF5F|Drown (27)|r\n6: |cFF5FFF5F|Flood (58)|r\n 7: |cFF5FFF5F|Poison (3)|r\n8: |cFF5FFF5F|Poison II (42)'
+    elseif Settings.CurrentAvatar == 'Earth Spirit' then displayString = displayString + '1: |cFF5FFF5F|Stone (1)|r\n2: |cFF5FFF5F|Stone II (26)|r\n3: |cFF5FFF5F|Stone III (51)|r\n4: |cFF5FFF5F|Stone IV (68)|r\n5: |cFF5FFF5F|Rasp (18)|r\n6: |cFF5FFF5F|Quake (54)|r\n 7: |cFF5FFF5F|Slow (13)'
+    elseif Settings.CurrentAvatar == 'Light Spirit' then displayString = displayString + '1: |cFF5FFF5F|Regen|r\n2: |cFF5FFF5F|Cure (Low)|r\n3: |cFF5FFF5F|Cure (High)|r\n4: |cFF5FFF5F|Curaga|r\n5: |cFF5FFF5F|Holy|r\n6: |cFF5FFF5F|Banish|r\n7: |cFF5FFF5F|Protect|r\n8: |cFF5FFF5F|Shell'
+    elseif Settings.CurrentAvatar == 'Dark Spirit' then displayString = displayString + '1: |cFF5FFF5F|Stun|r\n2: |cFF5FFF5F|Dispel|r\n3: |cFF5FFF5F|Sleep|r\n4: |cFF5FFF5F|Sleepga|r\n5: |cFF5FFF5F|Bio|r\n6: |cFF5FFF5F|Drain|r\n7: |cFF5FFF5F|Aspir|r\n8: |cFF5FFF5F|Blind' 
+    end
+    shared.SetExtras(displayString);
+    Settings.LastDisplayed = os.clock();
 end
 
 

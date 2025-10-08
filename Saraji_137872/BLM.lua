@@ -8,95 +8,120 @@ local macrobooks = gFunc.LoadFile('common/macrobooks.lua');
 
 local sets = {
     Idle = {
-        Main = 'Earth Staff',
-        Ammo = 'Phtm. Tathlum',
-        --Neck = 'Jewelled Collar',
-        Neck = 'Elemental Torque',
+        Main = 'Terra\'s Staff',
+        Ammo = 'Hedgehog Bomb',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
-        Ring1 = 'Merman\'s Ring',
+        Ring1 = 'Jelly Ring',
         Ring2 = 'Merman\'s Ring',
         --Back = 'Umbra Cape',
         Back = 'Hexerei Cape',
         Waist = 'Sorcerer\'s Belt',
         Head = 'Igqira Tiara',
-        Body = 'Errant Hpl.',
-        Hands = 'Errant Cuffs',
-        --Hands = 'Merman\'s Bangles',
-        --Legs = 'Igqira Lappas',
-        Legs = 'Errant Slops',
+        Body = 'Sorcerer\'s Coat',
+        Hands = 'Merman\'s Bangles',
+        Legs = 'Igqira Lappas',
         Feet = 'Rostrum Pumps',
     },
     Idle_MDT = {
-        Main = 'Earth Staff',
-        Ammo = 'Phtm. Tathlum',
-        --Neck = 'Jewelled Collar',
-        Neck = 'Elemental Torque',
+        Main = 'Terra\'s Staff',
+        Ammo = 'Hedgehog Bomb',
+        Neck = 'Jeweled Collar',
         Ear1 = 'Merman\'s Earring',
         Ear2 = 'Merman\'s Earring',
         Ring1 = 'Merman\'s Ring',
         Ring2 = 'Merman\'s Ring',
         Back = 'Hexerei Cape',
         Waist = 'Sorcerer\'s Belt',
-        Head = 'Igqira Tiara',
-        Body = 'Errant Hpl.',
-        Hands = 'Errant Cuffs',
-        --Hands = 'Merman\'s Bangles',
-        Legs = 'Errant Slops',
-        --Legs = 'Igqira Lappas',
+        Head = 'Green Ribbon +1',
+        Body = 'Sorcerer\'s Coat',
+        Hands = 'Merman\'s Bangles',
+        Legs = 'Igqira Lappas',
         Feet = 'Rostrum Pumps',
     },
     Idle_Town = {
         Main = 'Aquilo\'s Staff',
-        Ammo = 'Phtm. Tathlum',
+        Ammo = 'Hedgehog Bomb',
         Neck = 'Uggalepih Pendant',
         Ear1 = 'Moldavite Earring',
-        Ear2 = 'Phantom Earring',
-        Head = 'Wizard\'s Petasos',
-        Body = 'Black Cloak',
+        Ear2 = 'Abyssal Earring',
+        Head = 'Wzd. Petasos +1',
+        Body = 'Sorcerer\'s Coat',
         Hands = 'Zenith Mitts',
-        Ring1 = 'Sorcerer\'s Ring', 
-        Ring2 = 'Snow Ring', 
-        Back = 'Prism Cape', 
+        Ring1 = 'Sorcerer\'s Ring',
+        Ring2 = 'Tamas Ring',
+        Back = 'Prism Cape',
         Waist = 'Sorcerer\'s Belt',
-        Legs = 'Sorcerer\'s Tonban', 
+        Legs = 'Igqira Lappas', 
         Feet = 'Rostrum Pumps',
     },
-    Nuke_Priority = {
+    Nuke = {
         Ammo = 'Phtm. Tathlum',
-        Neck = 'Philomath Stole',
+        Neck = 'Elemental Torque',
         Ear1 = 'Moldavite Earring',
-        Ear2 = 'Phantom Earring', 
-        Head = 'Wizard\'s Petasos',
+        Ear2 = 'Abyssal Earring',
+        Head = 'Wzd. Petasos +1',
         Body = 'Igqira Weskit',
         Hands = 'Zenith Mitts',
-        Ring1 = 'Snow Ring', 
-        Ring2 = 'Snow Ring', 
+        --Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Sorcerer\'s Ring',
+        Ring2 = 'Tamas Ring',
         Back = 'Prism Cape', 
         Waist = 'Sorcerer\'s Belt',
-        Legs = 'Errant Slops', 
+        Legs = 'Mahatma Slops', 
+        Feet = 'Sorcerer\'s Sabots',
+    },
+    Nuke_Acc = {
+        Ammo = 'Phtm. Tathlum',
+        Neck = 'Elemental Torque',
+        Ear1 = 'Moldavite Earring',
+        Ear2 = 'Abyssal Earring',
+        Head = 'Sorcerer\'s Petas.',
+        Body = 'Igqira Weskit',
+        Hands = 'Wzd. Gloves +1',
+        Ring1 = 'Sorcerer\'s Ring',
+        Ring2 = 'Tamas Ring',
+        Back = 'Prism Cape',
+        Waist = 'Sorcerer\'s Belt',
+        Legs = 'Mahatma Slops',
         Feet = 'Sorcerer\'s Sabots',
     },
     Nuke_NoSorcRing_Priority = {
         Ammo = {'Phtm. Tathlum', 'Morion Tathlum'},
         Neck = {'Philomath Stole', 'Black Neckerchief'},
         Ear1 = {'Moldavite Earring', 'Morion Earring'},
-        Ear2 = {'Phantom Earring', 'Morion Earring'},
-        Head = {'Wizard\'s Petasos', 'Black Cloak', 'Wizard\'s Petasos'},
+        Ear2 = {'Abyssal Earring', 'Phantom Earring', 'Morion Earring'},
+        Head = {'Wzd. Petasos +1', 'Black Cloak', 'Wzd. Petasos +1'},
         Body = {'Igqira Weskit', 'Black Cloak', 'Shaman\'s Cloak', 'Baron\'s Saio', 'Mage\'s Tunic'},
         Hands = {'Zenith Mitts', 'Wizard\'s Gloves', 'Seer\'s Mitts +1'},
-        Ring1 = {'Snow Ring', 'Genius Ring', 'Wisdom Ring', 'Eremite\'s Ring'},
-        Ring2 = {'Snow Ring', 'Genius Ring', 'Wisdom Ring', 'Eremite\'s Ring'},
+        Ring1 = {'Snow Ring', 'Genius Ring', 'Eremite\'s Ring'},
+        Ring2 = {'Tamas Ring', 'Eremite\'s Ring'},
         Back = {'Prism Cape', 'Black Cape +1'},
         Waist = {'Sorcerer\'s Belt', 'Shaman\'s Belt'},
-        Legs = {'Errant Slops', 'Mage\'s Slacks'},
+        Legs = {'Mahatma Slops', 'Mage\'s Slacks'},
         Feet = {'Rostrum Pumps', 'Sorcerer\'s Sabots', 'Custom F Boots'}
+    },
+    Nuke_HNM = {
+        Ammo = 'Phtm. Tathlum',
+        Neck = 'Elemental Torque',
+        Ear1 = 'Moldavite Earring',
+        Ear2 = 'Abyssal Earring',
+        Head = 'Sorcerer\'s Petas.', -- 2
+        Body = 'Errant Hpl.', -- 3
+        Hands = 'Wzd. Gloves +1', -- 2
+        Ring1 = 'Sorcerer\'s Ring',
+        Ring2 = 'Tamas Ring', -- 5
+        Back = 'Errant Cape', -- 5
+        Waist = 'Penitent\'s Rope', -- 3 
+        Legs = 'Mahatma Slops', -- 3
+        Feet = 'Sorcerer\'s Sabots', -- 1
     },
     Resting = {
         Main = 'Pluto\'s Staff', -- 10
         Neck = 'Checkered Scarf', -- 1
-        Head = 'Igqira Tiara', -- Curse, Evasion
-        Body = 'Errant Hpl.', -- 5
+        Head = 'Wzd. Petasos +1', -- Curse, Evasion
+        Body = 'Sorcerer\'s Coat', -- 5
         Hands = 'Errant Cuffs', -- Enmity
         Feet = 'Rostrum Pumps',
         Legs = 'Baron\'s Slops', -- 1
@@ -105,54 +130,53 @@ local sets = {
         Ear1 = 'Merman\'s Earring', -- MDT
         Ring1 = 'Merman\'s Ring', -- MDT
         Ring2 = 'Merman\'s Ring', -- MDT
-        Back = 'Hexerei Cape', -- DT
+        Back = 'Errant Cape', -- Enmity, MP
     },
     Dark = {
         Main = 'Pluto\'s Staff',
         Ammo = 'Phtm. Tathlum',
         --Head = 'Nashira Turban', 
         --Body = 'Nashira Manteel', -- 5
-        Head = 'Wizard\'s Petasos',
+        Head = 'Wzd. Petasos +1',
         Body = 'Wizard\'s Coat',
-        Hands = 'Sorcerer\'s Gloves', -- 10
+        Hands = 'Src. Gloves +1', -- 10
         Legs = 'Wizard\'s Tonban', -- 15
         Feet = 'Igqira Huaraches', -- 4
-        Neck = 'Dark Torque', -- 7
+        --Neck = 'Dark Torque', -- 7
         --Ear1 = 'Loquac. Earring',
-        Ear1 = 'Morion Earring',
+        Ear1 = 'Abyssal Earring',
         Ear2 = 'Phantom Earring',
         Ring1 = 'Snow Ring',
-        Ring2 = 'Snow Ring',
+        Ring2 = 'Tamas Ring',
         Back = 'Merciful Cape', --5
         Waist = 'Sorcerer\'s Belt',
     },
     Stun = {
         Ammo = 'Phtm. Tathlum',
-        Head = 'Wizard\'s Petasos',
+        Head = 'Wzd. Petasos +1',
         Body = 'Wizard\'s Coat',
-        Hands = 'Sorcerer\'s Gloves',
-        Ear1 = 'Phantom Earring',
-        Ear2 = 'Morion Earring',
+        Hands = 'Src. Gloves +1',
+        Ear1 = 'Abyssal Earring',
+        Ear2 = 'Loquac. Earring',
         Ring1 = 'Snow Ring',
-        Ring2 = 'Snow Ring',
+        Ring2 = 'Tamas Ring',
         Waist = 'Swift Belt',
         Legs = 'Nashira Seraweels',
-        Feet = 'Rostrum Pumps'
+        Feet = 'Nashira Crackows'
     },
     EnfeeblingMND = {
-        --Ammo = 'Hedgehog Bomb',
+        Ammo = 'Hedgehog Bomb',
         Head = 'Igqira Tiara',
-        Neck = 'Justice Badge',
+        Neck = 'Enfeebling Torque',
         Body = 'Wizard\'s Coat',
         Hands = 'Devotee\'s Mitts',
         Waist = 'Penitent\'s Rope',
         Back = 'Prism Cape',
         --Back = 'Altruistic Cape',
-        Legs = 'Nashira Seraweels',
-        --Legs = 'Igqira Lappas',
+        Legs = 'Igqira Lappas',
         Feet = 'Rostrum Pumps',
-        Ring1 = 'Saintly Ring',
-        Ring2 = 'Saintly Ring',
+        Ring1 = 'Solace Ring',
+        Ring2 = 'Tamas Ring',
         --Ring1 = 'Aqua Ring',
         --Ring2 = 'Aqua Ring',
         --Ear1 = 'Cmn. Earring',
@@ -160,50 +184,68 @@ local sets = {
     },
     EnfeeblingINT = {
         Head = 'Igqira Tiara',
-        Neck = 'Philomath Stole',
-        --Neck = 'Enfeebling Torque',
+        Neck = 'Enfeebling Torque',
         Body = 'Wizard\'s Coat',
         Hands = 'Wizard\'s Gloves',
         --Hands = 'Errant Cuffs',
         Waist = 'Sorcerer\'s Belt',
         Back = 'Prism Cape',
         --Back = 'Altruistic Cape',
-        Legs = 'Nashira Seraweels',
-        --Legs = 'Igqira Lappas',
+        Legs = 'Igqira Lappas',
         Feet = 'Rostrum Pumps', 
-        Ear1 = 'Morion Earring', 
+        Ear1 = 'Abyssal Earring',
         Ear2 = 'Phantom Earring',
         Ring1 = 'Snow Ring',
-        Ring2 = 'Snow Ring',
+        Ring2 = 'Tamas Ring',
         Ammo = 'Phtm. Tathlum',
     },
     Healing = {
-        Head = 'Wizard\'s Petasos',
+        Head = 'Wzd. Petasos +1',
         Neck = 'Justice Badge',
         Body = 'Errant Hpl.',
         Hands = 'Devotee\'s Mitts',
         Waist = 'Penitent\'s Rope',
-        Back = 'Prism Cape',
-        Legs = 'Errant Slops', 
+        Back = 'Errant Cape',
+        Legs = 'Mahatma Slops', 
         Feet = 'Rostrum Pumps', 
         Ring1 = 'Saintly Ring',
-        Ring2 = 'Saintly Ring',
+        Ring2 = 'Tamas Ring',
     },
-    SIRD = {
-        --Main = 'Eremite\'s Wand', -- 25
+    SIRD_PDT = {
+        -- Aquaveil -- 20
+        Main = 'Eremite\'s Wand', -- 25
         --Sub = 'Eremite\'s Wand', -- 25
         --Head = 'Nashira Turban', -- 10
         --Neck = 'Willpower Torque', -- 5
         --Back = 'Umbra Cape', -- PDT
         Ammo = 'Phtm. Tathlum',
-        Head = 'Wizard\'s Petasos',
+        Head = 'Igqira Tiara',
         --Head = 'Nashira Turban',
         Feet = 'Wizard\'s Sabots', -- 20
         --Body = 'Sorcerer\'s Coat',
         Body = 'Errant Hpl.',
-        --Legs = 'Igqira Lappas', -- Curse, Evasion
-        Legs = 'Errant Slops',
-        Waist = 'Sorcerer\'s Belt', -- 10
+        Legs = 'Igqira Lappas', -- Curse, Evasion
+        Waist = 'Sorcerer\'s Belt', -- 8
+        Ear1 = 'Merman\'s Earring', -- MDT
+        Ear2 = 'Merman\'s Earring', -- MDT
+        Ring1 = 'Jelly Ring', -- MDT
+        Ring2 = 'Merman\'s Ring', -- MDT
+    },
+    SIRD_MDT = {
+        -- Aquaveil -- 20
+        Main = 'Eremite\'s Wand', -- 25
+        --Sub = 'Eremite\'s Wand', -- 25
+        --Head = 'Nashira Turban', -- 10
+        --Neck = 'Willpower Torque', -- 5
+        --Back = 'Umbra Cape', -- PDT
+        Ammo = 'Phtm. Tathlum',
+        Head = 'Igqira Tiara',
+        --Head = 'Nashira Turban',
+        Feet = 'Wizard\'s Sabots', -- 20
+        --Body = 'Sorcerer\'s Coat',
+        Body = 'Errant Hpl.',
+        Legs = 'Igqira Lappas', -- Curse, Evasion
+        Waist = 'Sorcerer\'s Belt', -- 8
         Ear1 = 'Merman\'s Earring', -- MDT
         Ear2 = 'Merman\'s Earring', -- MDT
         Ring1 = 'Merman\'s Ring', -- MDT
@@ -212,7 +254,24 @@ local sets = {
     Precast = {
         Legs = 'Nashira Seraweels',
         Waist = 'Swift Belt',
-        Feet = 'Rostrum Pumps'
+        Feet = 'Rostrum Pumps',
+        Ear1 = 'Loquac. Earring',
+    },
+    Enhancing = {
+        --Main = 'Kirin\'s Pole',
+        Ammo = 'Hedgehog Bomb',
+        --Head = 'Nashira Turban',
+        --Neck = 'Enhancing Torque',
+        --Ear1 = 'Cmn. Earring',
+        --Ear2 = 'Cmn. Earring',
+        Body = 'Errant Hpl.',
+        Hands = 'Devotee\'s Mitts',
+        --Ring1 = 'Aqua Ring',
+        Ring2 = 'Tamas Ring',
+        Back = 'Errant Cape',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Mahatma Slops',
+        --Feet = 'Igqira Huaraches',
     },
     YellowHP = {
         Ring1 = 'Ether Ring', -- 30
@@ -221,6 +280,16 @@ local sets = {
         Head = 'Zenith Crown', -- 50
         Legs = 'Zenith Slacks', -- 50
         Waist = 'Penitent\'s Rope', -- 20
+    },
+    YellowHNM = {
+        Ring1 = 'Ether Ring', -- 30
+        Ring2 = 'Astral Ring', -- 25
+        Ammo = 'Tiphia Sting', -- 25
+        Head = 'Zenith Crown', -- 50
+        Legs = 'Zenith Slacks', -- 50
+        Waist = 'Penitent\'s Rope', -- 20
+        Back = 'Blue Cape', -- 15 
+        Neck = 'Checkered Scarf', -- 15
     },
     YellowObi = {
         Back = 'Blue Cape', -- 15 
@@ -243,12 +312,20 @@ local IdleSet = {
     [3] = 'Town',
 };
 
+local NukeSet = {
+    [1] = 'Default',
+    [2] = 'Accuracy',
+    [3] = 'HNM',
+};
+
+
 local Settings = {
     DisplayThrottle = 1;
     LastDisplayed = 0;
     UseSorcRing = true,
     UseUggPendant = true,
     CurrentSubJob = nil,
+    NukeSet = 'Default',
     IdleSet = '',
     IdleDT = 'PDT';
     Extras = '',
@@ -278,6 +355,8 @@ profile.OnLoad = function()
 
     shared.CreateCycle('IdleSet', IdleSet);
     Settings.IdleSet = shared.GetCycle('IdleSet');
+    shared.CreateCycle('NukeSet', NukeSet);
+    Settings.NukeSet = shared.GetCycle('NukeSet');
 
     AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Idle Set: ' .. Settings.IdleSet .. ' | Sorc Ring: ' .. (Settings.UseSorcRing and 'Active' or 'Inactive') .. ' ]--');
 
@@ -310,16 +389,31 @@ profile.HandleCommand = function(args)
     elseif (args[1] == 'idle') then
         if Settings.IdleDT == 'PDT' then
             Settings.IdleDT = 'MDT';
+            shared.SetCycleToValue('IdleSet', 'MDT');   
         else
             Settings.IdleDT = 'PDT';
+            shared.SetCycleToValue('IdleSet', 'PDT');
         end
+        AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Idle Set ->> ' .. Settings.IdleDT .. ' ]--');
+        return;
+    elseif (args[1] == 'nuke') then
+        Settings.NukeSet = shared.AdvanceCycle('NukeSet')
+        AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Nuke Set ->> ' .. Settings.NukeSet .. ' ]--');
+        return;
+    elseif (args[1] == 'pdt') then
+        Settings.IdleDT = 'PDT';
+        shared.SetCycleToValue('IdleSet', 'PDT');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Idle Set ->> ' .. Settings.IdleDT .. ' ]--');
+        return;
+    elseif (args[1] == 'mdt') then
+        Settings.IdleDT = 'MDT';
+        shared.SetCycleToValue('IdleSet', 'MDT');
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Idle Set ->> ' .. Settings.IdleDT .. ' ]--');
         return;
     end
     shared.ProcessCommand(args);
 
 end
-
 
 profile.HandleDefault = function()
 
@@ -335,15 +429,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
         shared.SetCurrentSet('Resting');
-    elseif (player.Status == 'Unknown') then
-        -- Likely Fishing
-        return;
     else
-        if zones.IsInTown() then
-            gFunc.EquipSet(sets.Idle_Town);
-            shared.SetCurrentSet('Idle - Town');
-            shared.SetCycleToValue('IdleSet', 'Town');
-        else
+        if not zones.IsInTown() then
             if Settings.IdleDT == 'MDT' then
                 gFunc.EquipSet(sets.Idle_MDT);
                 shared.SetCurrentSet('Idle - MDT');
@@ -354,10 +441,13 @@ profile.HandleDefault = function()
                 shared.SetCycleToValue('IdleSet', 'PDT');
             end
             shared.SetCurrentSet('Idle - '.. Settings.IdleDT);
-            if player.MPP < 100 then
-                gFunc.Equip('Body', 'Black Cloak');
-            end
         end
+    end
+
+    if zones.IsInTown() then
+        gFunc.EquipSet(sets.Idle_Town);
+        shared.SetCurrentSet('Idle - Town');
+        shared.SetCycleToValue('IdleSet', 'Town');
     end
     local final_set = shared.DisplacedGearCheck(gData.GetEquipment());
     gFunc.EquipSet(final_set);
@@ -387,31 +477,57 @@ profile.HandleMidcast = function()
     local MndDebuffs = T{ 'Slow', 'Paralyze', 'Slow II', 'Paralyze II', 'Addle', 'Addle II' };
     local ElementalDebuffs = T{ 'Burn', 'Rasp', 'Drown', 'Choke', 'Frost', 'Shock', 'Blind' };
     local action = gData.GetAction();
-
+    local environment = gData.GetEnvironment();
+    local obi_used = false;
+    local diabolos_pole = false;
     if (action.Skill == 'Enfeebling Magic') then
         if (MndDebuffs:contains(action.Name)) then
             gFunc.EquipSet(sets.EnfeeblingMND);
         else
             gFunc.EquipSet(sets.EnfeeblingINT);
         end
+        if shared.OutControl() then 
+            gFunc.Equip('hands', 'Mst.Cst. Bracelets');
+        end
     elseif (action.Skill == 'Elemental Magic') then
-        if Settings.UseSorcRing then
-            gFunc.EquipSet(sets.Nuke);
+        if (ElementalDebuffs:contains(action.Name)) then
+            gFunc.EquipSet(sets.EnfeeblingINT);
+            if shared.OutControl() then 
+                gFunc.Equip('hands', 'Mst.Cst. Bracelets');
+            end
         else
-            gFunc.EquipSet(sets.Nuke_NoSorcRing);
-        end
-        shared.UggPendantCheck(action);
-        shared.ObiCheck(action, sets.YellowObi);
-        local spellmatchday = shared.SpellMatchDay(action);
-        if spellmatchday then
-            gFunc.Equip('Legs', 'Sorcerer\'s Tonban');
-        end
-        if Settings.UseSorcRing then
-            shared.SetMidcastDelay(sets.Precast, sets.YellowHP);
+            if Settings.UseSorcRing then
+                if Settings.NukeSet == 'Accuracy' then
+                    gFunc.EquipSet(sets.Nuke_Acc);
+                elseif Settings.NukeSet == 'HNM' then
+                    gFunc.EquipSet(sets.Nuke_HNM);
+                else
+                    gFunc.EquipSet(sets.Nuke);
+                end
+            else
+                gFunc.EquipSet(sets.Nuke_NoSorcRing);
+            end
+            shared.UggPendantCheck(action);
+            obi_used = shared.ObiCheck(action, sets.YellowObi);
+            local spellmatchday = shared.SpellMatchDay(action);
+            if spellmatchday then
+                gFunc.Equip('Legs', 'Sorcerer\'s Tonban');
+            end
+            if Settings.UseSorcRing then
+                if Settings.NukeSet == 'HNM' then
+                    shared.SetMidcastDelay(sets.Precast, sets.YellowHNM, "Nuke + Sorc Ring", obi_used);
+                else
+                    shared.SetMidcastDelay(sets.Precast, sets.YellowHP, "Nuke + Sorc Ring", obi_used);
+                end
+                
+            end
         end
     elseif (action.Skill == 'Dark Magic') then
         if (action.Name == 'Stun') then
             gFunc.EquipSet(sets.Stun);
+        elseif (action.Name == 'Aspir' or action.Name == 'Drain') and environment.RawWeatherElement == 'Dark' then
+            gFunc.Equip('main', 'Diabolos\'s Pole');
+            diabolos_pole = true;
         else
             gFunc.EquipSet(sets.Dark);
             shared.ObiCheck(action, sets.YellowObi);
@@ -419,15 +535,22 @@ profile.HandleMidcast = function()
     elseif (string.match(action.Name, 'Cure') or string.match(action.Name, 'Curaga')) then
         gFunc.EquipSet(sets.Healing);
     end
-    if (Settings.CurrentLevel >= 51) then
+
+    if Settings.CurrentLevel >= 51 and not diabolos_pole then
         shared.UseElementalStaff(action.Element);
     end
 
     if not Settings.UseSorcRing then
-        shared.SetMidcastDelay(sets.Precast, null);
+        shared.SetMidcastDelay(sets.Precast, null, 'Midcast', obi_used);
     end
-    gFunc.InterimEquipSet(sets.SIRD);
-    shared.SetCurrentSet('Midcast');
+
+    if Settings.IdleDT == 'MDT' then
+        gFunc.InterimEquipSet(sets.SIRD_MDT);
+        shared.SetCurrentSet('SIRD + MDT');
+    else
+        gFunc.InterimEquipSet(sets.SIRD_PDT);
+        shared.SetCurrentSet('SIRD + PDT');
+    end
 
 end
 
@@ -447,12 +570,10 @@ end
 profile.LevelCheck = function()
 
     local myLevel = AshitaCore:GetMemoryManager():GetPlayer():GetMainJobLevel();
-    local player = gData.GetPlayer();
-    --local myLevel = 50
 
    -- Function for delayed lockstyle
     local function DelayedLockstyle()
-        shared.LockStyleSet(player.MainJob);
+        shared.LockStyleSet();
     end
 
     if (myLevel ~= Settings.CurrentLevel) then
@@ -518,8 +639,8 @@ profile.DisplayBLM = function()
     -- Sorc Ring Display
     displayString = displayString .. 'SorcRing: ' .. (Settings.UseSorcRing and '|cFF5FFF5F|On' or '|cFF989898|Off') .. '|r\n';
     if Settings.UseSorcRing then
-        if maxHPP then displayString = displayString .. '  Current: ' .. player.HP .. '\n'; end
-        if maxHPP then displayString = displayString .. '  Threshold: ' .. (threshold) .. '\n'; end
+        if maxHPP then displayString = displayString .. '  Current: ' .. player.HP .. 'HP\n'; end
+        if maxHPP then displayString = displayString .. '  Threshold: ' .. (threshold) .. 'HP\n'; end
         if maxHPP then displayString = displayString .. '  Latent: ' .. (player.HP < threshold and '|cFF5FFF5F|Active' or '|cFF989898|Inactive') .. '|r\n'; end
     end
     displayString = displayString .. 'UggPendant: ' .. (Settings.UseUggPendant and '|cFF5FFF5F|On' or '|cFF989898|Off') .. '|r\n';
@@ -527,24 +648,8 @@ profile.DisplayBLM = function()
         if mpPercent and mpthreshold then displayString = displayString .. '  Latent: ' .. (mpPercent < 0.5099 and '|cFF5FFF5F|Active' or '|cFF989898|Inactive') .. '|r\n'; end
     end
 
-    -- Ugg Pendant Display
-
-
-    --(Settings.UseWarpCudgel and 'On' or 'Off') 
-        -- IdleSet: Town/PDT (Default)/MDT
-        -- Use Sorc Ring (HP Threshold)
-        -- Use Ugg Pendant (MP Threshold)
-        -- MaxHP
-        -- Sorc Ring Mode: Active/Inactive
-            -- Current HPP: 
-            -- Latent: Yes/No
-        -- Ugg Pendant Mode: Active/Inactive
-            -- Current MPP:
-            -- Latent: Yes/No
-    -- Send string to shared.Settings.Extras
     shared.SetExtras(displayString);
     Settings.LastDisplayed = os.clock();
 end
-
 
 return profile;
