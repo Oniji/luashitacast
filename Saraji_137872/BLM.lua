@@ -106,7 +106,7 @@ local sets = {
         Ammo = 'Phtm. Tathlum',
         Neck = 'Elemental Torque',
         Ear1 = 'Moldavite Earring',
-        Ear2 = 'Abyssal Earring',
+        Ear2 = 'Novia Earring',
         Head = 'Sorcerer\'s Petas.', -- 2
         Body = 'Errant Hpl.', -- 3
         Hands = 'Wzd. Gloves +1', -- 2
@@ -207,7 +207,8 @@ local sets = {
         Waist = 'Penitent\'s Rope',
         Back = 'Errant Cape',
         Legs = 'Mahatma Slops', 
-        Feet = 'Rostrum Pumps', 
+        Feet = 'Rostrum Pumps',
+        Ear1 = 'Novia Earring',
         Ring1 = 'Saintly Ring',
         Ring2 = 'Tamas Ring',
     },
@@ -526,7 +527,7 @@ profile.HandleMidcast = function()
         if (action.Name == 'Stun') then
             gFunc.EquipSet(sets.Stun);
         elseif (action.Name == 'Aspir' or action.Name == 'Drain') and environment.RawWeatherElement == 'Dark' then
-            gFunc.Equip('main', 'Diabolos\'s Pole');
+            gFunc.Equip('main', 'Pluto\'s Staff');
             diabolos_pole = true;
         else
             gFunc.EquipSet(sets.Dark);
