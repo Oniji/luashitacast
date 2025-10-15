@@ -122,6 +122,7 @@ local LockStyleSets = {
     ['NIN'] = 41,
     ['BST'] = 50,
     ['RDM'] = 60,
+    ['SMN'] = 61,
     ['THF'] = 70,
     ['DRK'] = 80,
     ['Clamming'] = 16,
@@ -869,6 +870,18 @@ end
 
 shared.OutControl = function()
     return conquest.GetOutsideControl();
+end
+
+-- --------------------------------------------------------
+-- Misc.
+-- --------------------------------------------------------
+
+shared.GetElementalStaff = function(element)
+    if element then
+        return ElementalStaffTable[element];
+    else
+        return '';
+    end
 end
 
 return shared;

@@ -5,7 +5,7 @@ local aliases = {};
 aliases.Common_Load = function()
 
     -- Assist and Targetnpc
-    aliases.add('/assist', '/lac fwd gearmode');
+    aliases.remove('/assist');
 
     -- HELM --
     aliases.add('/logging_binds', '/lac fwd logging_binds');
@@ -151,13 +151,6 @@ aliases.Common_Load = function()
     aliases.add('/aqua', '/ma "Aquaveil" <me>');
     aliases.add('/ph', '/ma "Phalanx" <me>');
 
-    aliases.add('/bs', '/ma "Barstonra" <me>');
-    aliases.add('/bw', '/ma "Barwatera" <me>');
-    aliases.add('/ba', '/ma "Baraera" <me>');
-    aliases.add('/bf', '/ma "Barfira" <me>');
-    aliases.add('/bb', '/ma "Barblizzara" <me>');
-    aliases.add('/bt', '/ma "Barthundra" <me>');
-
     aliases.add('/er', '/ma "Erase" <stpc>');
     aliases.add('/sil', '/ma "Silence" <t>');
     aliases.add('/dia', '/ma "Dia" <t>');
@@ -241,6 +234,38 @@ aliases.Common_Load = function()
     -- Custom Utilities --
     aliases.add('/zone', '/lac fwd find_zone')
 
+    aliases.Common_BarSpells();
+
+end
+
+aliases.Common_BarSpells = function()
+    local player = gData.GetPlayer();
+    if player.MainJob == 'WHM' or player.SubJob == 'WHM' then
+        aliases.add('/bs', '/ma "Barstonra" <me>');
+        aliases.add('/bw', '/ma "Barwatera" <me>');
+        aliases.add('/ba', '/ma "Baraera" <me>');
+        aliases.add('/bf', '/ma "Barfira" <me>');
+        aliases.add('/bb', '/ma "Barblizzara" <me>');
+        aliases.add('/bt', '/ma "Barthundra" <me>');
+        aliases.add('/bsil', '/ma "Barsilencera" <me>');
+        aliases.add('/bsleep', '/ma "Barsleepra" <me>');
+        aliases.add('/bpara', '/ma "Barparalyzra" <me>');
+        aliases.add('/bpetri', '/ma "Barpetrify" <me>');
+        aliases.add('/bpoison', '/ma "Barpoisonra" <me>');
+
+    else
+        aliases.add('/bs', '/ma "Barstone" <me>');
+        aliases.add('/bw', '/ma "Barwater" <me>');
+        aliases.add('/ba', '/ma "Baraero" <me>');
+        aliases.add('/bf', '/ma "Barfire" <me>');
+        aliases.add('/bb', '/ma "Barblizzard" <me>');
+        aliases.add('/bt', '/ma "Barthunder" <me>');
+        aliases.add('/bsil', '/ma "Barsilence" <me>');
+        aliases.add('/bsleep', '/ma "Barsleep" <me>');
+        aliases.add('/bpara', '/ma "Barparalyze" <me>');
+        aliases.add('/bpetri', '/ma "Barpetrify" <me>');
+        aliases.add('/bpoison', '/ma "Barpoison" <me>');
+    end
 end
 
 aliases.Common_Unload = function()
@@ -448,6 +473,7 @@ aliases.Common_Unload = function()
     aliases.remove('/ssp');
 
     aliases.remove('/dispel');
+    aliases.remove('/assist');
 
 end
 
@@ -535,11 +561,16 @@ end
 aliases.RDM_Load = function()
     aliases.add('/2hr', '/ja "Chainspell" <me>');
     aliases.add('/convert', '/ja "Convert" <me>');
+    aliases.add('/sorcring', '/lac fwd sorcring');
+    aliases.add('/nuke', '/lac fwd nuke');
+    aliases.add('/idle', '/lac fwd idle');
+    aliases.add('/melee', '/lac fwd melee');
 end
 
 aliases.RDM_Unload = function()
     aliases.remove('/2hr');
     aliases.remove('/convert');
+    aliases.remove('/melee');
 end
 
 --[[ SMN ]]--

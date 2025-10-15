@@ -2,6 +2,7 @@ local binds = {};
 
 local print_avatar_tips = false;
 local cure_type = '<stal>';
+local current_avatar = '';
 
 --[[ Common ]]--
 
@@ -755,9 +756,10 @@ binds.RDM_Load = function()
     binds.add('[', '/ma "Paralyna" ' .. cure_type);
     binds.add(']', '/ma "Silena" ' .. cure_type);
 
-    binds.add('+1', '/ma "Gravity" <t>');
+    binds.add('+1', '/ws "Evisceration" <t>');
+    binds.add('+2', '/ma "Enthunder" <me>');
     binds.add('g', '/ma "Gravity" <t>');
-    binds.add('+2', '/ma "Dispel" <t>');
+    binds.add('+g', '/ma "Dispel" <t>');
     binds.add('+6', '/ma "Enthunder" <me>');
     binds.add('+6', '/ma "Shock Spikes" <me>');
     binds.add('+7', '/ma "Blink" <me>');
@@ -770,13 +772,13 @@ binds.RDM_Load = function()
 
     binds.add('e', '/ma "Dia" <t>');
     binds.add('+e', '/ma "Stun" <t>');
-    binds.add('f', '/ma "Silence" <t>');
+    binds.add('f', '/ma "Bind" <t>');
     binds.add('+f', '/ma "Bind" <t>');
     binds.add('+x', '/ma "Curaga II" ' .. cure_type);
     binds.add('c', '/ma "Sleep II" <t>');
     binds.add('+c', '/ma "Sleepga II" <t>');
     binds.add('v', '/ma "Sleep" <t>');
-    binds.add('+v', '/ja "Sleepga" <me>');
+    binds.add('+v', '/ma "Sleepga" <t>');
     binds.add('t', '/ma "Silence" <t>');
 end
 
@@ -789,8 +791,6 @@ binds.RDM_BLM_Load = function()
 end
 
 binds.RDM_NIN_Load = function()
-    binds.add('t', '/ws "Energy Steal" <t>');
-    binds.add('+t', '/ma "Enthunder" <me>');
     binds.add('x', '/ma "Utsusemi: Ichi" <me>');
     binds.add('+x', '/ma "Utsusemi: Ni" <me>');
 end
@@ -1048,7 +1048,7 @@ binds.SMN_Load = function()
     binds.add('!2', '/ma "Dia" <t>');
     binds.add('!3', '/ma "Paralyze" <t>');
     binds.add('^1', '/ma "Regen" <stpc>');
-    binds.add('^2', '/ma "Cure" <stpc>');
+    binds.add('^2', '/ma "Cure III" <stpc>');
     binds.add('^3', '/ma "Cure II" <stpc>');
     binds.add('^4', '/ma "Curaga" <stpc>');
     binds.add('^5', '/ma "Erase" <stpc>');
@@ -1057,7 +1057,6 @@ binds.SMN_Load = function()
 end
 
 binds.SMN_Avatar_Load = function(pet)
-    binds.SMN_Avatar_Unload(); -- Remove previous avatar binds
     if pet == 'None' then
         if print_avatar_tips then print('Avatars | 1: Carbuncle | 2: Ifrit | 3: Garuda | 4: Titan | 5: Leviathan | 6: Shiva | 7: Ramuh | 8: Fenrir | 9: Diabolos'); end
         binds.add('1', '/ma "Carbuncle" <me>');
@@ -1102,7 +1101,7 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('1', '/pet "Earthen Ward" <me>'); -- Stoneskin - Blood Pact: Ward
         binds.add('2', '/pet "Rock Throw" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Megalith Throw" <t>'); -- Blood Pact: Rage
-        binds.add('4', '/pet "Rock Buster" <t>'); -- Bind - Blood Pact: Rage
+        binds.add('4', '/pet "Rock Buster" <t>;/p 2: Rock Buster --> <t>'); -- Bind - Blood Pact: Rage
         binds.add('5', '/pet "Mountain Buster" <t>'); -- Bind - Blood Pact: Rage
         binds.add('6', '/pet "Stone II" <t>'); -- Blood Pact: Rage
         binds.add('7', '/pet "Stone IV" <t>'); -- Blood Pact: Rage
@@ -1110,7 +1109,7 @@ binds.SMN_Avatar_Load = function(pet)
     elseif pet == 'Leviathan' then
         if print_avatar_tips then print('Leviathan | 1: Refresh | 2: WS BarrDive | 3: WS TailWhip | 4: WS SpnDive | 5: Slowga | 6: Wat2 | 7: Wat | 8: 2HR AOE'); end
         binds.add('1', '/pet "Spring Water" <me>'); -- Refresh Blood Pact: Ward
-        binds.add('2', '/pet "Barracuda Dive" <t>'); -- Blood Pact: Rage
+        binds.add('2', '/pet "Barracuda Dive" <t>;/p 2: Barracude Dive --> <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Tail Whip" <t>'); -- Gravity - Blood Pact: Rage
         binds.add('4', '/pet "Spinning Dive" <t>'); -- Blood Pact: Rage
         binds.add('5', '/pet "Slowga" <t>'); -- Blood Pact: Ward
@@ -1138,14 +1137,14 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('7', '/pet "Thunder IV" <t>'); -- Blood Pact: Rage
         binds.add('8', '/pet "Judgement Bolt" <t>'); -- Needs 2hr AOE
     elseif pet == 'Fenrir' then
-        if print_avatar_tips then print('Fenrir | 1: Target -acc -eva | 2: WS MoonlitCharge (Blind) | 3: WS CrescntFang (Para) | 4: WS EclpBite | 5: 2x Dispel | 6: PT +Attr | 7: PT +acc+eva | 8: 2HR AOE'); end
-        binds.add('1', '/pet "Lunar Cry" <t>'); -- Target -acc -eva Blood Pact: Ward
+        if print_avatar_tips then print('Fenrir | 1: Acc+ Eva+ | 2: WS MoonlitCharge (Blind) | 3: WS CrescntFang (Para) | 4: WS EclpBite | 5: 2x Dispel | 6: PT +Attr | 7: Target -acc -eva | 8: 2HR AOE'); end
+        binds.add('1', '/pet "Ecliptic Howl" <me>'); -- Party +acc +eva Blood Pact: Ward
         binds.add('2', '/pet "Moonlit Charge" <t>'); -- Blind Blood Pact: Rage
         binds.add('3', '/pet "Crescent Fang" <t>'); -- Paralyze Blood Pact: Rage
         binds.add('4', '/pet "Eclipse Bite" <t>'); -- Blood Pact: Rage
         binds.add('5', '/pet "Lunar Roar" <t>'); -- 2x Dispel Blood Pact: Ward
         binds.add('6', '/pet "Ecliptic Growl" <me>'); -- +Attr Blood Pact: Ward
-        binds.add('7', '/pet "Ecliptic Howl" <me>'); -- Party +acc +eva Blood Pact: Ward
+        binds.add('7', '/pet "Lunar Cry" <t>'); -- Target -acc -eva Blood Pact: Ward
         binds.add('8', '/pet "Howling Moon" <t>'); -- Needs 2hr AOE
     elseif pet == 'Diabolos' then
         if print_avatar_tips then print('Diabolos | 1: MAB/MDB | 2: WS Camisado | 3: WS NethBlast | 4: WS Somnolence (Gravity) | 5: Sleepga+DOT | 6: Phalanx | 7: Target -ATTR | 8: 2HR AOE'); end
@@ -1223,8 +1222,13 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('6', '/ma "Drain" <t>'); -- 10
         binds.add('7', '/ma "Aspir" <t>'); -- 20
         binds.add('8', '/ma "Blind" <t>'); -- 4
-        binds.SMN_DarkSpirit_Load();  
+        binds.SMN_DarkSpirit_Load();
     end
+    current_avatar = pet;
+end
+
+binds.SMN_GetCurrentAvatar = function()
+    return current_avatar;
 end
 
 binds.SMN_DarkSpirit_Load = function()
@@ -1506,7 +1510,34 @@ binds.Info_DreamShroud = function()
                 mab = 1;
                 mdb = 13;
             end
-            print("Dream Shroud | Time: " .. env.Time .. " | MAB: +" .. mab .. " | MDB: +" .. mdb);
+            if print_avatar_tips then print("Dream Shroud | Time: " .. env.Time .. " | MAB: +" .. mab .. " | MDB: +" .. mdb); end
+            return mab, mdb;
+        end
+end
+
+binds.Info_EclipticHowl = function()
+        local env = gData.GetEnvironment();
+        if env then
+            local acc = 0;
+            local eva = 0;
+            if env.MoonPhase == 'Full Moon' then
+                acc = 21;
+                eva = 5;
+            elseif env.MoonPhase == 'Waning Gibbous' or env.MoonPhase == 'Waxing Gibbous' then
+                acc = 17;
+                eva = 9;
+            elseif env.MoonPhase == 'Last Quarter' or env.MoonPhase == 'First Quarter' then
+                acc = 13;
+                eva = 13;
+            elseif env.MoonPhase == 'Waning Crescent' or env.MoonPhase == 'Waxing Crescent' then
+                acc = 9;
+                eva = 17;
+            elseif env.MoonPhase == 'New Moon' then
+                acc = 5;
+                eva = 21;
+            end
+            if print_avatar_tips then print("Ecliptic Howl | Time: " .. env.Time .. " | Acc: +" .. acc .. " | Eva: +" .. eva); end
+            return acc, eva;
         end
 end
 
