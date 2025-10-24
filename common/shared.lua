@@ -23,6 +23,22 @@ local MP_BLM_RDM = 730; -- Amount of MP you have in Nuke Set minus non-visible s
 local MP_BLM_WHM = 749; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
 local MP_BLM_NIN = 671; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
 
+shared.Colour = {
+    CARBUNCLE = 'cFF54DCF8',
+    IFRIT = 'cFFF44336',
+    GARUDA = 'cFF6AA84F',
+    TITAN = 'cFFFFD966',
+    LEVIATHAN = 'cFF3896EC',
+    SHIVA = 'cFFC8E0F7',
+    RAMUH = 'cFF9D5CDA',
+    FENRIR = 'cFF592789',
+    DIABOLOS = 'cFF960E5E',
+    RAGE = 'cFFF44336',
+    WARD = 'cFF54DCF8',
+    DEBUFF = 'cFF9D5CDA',
+    TWOHOUR = 'cFFFF00FF',
+}
+
 local fontSettings = {
     visible = true,
     font_family = 'Consolas',
@@ -358,6 +374,12 @@ end
 -- --------------------------------------------------------
 -- Situational Gearswaps
 -- --------------------------------------------------------
+
+shared.EquipElementalStaff = function(action)
+    if action then
+        gFunc.Equip('main', ElementalStaffTable[action.Element]);
+    end
+end
 
 shared.GearOverride = function()
 
