@@ -117,6 +117,23 @@ local sets = {
         Legs = 'Mahatma Slops', -- 3
         Feet = 'Sorcerer\'s Sabots', -- 1
     },
+    Nuke_DOT = {
+        Ammo = 'Phtm. Tathlum', -- 2
+        Main = 'Kirin\'s Pole', -- 10
+        Neck = 'Philomath Stole', -- 3
+        --Neck = 'Prudence Torque', -- 5
+        Ear1 = 'Phantom Earring', -- 1
+        Ear2 = 'Abyssal Earring', -- 2
+        Head = 'Wzd. Petasos +1', -- 5
+        Body = 'Errant Hpl.', -- 3
+        Hands = 'Wzd. Gloves +1', -- 3
+        Ring1 = 'Snow Ring', -- 5
+        Ring2 = 'Tamas Ring', -- 5
+        Back = 'Prism Cape', -- 4
+        Waist = 'Sorcerer\'s Belt', -- 6
+        Legs = 'Mahatma Slops', -- 8
+        Feet = 'Sorcerer\'s Sabots', -- 2
+    },
     Resting = {
         Main = 'Pluto\'s Staff', -- 10
         Neck = 'Checkered Scarf', -- 1
@@ -259,7 +276,7 @@ local sets = {
         Ear1 = 'Loquac. Earring',
     },
     Enhancing = {
-        --Main = 'Kirin\'s Pole',
+        Main = 'Kirin\'s Pole',
         Ammo = 'Hedgehog Bomb',
         --Head = 'Nashira Turban',
         --Neck = 'Enhancing Torque',
@@ -280,6 +297,7 @@ local sets = {
         Ammo = 'Tiphia Sting', -- 25
         Head = 'Zenith Crown', -- 50
         Legs = 'Zenith Slacks', -- 50
+        Back = 'Blue Cape', -- 15 
         Waist = 'Penitent\'s Rope', -- 20
     },
     YellowHNM = {
@@ -484,18 +502,18 @@ profile.HandleMidcast = function()
     if (action.Skill == 'Enfeebling Magic') then
         if (MndDebuffs:contains(action.Name)) then
             gFunc.EquipSet(sets.EnfeeblingMND);
+            shared.EquipElementalStaff(action);
         else
             gFunc.EquipSet(sets.EnfeeblingINT);
+            shared.EquipElementalStaff(action);
         end
         if shared.OutControl() then 
             gFunc.Equip('hands', 'Mst.Cst. Bracelets');
         end
     elseif (action.Skill == 'Elemental Magic') then
         if (ElementalDebuffs:contains(action.Name)) then
-            gFunc.EquipSet(sets.EnfeeblingINT);
-            if shared.OutControl() then 
-                gFunc.Equip('hands', 'Mst.Cst. Bracelets');
-            end
+            gFunc.EquipSet(sets.Nuke_DOT);
+            shared.SetCurrentSet('Elemental DOT');
         else
             if Settings.UseSorcRing then
                 if Settings.NukeSet == 'Accuracy' then
@@ -522,23 +540,23 @@ profile.HandleMidcast = function()
                 end
                 
             end
+            shared.EquipElementalStaff(action);
         end
     elseif (action.Skill == 'Dark Magic') then
         if (action.Name == 'Stun') then
             gFunc.EquipSet(sets.Stun);
+            shared.EquipElementalStaff(action);
         elseif (action.Name == 'Aspir' or action.Name == 'Drain') and environment.RawWeatherElement == 'Dark' then
             gFunc.Equip('main', 'Pluto\'s Staff');
             diabolos_pole = true;
         else
             gFunc.EquipSet(sets.Dark);
             shared.ObiCheck(action, sets.YellowObi);
+            shared.EquipElementalStaff(action);
         end
     elseif (string.match(action.Name, 'Cure') or string.match(action.Name, 'Curaga')) then
         gFunc.EquipSet(sets.Healing);
-    end
-
-    if Settings.CurrentLevel >= 51 and not diabolos_pole then
-        shared.UseElementalStaff(action.Element);
+        shared.EquipElementalStaff(action);
     end
 
     if not Settings.UseSorcRing then

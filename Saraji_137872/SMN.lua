@@ -12,23 +12,24 @@ local yinyang_robe = false;
 local summoners_doublet = false;
 local summoners_horn = false;
 
+
 local sets = {
 
     Idle_Priority = {
         Main = {'Kukulcan\'s Staff', 'Elm Staff +1', 'Pilgrim\'s Wand', 'Willow Wand +1'},
         Ammo = {'Hedgehog Bomb', 'Fortune Egg'},
-        Neck = {'Rep.Bronze Medal'},
+        Neck = {'Rep.Mythril Medal', 'Rep.Bronze Medal'},
         Ear1 = {'Novia Earring', 'Morion Earring', 'Onyx Earring'},
         Ear2 = {'Loquac. Earring', 'Morion Earring', 'Onyx Earring'},
-        Head = {'Electrum Hairpin', 'Silver Hairpin', 'Brass Hairpin'},
-        Body = {'Seer\'s Tunic +1', 'Ducal Aketon'},
-        Hands = {'Austere Cuffs', 'Carbuncle Mitts'},
+        Head = {'Vermillion Cloak', 'Electrum Hairpin', 'Silver Hairpin', 'Brass Hairpin'},
+        Body = {'Vermillion Cloak', 'Seer\'s Tunic +1', 'Ducal Aketon'},
+        Hands = {'Evoker\'s Bracers', 'Austere Cuffs', 'Carbuncle Mitts'},
         Ring1 = {'Ether Ring', 'Astral Ring'},
         Ring2 = {'Astral Ring'},
         Back = {'Aurora Mantle', 'Cape', 'Rabbit Mantle'},
         Waist = {'Hierarch Belt', 'Powerful Rope', 'Friar\'s Rope', 'Leather Belt'},
         Legs = {'Custom Pants', 'Baron\'s Slops', 'Angler\'s Hose', 'Chocobo Hose'},
-        Feet = {'Custom F Boots', 'Mage\'s Sandals', 'Light Soleas', 'Chocobo Boots'}
+        Feet = {'Evoker\'s Pigaches', 'Custom F Boots', 'Mage\'s Sandals', 'Light Soleas', 'Chocobo Boots'}
     },
     MND_Priority = {
         Head = {'Austere Hat', 'Electrum Hairpin', 'Silver Hairpin'},
@@ -47,10 +48,10 @@ local sets = {
     INT_Priority = {
         Ammo = {'Morion Tathlum'},
         Neck = {'Black Neckerchief'},
-        Body = {'Seer\'s Tunic +1', 'Mage\'s Tunic'},
+        --Body = {'Seer\'s Tunic +1', 'Mage\'s Tunic'},
         Ear1 = {'Morion Earring'},
         Ear2 = {'Morion Earring'},
-        Hands = {'Angler\'s Gloves'},
+        Hands = {'Evoker\'s Bracers', 'Angler\'s Gloves'},
         Legs = {'Mage\'s Slacks'},
         Waist = {'Shaman\'s Belt'},
         Feet = {'Custom F Boots'},
@@ -63,7 +64,7 @@ local sets = {
     Nuke_Priority = {
         Ammo = {'Morion Tathlum'},
         Neck = {'Black Neckerchief'},
-        Body = {'Seer\'s Tunic +1', 'Mage\'s Tunic'},
+        --Body = {'Seer\'s Tunic +1', 'Mage\'s Tunic'},
         Ear1 = {'Morion Earring'},
         Ear2 = {'Morion Earring'},
         Hands = {'Seer\'s Mitts +1', 'Angler\'s Gloves'},
@@ -73,7 +74,7 @@ local sets = {
         Back = {'Black Cape +1'},
     },
     Healing_Priority = {
-        Body = {'Baron\'s Saio'},
+        --Body = {'Baron\'s Saio'},
         Neck = {'Justice Badge'},
         Waist = {'Friar\'s Rope'},
         Hands = {'Devotee\'s Mitts'},
@@ -87,12 +88,13 @@ local sets = {
         Legs = 'Nashira Seraweels', -- 5
     },
     Resting = {
-        Main = 'Pilgrim\'s Wand', -- 2
-        Body = 'Seer\'s Tunic +1', -- 1
+        Main = 'Pluto\'s Staff', -- 2
+        Body = 'Vermillion Cloak', -- 1
         Legs = 'Baron\'s Slops', -- 1
         Ear2 = 'Relaxing Earring', -- 2
         Waist = 'Hierarch Belt', -- 2
         Back = 'Errant Cape',
+        Neck = 'Checkered Scarf', -- 1
     },
     BP_Delay = {
         Head = 'Austere Hat', -- 2
@@ -116,6 +118,7 @@ local sets = {
         --Neck = 'Summoning Torque',
     },
     Avatar_Perp = {
+        Head = 'Austere Hat',
         Body = 'Austere Robe', -- 1
         --Hands = 'Nashira Gages', -- 1
         --Feet = 'Evoker\'s Pigaches +1', -- 1
@@ -153,6 +156,12 @@ local Settings = {
     CurrentSubJob = nil,
     CurrentLevel = 0
 };
+
+local SmnSkill = T{'Shining Ruby','Glittering Ruby','Crimson Howl','Inferno Howl','Frost Armor','Crystal Blessing','Aerial Armor','Hastega II','Fleet Wind','Hastega','Earthen Ward','Earthen Armor','Rolling Thunder','Lightning Armor','Soothing Current','Ecliptic Growl','Heavenward Howl','Ecliptic Howl','Noctoshield','Dream Shroud','Altana\'s Favor','Reraise','Reraise II','Reraise III','Raise','Raise II','Raise III','Wind\'s Blessing'}
+local SmnHealing = T{'Healing Ruby','Healing Ruby II','Whispering Wind','Spring Water'}
+local SmnMagical = T{'Searing Light','Meteorite','Holy Mist','Inferno','Fire II','Fire IV','Meteor Strike','Conflag Strike','Diamond Dust','Blizzard II','Blizzard IV','Heavenly Strike','Aerial Blast','Aero II','Aero IV','Wind Blade','Earthen Fury','Stone II','Stone IV','Geocrush','Judgement Bolt','Thunder II','Thunder IV','Thunderstorm','Thunderspark','Tidal Wave','Water II','Water IV','Grand Fall','Howling Moon','Lunar Bay','Ruinous Omen','Somnolence','Nether Blast','Night Terror','Level ? Holy'}
+local SmnEnfeebling = T{'Diamond Storm','Sleepga','Shock Squall','Slowga','Tidal Roar','Pavor Nocturnus','Ultimate Terror','Nightmare','Mewing Lullaby','Eerie Eye'}
+local SmnHybrid = T{'Flaming Crush','Burning Strike'}
 
 
 profile.OnLoad = function()
@@ -244,14 +253,22 @@ profile.HandleDefault = function()
     end
 
     local player = gData.GetPlayer();
-    if (player.Status == 'Resting') then
-        gFunc.EquipSet(sets.Resting);
-        shared.SetCurrentSet('Resting');
-    end
 
     if not pet then
-        gFunc.EquipSet(sets.Idle);
-        shared.SetCurrentSet('Idle');
+        if (player.Status == 'Resting') then
+            gFunc.EquipSet(sets.Resting);
+            shared.SetCurrentSet('Resting');
+        else
+            gFunc.EquipSet(sets.Idle);
+            shared.SetCurrentSet('Idle');
+        end
+    end
+
+    local pet_action = gData.GetPetAction();
+
+    if pet_action ~= nil then
+        gFunc.EquipSet('BP');
+        shared.SetCurrentSet('BP');
     end
 
     shared.GearOverride();
@@ -374,34 +391,192 @@ end
 profile.DisplaySMN = function()
     -- Throttle
     local diffTime = os.clock() - Settings.LastDisplayed;
+    local C = shared.Colour;
     if diffTime < Settings.DisplayThrottle then
         return;
     end
     local displayString = '';
-    if Settings.CurrentAvatar == 'None' then displayString = displayString + '1: |cFF54DCF8|Carbuncle|r\n2: |cFFF44336|Ifrit|r\n3: |cFF6AA84F|Garuda|r\n4: |cFFFFD966|Titan|r\n5: |cFF3896EC|Leviathan|r\n6: |cFFC8E0F7|Shiva|r\n7: |cFF9D5CDA|Ramuh|r\n8: |cFF592789|Fenrir|r\n9: |cFF960E5E|Diabolos'
-    elseif Settings.CurrentAvatar == 'Carbuncle' then displayString = displayString + '1: |cFF5FFF5F|Prot/Shell (44)|r\n2: |cFFF44336|WS Poison Nails|r\n3: |cFF5FFF5F|ST Heal (6)|r\n4: |cFF5FFF5F|AOE Heal (124)|r\n5: |cFFF44336|WS Meteorite (AOE)|r\n6: |cFF5FFF5F|Attr Buff|r\n8: |cFF5FFF5F|2HR AOE'
-    elseif Settings.CurrentAvatar == 'Ifrit' then displayString = displayString + '1: |cFF5FFF5F|Attack Up (84)|r\n2: |cFFF44336|WS Punch|r\n3: |cFFF44336|WS Burning Strike|r\n4: |cFFF44336|WS Double Punch|r\n5: |cFFF44336|Fire 2|r\n6: |cFFF44336|Fire 4|r\n8: |cFF5FFF5F|2HR AOE'
-    elseif Settings.CurrentAvatar == 'Garuda' then displayString = displayString + '1: |cFF5FFF5F|Blink (92)|r\n2: |cFFF44336|WS Claw|r\n3: |cFFF44336|WS Predator Claws|r\n4: |cFF5FFF5F|Hastega (112)|r\n5: |cFF5FFF5F|AOE Heal (119)|r\n6: |cFF6AA84F|Aero 2|r\n7: |cFF6AA84F|Aero 4|r\n8: |cFF5FFF5F|2HR AOE'
-    elseif Settings.CurrentAvatar == 'Titan' then displayString = displayString + '1: |cFF5FFF5F|Stoneskin (92)|r\n2: |cFFF44336|WS Rock Throw|r\n3: |cFFF44336|WS Megalith Throw|r\n4: |cFFF44336|WS Bind|r\n5: |cFFF44336|WS Mountain Buster|r\n6: |cFFFFD966|Stone 2|r\n7: |cFFFFD966|Stone 4|r\n8: |cFF5FFF5F|2HR AOE'
-    elseif Settings.CurrentAvatar == 'Leviathan' then displayString = displayString + '1: |cFF5FFF5F|Refresh (99)|r\n2: |cFFF44336|WS Barracuda Dive|r\n3: |cFFF44336|WS Tail Whip|r\n4: |cFFF44336|WS Spinning Dive|r\n5: |cFF9D5CDA|Slowga (48)|r\n6: |cFF3896EC|Water 2|r\n7: |cFF3896EC|Water 4|r\n8: |cFF5FFF5F|2HR AOE'
-    elseif Settings.CurrentAvatar == 'Shiva' then displayString = displayString + '1: |cFF5FFF5F|Ice Spikes (63)|r\n2: |cFFF44336|WS Axe Kick|r\n3: |cFFF44336|WS Double Slap|r\n4: |cFFF44336|WS Rush|r\n5: |cFF9D5CDA|Sleepga (56)|r\n6: |cFFC8E0F7|Blizzard 2|r\n7: |cFFC8E0F7|Blizzard 4|r\n8: |cFF5FFF5F|2HR AOE'
-    elseif Settings.CurrentAvatar == 'Ramuh' then displayString = displayString + '1: |cFF5FFF5F|Enthunder (52)|r\n2: |cFFF44336|WS Shock Strike|r\n3: |cFFF44336|WS Thunderspark|r\n4: |cFFF44336|WS Chaotic Strike|r\n5: |cFF5FFF5F|Shock Spikes (91)|r\n6: |cFF9D5CDA|Thunder 2|r\n7: |cFF9D5CDA|Thunder 4|r\n8: |cFF5FFF5F|2HR AOE'
+    if Settings.CurrentAvatar == 'None' then
+        displayString = '1: |' .. C.CARBUNCLE .. '|Carbuncle|r\n' ..
+                        '2: |' .. C.IFRIT .. '|Ifrit|r\n' ..
+                        '3: |' .. C.GARUDA .. '|Garuda|r\n' ..
+                        '4: |' .. C.TITAN .. '|Titan|r\n' ..
+                        '5: |' .. C.LEVIATHAN .. '|Leviathan|r\n' ..
+                        '6: |' .. C.SHIVA .. '|Shiva|r\n' ..
+                        '7: |' .. C.RAMUH .. '|Ramuh|r\n' ..
+                        '8: |' .. C.FENRIR .. '|Fenrir|r\n' ..
+                        '9: |' .. C.DIABOLOS .. '|Diabolos'
+    elseif Settings.CurrentAvatar == 'Carbuncle' then
+        displayString = '1: |' .. C.WARD .. '|Prot/Shell (44)|r\n' ..
+                        '2: |' .. C.RAGE .. '|WS Poison Nails|r\n' ..
+                        '3: |' .. C.WARD .. '|ST Heal (6)|r\n' ..
+                        '4: |' .. C.WARD .. '|AOE Heal (124)|r\n' ..
+                        '5: |' .. C.RAGE .. '|WS Meteorite (AOE)|r\n' ..
+                        '7: |' .. C.WARD .. '|Attr Buff|r\n' ..
+                        '8: |' .. C.TWOHOUR .. '|2HR - Searing Light'
+    elseif Settings.CurrentAvatar == 'Ifrit' then
+        displayString = '1: |' .. C.WARD .. '|Attack Up (84)|r\n' ..
+                        '2: |' .. C.RAGE .. '|WS Punch|r\n' ..
+                        '3: |' .. C.RAGE .. '|WS Burning Strike|r\n' ..
+                        '4: |' .. C.RAGE .. '|WS Double Punch|r\n' ..
+                        '5: |' .. C.RAGE .. '|WS Flaming Crush|r\n' ..
+                        '6: |' .. C.IFRIT .. '|Fire 2|r\n' ..
+                        '7: |' .. C.IFRIT .. '|Fire 4|r\n' ..
+                        '8: |' .. C.TWOHOUR .. '|2HR - Inferno'
+    elseif Settings.CurrentAvatar == 'Garuda' then
+        displayString = '1: |' .. C.WARD .. '|Blink (92)|r\n' ..
+                        '2: |' .. C.RAGE .. '|WS Claw|r\n' ..
+                        '3: |' .. C.RAGE .. '|WS Predator Claws|r\n' ..
+                        '4: |' .. C.WARD .. '|Hastega (112)|r\n' ..
+                        '5: |' .. C.WARD .. '|AOE Heal (119)|r\n' ..
+                        '6: |' .. C.GARUDA .. '|Aero 2|r\n' ..
+                        '7: |' .. C.GARUDA .. '|Aero 4|r\n' ..
+                        '8: |' .. C.TWOHOUR .. '|2HR - Aerial Blast'
+    elseif Settings.CurrentAvatar == 'Titan' then
+        displayString = '1: |' .. C.WARD .. '|Stoneskin (92)|r\n' ..
+                        '2: |' .. C.RAGE .. '|WS Rock Throw|r\n' ..
+                        '3: |' .. C.RAGE .. '|WS Megalith Throw|r\n' ..
+                        '4: |' .. C.RAGE .. '|WS Rock Buster (Bind)|r\n' ..
+                        '5: |' .. C.RAGE .. '|WS Mountain Buster|r\n' ..
+                        '6: |' .. C.TITAN .. '|Stone 2|r\n' ..
+                        '7: |' .. C.TITAN .. '|Stone 4|r\n' ..
+                        '8: |' .. C.TWOHOUR .. '|2HR - Earthen Fury'
+    elseif Settings.CurrentAvatar == 'Leviathan' then
+        displayString = '1: |' .. C.WARD .. '|Refresh (99)|r\n' ..
+                        '2: |' .. C.RAGE .. '|WS Barracuda Dive|r\n' ..
+                        '3: |' .. C.RAGE .. '|WS Tail Whip|r\n' ..
+                        '4: |' .. C.RAGE .. '|WS Spinning Dive|r\n' ..
+                        '5: |' .. C.DEBUFF .. '|Slowga (48)|r\n' ..
+                        '6: |' .. C.LEVIATHAN .. '|Water 2|r\n' ..
+                        '7: |' .. C.LEVIATHAN .. '|Water 4|r\n' ..
+                        '8: |' .. C.TWOHOUR .. '|2HR - Tidal Wave'
+    elseif Settings.CurrentAvatar == 'Shiva' then
+        displayString = '1: |' .. C.WARD .. '|Ice Spikes (63)|r\n' ..
+                        '2: |' .. C.RAGE .. '|WS Axe Kick|r\n' ..
+                        '3: |' .. C.RAGE .. '|WS Double Slap|r\n' ..
+                        '4: |' .. C.RAGE .. '|WS Rush|r\n' ..
+                        '5: |' .. C.DEBUFF .. '|Sleepga (56)|r\n' ..
+                        '6: |' .. C.SHIVA .. '|Blizzard 2|r\n' ..
+                        '7: |' .. C.SHIVA .. '|Blizzard 4|r\n' ..
+                        '8: |' .. C.TWOHOUR .. '|2HR - Diamond Dust'
+    elseif Settings.CurrentAvatar == 'Ramuh' then
+        displayString = '1: |' .. C.WARD .. '|Enthunder (52)|r\n' ..
+                        '2: |' .. C.RAGE .. '|WS Shock Strike|r\n' ..
+                        '3: |' .. C.RAGE .. '|WS Thunderspark|r\n' ..
+                        '4: |' .. C.RAGE .. '|WS Chaotic Strike|r\n' ..
+                        '5: |' .. C.WARD .. '|Shock Spikes (91)|r\n' ..
+                        '6: |' .. C.RAMUH .. '|Thunder 2|r\n' ..
+                        '7: |' .. C.RAMUH .. '|Thunder 4|r\n' ..
+                        '8: |' .. C.TWOHOUR .. '|2HR - Judgment Bolt'
     elseif Settings.CurrentAvatar == 'Fenrir' then
         local acc, eva = binds.Info_EclipticHowl();
-        if acc and eva then displayString = displayString + '1: |cFF5FFF5F|Accuracy +' .. acc .. '/Evasion +' .. eva .. ' (57)|r\n2: |cFFF44336|WS Moonlit Charge (Blind)|r\n3: |cFFF44336|WS Crescent Fang (Para)|r\n4: |cFFF44336|WS Eclipse Bite|r\n5: |cFF9D5CDA|Dispel x 2 (27)|r\n6: |cFF5FFF5F|PT +Attr|r\n7: |cFF9D5CDA|Target -acc -eva|r\n8: |cFF5FFF5F|2HR AOE'
-        else displayString = displayString + '1: |cFF5FFF5F|Accuracy/Evasion (57)|r\n2: |cFFF44336|WS Moonlit Charge (Blind)|r\n3: |cFFF44336|WS Crescent Fang (Para)|r\n4: |cFFF44336|WS Eclipse Bite|r\n5: |cFF9D5CDA|Dispel x 2 (27)|r\n6: |cFF5FFF5F|PT +Attr|r\n7: |cFF9D5CDA|Target -acc -eva|r\n8: |cFF5FFF5F|2HR AOE' end
-    elseif Settings.CurrentAvatar == 'Diabolos' then 
+        if acc and eva then 
+            displayString = '1: |' .. C.WARD .. '|Accuracy +' .. acc .. '/Evasion +' .. eva .. ' (57)|r\n' ..
+                            '2: |' .. C.RAGE .. '|WS Moonlit Charge (Blind)|r\n' ..
+                            '3: |' .. C.RAGE .. '|WS Crescent Fang (Para)|r\n' ..
+                            '4: |' .. C.RAGE .. '|WS Eclipse Bite|r\n' ..
+                            '5: |' .. C.DEBUFF .. '|Dispel x 2 (27)|r\n' ..
+                            '6: |' .. C.WARD .. '|PT +Attr|r\n' ..
+                            '7: |' .. C.DEBUFF .. '|Target -acc -eva|r\n' ..
+                            '8: |' .. C.TWOHOUR .. '|2HR - Howling Moon'
+        else 
+            displayString = '1: |' .. C.WARD .. '|Accuracy/Evasion (57)|r\n' ..
+                            '2: |' .. C.RAGE .. '|WS Moonlit Charge (Blind)|r\n' ..
+                            '3: |' .. C.RAGE .. '|WS Crescent Fang (Para)|r\n' ..
+                            '4: |' .. C.RAGE .. '|WS Eclipse Bite|r\n' ..
+                            '5: |' .. C.DEBUFF .. '|Dispel x 2 (27)|r\n' ..
+                            '6: |' .. C.WARD .. '|PT +Attr|r\n' ..
+                            '7: |' .. C.DEBUFF .. '|Target -acc -eva|r\n' ..
+                            '8: |' .. C.TWOHOUR .. '|2HR - Howling Moon'
+        end
+    elseif Settings.CurrentAvatar == 'Diabolos' then
         local mab, mdb = binds.Info_DreamShroud();
-        if mab and mdb then displayString = displayString + '1: |cFF5FFF5F|MAB +' .. mab .. '/MDB +' .. mdb .. ' (121)|r\n2: |cFFF44336|WS Camisado|r\n3: |cFFF44336|WS Nether Blast|r\n4: |cFFF44336|WS Somnolence (Gravity)|r\n5: |cFF9D5CDA|Sleepga + DOT (42)|r\n6: |cFF5FFF5F|Phalanx (92)|r\n7: |cFF9D5CDA|Target -Attributes (27)|r\n8: |cFF5FFF5F|2HR AOE'
-        else displayString = displayString + '1: |cFF5FFF5F|MAB/MDB (121)|r\n2: |cFFF44336|WS Camisado|r\n3: |cFFF44336|WS Nether Blast|r\n4: |cFFF44336|WS Somnolence (Gravity)|r\n5: |cFF9D5CDA|Sleepga + DOT (42)|r\n6: |cFF5FFF5F|Phalanx (92)|r\n7: |cFF9D5CDA|Target -Attributes (27)|r\n8: |cFF5FFF5F|2HR AOE' end
-    elseif Settings.CurrentAvatar == 'Fire Spirit' then displayString = displayString + '1: |cFFF44336|Fire (13)|r\n2: |cFFF44336|Fire II (38)|r\n3: |cFFF44336|Fire III (62)|r\n4: |cFFF44336|Fire IV (73)|r\n5: |cFFF44336|Burn (24)|r\n6: |cFFF44336|Flare (60)'
-    elseif Settings.CurrentAvatar == 'Ice Spirit' then displayString = displayString + '1: |cFFC8E0F7|Blizzard (17)|r\n2: |cFFC8E0F7|Blizzard II (42)|r\n3: |cFFC8E0F7|Blizzard III (64)|r\n4: |cFFC8E0F7|Blizzard IV (74)|r\n5: |cFFC8E0F7|Frost (22)|r\n6: |cFFC8E0F7|Freeze (50)|r\n7: |cFFC8E0F7|Paralyze (4)|r\n8: |cFFC8E0F7|Bind (7)'
-    elseif Settings.CurrentAvatar == 'Thunder Spirit' then displayString = displayString + '1: |cFF9D5CDA|Thunder (21)|r\n2: |cFF9D5CDA|Thunder II (46)|r\n3: |cFF9D5CDA|Thunder III (66)|r\n4: |cFF9D5CDA|Thunder IV (75)|r\n5: |cFF9D5CDA|Shock (16)|r\n6: |cFF9D5CDA|Burst (56)'
-    elseif Settings.CurrentAvatar == 'Air Spirit' then displayString = displayString + '1: |cFF6AA84F|Aero (9)|r\n2: |cFF6AA84F|Aero II (34)|r\n3: |cFF6AA84F|Aero III (59)|r\n4: |cFF6AA84F|Aero IV (72)|r\n5: |cFF6AA84F|Choke (20)|r\n6: |cFF6AA84F|Tornado (52)|r\n 7: |cFF6AA84F|Gravity (21)|r\n8: |cFF6AA84F|Silence (15)'
-    elseif Settings.CurrentAvatar == 'Water Spirit' then displayString = displayString + '1: |cFF3896EC|Water (5)|r\n2: |cFF3896EC|Water II (30)|r\n3: |cFF3896EC|Water III (55)|r\n4: |cFF3896EC|Water IV (70)|r\n5: |cFF3896EC|Drown (27)|r\n6: |cFF3896EC|Flood (58)|r\n 7: |cFF3896EC|Poison (3)|r\n8: |cFF3896EC|Poison II (42)'
-    elseif Settings.CurrentAvatar == 'Earth Spirit' then displayString = displayString + '1: |cFFFFD966|Stone (1)|r\n2: |cFFFFD966|Stone II (26)|r\n3: |cFFFFD966|Stone III (51)|r\n4: |cFFFFD966|Stone IV (68)|r\n5: |cFFFFD966|Rasp (18)|r\n6: |cFFFFD966|Quake (54)|r\n 7: |cFFFFD966|Slow (13)'
-    elseif Settings.CurrentAvatar == 'Light Spirit' then displayString = displayString + '1: |cFF5FFF5F|Regen|r\n2: |cFF5FFF5F|Cure (Low)|r\n3: |cFF5FFF5F|Cure (High)|r\n4: |cFF5FFF5F|Curaga|r\n5: |cFF5FFF5F|Holy|r\n6: |cFF5FFF5F|Banish|r\n7: |cFF5FFF5F|Protect|r\n8: |cFF5FFF5F|Shell'
-    elseif Settings.CurrentAvatar == 'Dark Spirit' then displayString = displayString + '1: |cFF5FFF5F|Stun|r\n2: |cFF5FFF5F|Dispel|r\n3: |cFF5FFF5F|Sleep|r\n4: |cFF5FFF5F|Sleepga|r\n5: |cFF5FFF5F|Bio|r\n6: |cFF5FFF5F|Drain|r\n7: |cFF5FFF5F|Aspir|r\n8: |cFF5FFF5F|Blind' 
+        if mab and mdb then 
+            displayString = '1: |' .. C.WARD .. '|MAB +' .. mab .. '/MDB +' .. mdb .. ' (121)|r\n' ..
+                            '2: |' .. C.RAGE .. '|WS Camisado|r\n' ..
+                            '3: |' .. C.RAGE .. '|WS Nether Blast|r\n' ..
+                            '4: |' .. C.RAGE .. '|WS Somnolence (Gravity)|r\n' ..
+                            '5: |' .. C.DEBUFF .. '|Sleepga + DOT (42)|r\n' ..
+                            '6: |' .. C.WARD .. '|Phalanx (92)|r\n' ..
+                            '7: |' .. C.DEBUFF .. '|Target -Attributes (27)|r\n' ..
+                            '8: |' .. C.TWOHOUR .. '|2HR - Ruinous Omen'
+        else
+            displayString = '1: |' .. C.WARD .. '|MAB/MDB (121)|r\n' ..
+                            '2: |' .. C.RAGE .. '|WS Camisado|r\n' ..
+                            '3: |' .. C.RAGE .. '|WS Nether Blast|r\n' ..
+                            '4: |' .. C.RAGE .. '|WS Somnolence (Gravity)|r\n' ..
+                            '5: |' .. C.DEBUFF .. '|Sleepga + DOT (42)|r\n' ..
+                            '6: |' .. C.WARD .. '|Phalanx (92)|r\n' ..
+                            '7: |' .. C.DEBUFF .. '|Target -Attributes (27)|r\n' ..
+                            '8: |' .. C.TWOHOUR .. '|2HR - Ruinous Omen'
+        end
+    elseif Settings.CurrentAvatar == 'Fire Spirit' then
+        displayString = '1: |' .. C.IFRIT .. '|Fire (13)|r\n' ..
+                        '2: |' .. C.IFRIT .. '|Fire II (38)|r\n' ..
+                        '3: |' .. C.IFRIT .. '|Fire III (62)|r\n' ..
+                        '4: |' .. C.IFRIT .. '|Fire IV (73)|r\n' ..
+                        '5: |' .. C.IFRIT .. '|Burn (24)|r\n' ..
+                        '6: |' .. C.IFRIT .. '|Flare (60)'
+    elseif Settings.CurrentAvatar == 'Ice Spirit' then 
+        displayString = '1: |' .. C.SHIVA .. '|Blizzard (17)|r\n' ..
+                        '2: |' .. C.SHIVA .. '|Blizzard II (42)|r\n' ..
+                        '3: |' .. C.SHIVA .. '|Blizzard III (64)|r\n' ..
+                        '4: |' .. C.SHIVA .. '|Blizzard IV (74)|r\n' ..
+                        '5: |' .. C.SHIVA .. '|Frost (22)|r\n' ..
+                        '6: |' .. C.SHIVA .. '|Freeze (50)|r\n' ..
+                        '7: |' .. C.SHIVA .. '|Paralyze (4)|r\n' ..
+                        '8: |' .. C.SHIVA .. '|Bind (7)'
+    elseif Settings.CurrentAvatar == 'Thunder Spirit' then
+        displayString = '1: |' .. C.RAMUH .. '|Thunder (21)|r\n' ..
+                        '2: |' .. C.RAMUH .. '|Thunder II (46)|r\n' ..
+                        '3: |' .. C.RAMUH .. '|Thunder III (66)|r\n' ..
+                        '4: |' .. C.RAMUH .. '|Thunder IV (75)|r\n' ..
+                        '5: |' .. C.RAMUH .. '|Shock (16)|r\n' ..
+                        '6: |' .. C.RAMUH .. '|Burst (56)'
+    elseif Settings.CurrentAvatar == 'Air Spirit' then
+        displayString = '1: |' .. C.GARUDA .. '|Aero (9)|r\n' ..
+                        '2: |' .. C.GARUDA .. '|Aero II (34)|r\n' ..
+                        '3: |' .. C.GARUDA .. '|Aero III (59)|r\n' ..
+                        '4: |' .. C.GARUDA .. '|Aero IV (72)|r\n' ..
+                        '5: |' .. C.GARUDA .. '|Choke (20)|r\n' ..
+                        '6: |' .. C.GARUDA .. '|Tornado (52)|r\n' ..
+                        '7: |' .. C.GARUDA .. '|Gravity (21)|r\n' ..
+                        '8: |' .. C.GARUDA .. '|Silence (15)'
+    elseif Settings.CurrentAvatar == 'Water Spirit' then
+        displayString = '1: |' .. C.LEVIATHAN .. '|Water (5)|r\n' ..
+                        '2: |' .. C.LEVIATHAN .. '|Water II (30)|r\n' ..
+                        '3: |' .. C.LEVIATHAN .. '|Water III (55)|r\n' ..
+                        '4: |' .. C.LEVIATHAN .. '|Water IV (70)|r\n' ..
+                        '5: |' .. C.LEVIATHAN .. '|Drown (27)|r\n' ..
+                        '6: |' .. C.LEVIATHAN .. '|Flood (58)|r\n' ..
+                        '7: |' .. C.LEVIATHAN .. '|Poison (3)|r\n' ..
+                        '8: |' .. C.LEVIATHAN .. '|Poison II (42)'
+    elseif Settings.CurrentAvatar == 'Earth Spirit' then
+        displayString = '1: |' .. C.TITAN .. '|Stone (1)|r\n' ..
+                        '2: |' .. C.TITAN .. '|Stone II (26)|r\n' ..
+                        '3: |' .. C.TITAN .. '|Stone III (51)|r\n' ..
+                        '4: |' .. C.TITAN .. '|Stone IV (68)|r\n' ..
+                        '5: |' .. C.TITAN .. '|Rasp (18)|r\n' ..
+                        '6: |' .. C.TITAN .. '|Quake (54)|r\n' ..
+                        '7: |' .. C.TITAN .. '|Slow (13)'
+    elseif Settings.CurrentAvatar == 'Light Spirit' then
+        displayString = '1: |' .. C.CARBUNCLE .. '|Regen|r\n' ..
+                        '2: |' .. C.CARBUNCLE .. '|Cure (Low)|r\n' ..
+                        '3: |' .. C.CARBUNCLE .. '|Cure (High)|r\n' ..
+                        '4: |' .. C.CARBUNCLE .. '|Curaga|r\n' ..
+                        '5: |' .. C.CARBUNCLE .. '|Holy|r\n' ..
+                        '6: |' .. C.CARBUNCLE .. '|Banish|r\n' ..
+                        '7: |' .. C.CARBUNCLE .. '|Protect|r\n' ..
+                        '8: |' .. C.CARBUNCLE .. '|Shell'
+    elseif Settings.CurrentAvatar == 'Dark Spirit' then
+        displayString = '1: |' .. C.FENRIR .. '|Stun|r\n' ..
+                        '2: |' .. C.FENRIR .. '|Dispel|r\n' ..
+                        '3: |' .. C.FENRIR .. '|Sleep|r\n' ..
+                        '4: |' .. C.FENRIR .. '|Sleepga|r\n' ..
+                        '5: |' .. C.FENRIR .. '|Bio|r\n' ..
+                        '6: |' .. C.FENRIR .. '|Drain|r\n' ..
+                        '7: |' .. C.FENRIR .. '|Aspir|r\n' ..
+                        '8: |' .. C.FENRIR .. '|Blind'
     end
     shared.SetExtras(displayString);
     Settings.LastDisplayed = os.clock();
