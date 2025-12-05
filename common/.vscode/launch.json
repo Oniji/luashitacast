@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lua-local",
+      "request": "launch",
+      "name": "Run test_run.lua",
+      "program": { "command": "C:/lua/lua.exe" },
+      "args": ["${workspaceFolder}/latent_optimizer_test.lua"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "LUA_PATH": ".\\?.lua;..\\?.lua;${workspaceFolder}\\?.lua;;"
+      }
+    }
+  ]
+}

@@ -16,20 +16,20 @@ local summoners_horn = false;
 local sets = {
 
     Idle_Priority = {
-        Main = {'Kukulcan\'s Staff', 'Elm Staff +1', 'Pilgrim\'s Wand', 'Willow Wand +1'},
+        Main = {'Terra\'s Staff', 'Kukulcan\'s Staff', 'Elm Staff +1', 'Pilgrim\'s Wand', 'Willow Wand +1'},
         Ammo = {'Hedgehog Bomb', 'Fortune Egg'},
-        Neck = {'Rep.Mythril Medal', 'Rep.Bronze Medal'},
-        Ear1 = {'Novia Earring', 'Morion Earring', 'Onyx Earring'},
+        Neck = {'Uggalepih Pendant', 'Rep.Mythril Medal', 'Rep.Bronze Medal'},
+        Ear1 = {'Novia Earring', 'Phantom Earring', 'Morion Earring', 'Onyx Earring'},
         Ear2 = {'Loquac. Earring', 'Morion Earring', 'Onyx Earring'},
-        Head = {'Vermillion Cloak', 'Electrum Hairpin', 'Silver Hairpin', 'Brass Hairpin'},
-        Body = {'Vermillion Cloak', 'Seer\'s Tunic +1', 'Ducal Aketon'},
-        Hands = {'Evoker\'s Bracers', 'Austere Cuffs', 'Carbuncle Mitts'},
+        Head = {'Evoker\'s Horn', 'Electrum Hairpin', 'Silver Hairpin', 'Brass Hairpin'},
+        Body = {'Yinyang Robe', 'Seer\'s Tunic +1', 'Ducal Aketon'},
+        Hands = {'Summoner\'s Brcr.', 'Evoker\'s Bracers', 'Austere Cuffs', 'Carbuncle Mitts'},
         Ring1 = {'Ether Ring', 'Astral Ring'},
-        Ring2 = {'Astral Ring'},
-        Back = {'Aurora Mantle', 'Cape', 'Rabbit Mantle'},
+        Ring2 = {'Evoker\'s Ring', 'Astral Ring'},
+        Back = {'Summoner\'s Cape', 'Errant Cape', 'Blue Cape', 'Aurora Mantle', 'Cape', 'Rabbit Mantle'},
         Waist = {'Hierarch Belt', 'Powerful Rope', 'Friar\'s Rope', 'Leather Belt'},
-        Legs = {'Custom Pants', 'Baron\'s Slops', 'Angler\'s Hose', 'Chocobo Hose'},
-        Feet = {'Evoker\'s Pigaches', 'Custom F Boots', 'Mage\'s Sandals', 'Light Soleas', 'Chocobo Boots'}
+        Legs = {'Summoner\'s Spats', 'Custom Pants', 'Baron\'s Slops', 'Angler\'s Hose', 'Chocobo Hose'},
+        Feet = {'Summoner\'s Pgch.', 'Evoker\'s Pigaches', 'Custom F Boots', 'Mage\'s Sandals', 'Light Soleas', 'Chocobo Boots'}
     },
     MND_Priority = {
         Head = {'Austere Hat', 'Electrum Hairpin', 'Silver Hairpin'},
@@ -71,16 +71,16 @@ local sets = {
         Legs = {'Mage\'s Slacks'},
         Waist = {'Shaman\'s Belt'},
         Feet = {'Custom F Boots'},
-        Back = {'Black Cape +1'},
+        Back = 'Summoner\'s Cape',
     },
     Healing_Priority = {
-        --Body = {'Baron\'s Saio'},
+        Body = {'Yinyang Robe'},
         Neck = {'Justice Badge'},
         Waist = {'Friar\'s Rope'},
         Hands = {'Devotee\'s Mitts'},
         Legs = {'Custom Pants'},
         Feet = {'Crow Gaiters'},
-        Back = {'White Cape +1'}
+        Back = 'Summoner\'s Cape',
     },
     Enhancing = {
     },
@@ -89,7 +89,8 @@ local sets = {
     },
     Resting = {
         Main = 'Pluto\'s Staff', -- 2
-        Body = 'Vermillion Cloak', -- 1
+        Head = 'Vermillion Cloak', -- 1
+        Body = 'Yinyang Robe', -- 1
         Legs = 'Baron\'s Slops', -- 1
         Ear2 = 'Relaxing Earring', -- 2
         Waist = 'Hierarch Belt', -- 2
@@ -99,30 +100,26 @@ local sets = {
     BP_Delay = {
         Head = 'Austere Hat', -- 2
         Hands = 'Austere Cuffs', -- 1
-        Body = 'Austere Robe', -- 3
-        --Legs = 'Summoner\'s Spats', -- 2
-        Feet = 'Summoner\'s Pigaches', -- 2
-        Back = 'Errant Cape',
+        Body = 'Yinyang Robe', -- 5
+        Legs = 'Summoner\'s Spats', -- 2
+        Feet = 'Summoner\'s Pgch.', -- 2
+        Back = 'Summoner\'s Cape',
     },
-    BP = {
-        --Head = 'Evoker\'s Horn', -- 5
-        Head = 'Austere Hat', -- 2
+    BP_Priority = {
+        Head = 'Evoker\'s Horn', -- 5
         --Body = 'Summoner\'s Doublet', -- Avatar CritHit
-        --Hands = 'Summoner\'s Bracers', -- 10 + Avatar Accuracy
-        Hands = 'Austere Cuffs', -- 2
-        Legs = 'Austere Slops', -- 3
-        Feet = 'Austere Sabots', -- 3
-        --Legs = 'Evoker\'s Spats', -- Avatar Accuracy
-        --Feet = 'Summoner\'s Pigaches', -- Avatar Attack
-        --Ring1 = 'Evoker\'s Ring', --10
+        Hands = {'Summoner\'s Brcr.', 'Austere Cuffs'}, -- 2
+        Legs = 'Evoker\'s Spats', -- Avatar Accuracy
+        Feet = 'Summoner\'s Pgch.', -- Avatar Attack
+        Ring2 = 'Evoker\'s Ring', -- 10
         --Neck = 'Summoning Torque',
     },
     Avatar_Perp = {
         Head = 'Austere Hat',
-        Body = 'Austere Robe', -- 1
+        Body = 'Yinyang Robe', -- Refresh
         --Hands = 'Nashira Gages', -- 1
         --Feet = 'Evoker\'s Pigaches +1', -- 1
-        --Ring1 = 'Evoker\'s Ring', -- 1
+        Ring2 = 'Evoker\'s Ring', -- 1
     }
 };
 profile.Sets = sets;
@@ -343,6 +340,10 @@ profile.HandleMidcast = function()
 
     if (Settings.CurrentLevel >= 51) then
         shared.UseElementalStaff(action.Element);
+    end
+
+    if action.Name == 'Invisible' or action.Name == 'Sneak' then
+        gFunc.Equip('back', 'Skulker\'s Cape');
     end
 
 end

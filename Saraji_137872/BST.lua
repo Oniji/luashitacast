@@ -11,18 +11,18 @@ local sets = {
         Sub = {'Targe +1'}
     },
     Weapon_NIN_Priority = {
-        --Main = {'Fransisca', 'Tungi', 'Viking Axe', 'Cmb.Cst. Axe', 'Warrior\'s Axe', 'Battleaxe +1', 'Bone Axe +1', 'Legionnaire\'s Axe', 'Brass Axe', 'Bronze Axe' },
-        --Sub = {'Tungi', 'Viking Axe', 'Barbaroi Axe', 'Warrior\'s Axe', 'Battleaxe +1'},
-        Main = 'Viking Axe',
-        Sub = 'Viking Axe',
+        Main = {'Fransisca', 'Tungi', 'Viking Axe', 'Cmb.Cst. Axe', 'Warrior\'s Axe', 'Battleaxe +1', 'Bone Axe +1', 'Legionnaire\'s Axe', 'Brass Axe', 'Bronze Axe' },
+        Sub = {'Barbaroi Axe', 'Viking Axe', 'Warrior\'s Axe', 'Battleaxe +1'},
+        --Main = 'Viking Axe',
+        --Sub = 'Viking Axe',
     },
     TP_Priority = {
-        Head = {'Walkure Mask', 'Win. Headgear', 'Centurion\'s Visor', 'Beetle Mask +1', 'San. Bandana'},
+        Head = {'Voyager Sallet', 'Win. Headgear', 'Centurion\'s Visor', 'Beetle Mask +1', 'San. Bandana'},
         Neck = {'Peacock Amulet', 'Ryl.Grd. Collar', 'Spike Necklace', 'Bird Whistle'},
         Body = {'Scorpion Harness', 'Beast Jackcoat', 'Brigandine', 'Ryl.Sqr. Chainmail', 'Ctr. Scale Mail', 'Beetle Harness +1','Bastokan Harness', 'Ducal Aketon'},
         Hands = {'Custom F Gloves', 'Battle Gloves', 'Chocobo Gloves'},
         Ring1 = {'Toreador\'s Ring', 'Deft Ring', 'Balance Ring', 'San d\'Orian Ring'},
-        Ring2 = {'Rajas Ring', 'Balance Ring', 'Bastokan Ring'},
+        Ring2 = {'Jaeger Ring', 'Balance Ring', 'Bastokan Ring'},
         Ear1 = {'Brutal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle Earring +1', 'Bone Earring +1', 'Onyx Earring'},
         Ear2 = {'Beastly Earring', 'Spike Earring', 'Beetle Earring +1', 'Bone Earring +1', 'Onyx Earring'},
         Legs = {'Crow Hose', 'Republic Subligar', 'Beetle Subligar +1', 'Angler\'s hose', 'Chocobo Hose'},
@@ -32,16 +32,16 @@ local sets = {
         Ammo = 'Tiphia Sting'
     },
     Idle_Priority = {
-        Head = {'Optical Hat', 'Walkure Mask', 'Win. Headgear', 'Centurion\'s Visor', 'Beetle Mask +1', 'San. Bandana'},
+        Head = {'Optical Hat', 'Voyager Sallet', 'Win. Headgear', 'Centurion\'s Visor', 'Beetle Mask +1', 'San. Bandana'},
         Neck = {'Peacock Amulet', 'Spike Necklace', 'Bird Whistle'},
         Body = {'Scorpion Harness', 'Beast Jackcoat', 'Brigandine', 'Ryl.Sqr. Chainmail', 'Ctr. Scale Mail', 'Beetle Harness +1','Bastokan Harness', 'Ducal Aketon'},
         Hands = {'Custom F Gloves', 'Battle Gloves', 'Chocobo Gloves'},
         Ring1 = {'Toreador\'s Ring', 'Sniper\'s Ring', 'Deft Ring', 'Balance Ring', 'Bastokan Ring'},
-        Ring2 = {'Rajas Ring', 'Balance Ring', 'Bastokan Ring'},
+        Ring2 = {'Jaeger Ring', 'Balance Ring', 'Bastokan Ring'},
         Ear1 = {'Brutal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle Earring +1', 'Bone Earring +1', 'Onyx Earring'},
         Ear2 = {'Beastly Earring', 'Spike Earring', 'Beetle Earring +1', 'Bone Earring +1', 'Onyx Earring'},
-        Legs = {'Crow Hose', 'Republic Subligar', 'Beetle Subligar +1', 'Angler\'s hose', 'Chocobo Hose'},
-        Feet = {'Crow Gaiters', 'Ctr. Greaves', 'Btl. Leggings +1', 'Bas. Leggings', 'Chocobo Boots'},
+        Legs = {'Republic Subligar', 'Beetle Subligar +1', 'Angler\'s hose', 'Chocobo Hose'},
+        Feet = {'Leaping Boots', 'Bas. Leggings', 'Chocobo Boots'},
         Back = {'Amemet Mantle', 'Nomad\'s Mantle'},
         Waist = {'Swift Belt', 'Life Belt', 'Tilt Belt', 'Brave Belt', 'Leather Belt'},  
     },
@@ -50,7 +50,7 @@ local sets = {
         Hands = {'Enkelados\'s Bracelets'},
         Legs = {'Republic Subligar'},
         Ring1 = {'Puissance Ring', 'Courage Ring'},
-        Ring2 = {'Rajas Ring', 'Courage Ring'},
+        Ring2 = {'Courage Ring'},
         Waist = {'Sword Belt', 'Brave Belt'},
         Feet = {'Rutter Sabatons'},
         Ammo = 'Tiphia Sting'
@@ -60,7 +60,7 @@ local sets = {
         Hands = {'Custom F Gloves'},
         Legs = {'Republic Subligar'},
         Ring1 = {'Toreador\'s Ring', 'Courage Ring'},
-        Ring2 = {'Rajas Ring', 'Courage Ring'},
+        Ring2 = {'Jaeger Ring', 'Courage Ring'},
         Waist = {'Life Belt'},
         Feet = {'Rutter Sabatons'},
         Ammo = 'Tiphia Sting'
@@ -316,7 +316,7 @@ end
 profile.LevelCheck = function()
 
     local myLevel = AshitaCore:GetMemoryManager():GetPlayer():GetMainJobLevel();
-    myLevel = 50;
+    myLevel = 60;
     if (myLevel ~= Settings.CurrentLevel) then
         gFunc.EvaluateLevels(profile.Sets, myLevel);
         Settings.CurrentLevel = myLevel;

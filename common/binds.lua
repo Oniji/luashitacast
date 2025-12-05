@@ -53,7 +53,7 @@ binds.Common_Load = function()
     binds.add('=', '/lac enable');
     binds.add(',', '/lac fwd area');
     binds.add('0', '/lac fwd lockstyle');
-    binds.add('.', '/lac fwd fillmodetoggle');
+    binds.add('F9', '/lac fwd fillmodetoggle');
 end
 
 binds.Common_Unload = function()
@@ -135,7 +135,8 @@ binds.BST_Load = function()
     binds.add('7', '/pet "Gloeosuccus" <me>');
     binds.add('8', '/pet "Palsy Pollen" <me>');
 
-    binds.add('f', '/pet "Fight" <t>');
+    binds.add('e', '/pet "Fight" <t>');
+    binds.add('f', '/pet "Heel" <me>');
     binds.add('+1', '/ja "Charm" <stnpc>');
     binds.add('+2', '/ja "Call Beast" <me>'); 
     binds.add('+3', '/pet "Heel" <me>');
@@ -331,6 +332,40 @@ binds.WHM_Load = function()
     binds.add('^7', '/ma "Sneak" <stpc>');
     binds.add('^8', '/ma "Invisible" <stpc>');
 
+    binds.add('1', '/ma "Regen" ' .. cure_type);
+    binds.add('2', '/ma "Cure II" ' .. cure_type);
+    binds.add('3', '/ma "Cure" ' .. cure_type);
+    binds.add('4', '/ma "Haste" ' .. cure_type);
+    binds.add('5', '/ma "Curaga" ' .. cure_type);
+    binds.add('7', '/ma "Protectra" ' .. cure_type);
+    binds.add('8', '/ma "Shellra" ' .. cure_type);
+
+    binds.add('!1', '/ma "Slow" <t>');
+    binds.add('!2', '/ma "Dia" <t>');
+    binds.add('!3', '/ma "Paralyze" <t>');
+    binds.add('!4', '/ma "Blind" <t>');
+
+    binds.add('[', '/ma "Paralyna" ' .. cure_type);
+    binds.add(']', '/ma "Silena" ' .. cure_type);
+
+    binds.add('+7', '/ma "Blink" <me>');
+    binds.add('+8', '/ma "Stoneskin" <me>');
+    binds.add('+9', '/ma "Aquaveil" <me>');
+
+    binds.add('^7', '/ma "Sneak" ' .. cure_type);
+    binds.add('^8', '/ma "Invisible" ' .. cure_type);
+
+    binds.add('e', '/ma "Dia" <t>');
+    binds.add('f', '/ma "Bind" <t>');
+    binds.add('+f', '/ma "Bind" <t>');
+    binds.add('+x', '/ma "Curaga II" ' .. cure_type);
+    binds.add('c', '/ma "Sleep II" <t>');
+    binds.add('+c', '/ma "Sleepga II" <t>');
+    binds.add('v', '/ma "Sleep" <t>');
+    binds.add('+v', '/ma "Sleepga" <t>');
+    binds.add('t', '/ma "Silence" <t>');
+    binds.add('+t', '/ma "Silena" ' .. cure_type);
+
 end
 
 binds.WHM_Unload = function()
@@ -368,9 +403,9 @@ binds.BLM_Load = function()
 
     binds.add('^1', '/ma "Drain" <t>');
     binds.add('^2', '/ma "Aspir" <t>');
-    binds.add('^3', '/ma "Cure III" <stpc>');
-    binds.add('^4', '/ma "Regen" <stpc>');
-    binds.add('^5', '/ma "Curaga" <stpc>');
+    binds.add('^3', '/ma "Blizzaga II" <t>');
+    binds.add('^4', '/ma "Thundaga II" <t>');
+    binds.add('^5', '/ma "Blizzard II" <t>');
     binds.add('^7', '/ma "Sneak" <stpc>');
     binds.add('^8', '/ma "Invisible" <stpc>');
     binds.add('^9', '/ma "Tonko: Ichi" <me>');
@@ -393,9 +428,19 @@ binds.BLM_Load = function()
     binds.add('v', '/ma "Sleep" <t>');
     binds.add('+v', '/ma "Sleepga" <t>');
 
-
     binds.add('9', '/sorcring');
+    binds.add('[', '/magicburst');
 
+end
+
+binds.BLM_WHM_Load = function()
+    binds.add('7', '/ma "Protectra II" ' .. cure_type);
+    binds.add('8', '/ma "Shellra II" ' .. cure_type);
+end
+
+binds.BLM_RDM_Load = function()
+    binds.add('7', '/ma "Protect II" ' .. cure_type);
+    binds.add('8', '/ma "Shell II" ' .. cure_type);
 end
 
 binds.BLM_THF_Load = function()
@@ -450,6 +495,7 @@ binds.BLM_Unload = function()
     binds.remove('+v');
     binds.remove('9');
     binds.remove('0');
+    binds.remove('[');
 end
 
 binds.BLM_Nukes_Load = function(myLevel)
@@ -740,6 +786,83 @@ binds.THF_Unload = function()
 
 end
 
+--[[ WAR ]]--
+
+binds.WAR_Load = function()
+
+end
+
+binds.WAR_Unload = function()
+
+end
+
+--[[ MNK ]]--
+
+binds.MNK_Load = function()
+    --- Job Abilities ---
+    binds.add('2', '/ja "Boost" <me>');
+    binds.add('e', '/ja "Chi Blast" <t>');
+    binds.add('f', '/ja "Chakra" <me>');
+    binds.add('5', '/ja "Counterstance" <me>');
+    binds.add('6', '/ja "Focus" <me>');
+    --binds.add('1', '/ja "Dodge" <me>');
+
+    
+
+    --- Weaponskills ---
+    --binds.add('+1', '/ws "" <t>');
+    binds.add('+2', '/ws "Combo" <t>');
+    binds.add('+3', '/ws "One Inch Punch" <t>');
+    --binds.add('+4', '/ws "" <t>');
+    
+end
+
+binds.MNK_WAR_Load = function()
+    binds.add('1', '/ja "Provoke" <t>');
+    binds.add('3', '/ja "Berserk" <me>');
+    --binds.add('1', '/ja "Defender" <me>');
+    --binds.add('1', '/ja "Warcry" <me>');
+end
+
+binds.MNK_NIN_Load = function()
+    binds.add('1', '/nin "Utsusemi: Ichi" <me>');
+    --binds.add('1', '/nin "Utsusemi: Ni" <me>');
+    --binds.add('1', '/nin "Tonko: Ichi" <me>');
+end
+
+binds.MNK_SAM_Load = function()
+    binds.add('1', '/ja "Meditate" <me>');
+    --binds.add('1', '/ja "Third Eye" <me>');
+    --binds.add('1', '/ja "Warding Circle" <me>');
+end
+
+binds.MNK_DRG_Load = function()
+    binds.add('e', '/ja "Jump" <t>');
+    binds.add('+e', '/ja "High Jump" <t>');
+    --binds.add('1', '/ja "Ancient Circle" <me>');
+
+end
+
+binds.MNK_THF_Load = function()
+    binds.add('1', '/ja "Sneak Attack" <me>');
+end
+
+binds.MNK_Unload = function()
+    binds.remove('1');
+    binds.remove('2');
+    binds.remove('3');
+    binds.remove('4');
+    binds.remove('5');
+    binds.remove('+1');
+    binds.remove('+2');
+    binds.remove('+3');
+    binds.remove('+4');
+    binds.remove('+5');
+    binds.remove('e');
+    binds.remove('+e');
+
+end
+
 --[[ RDM ]]--
 
 binds.RDM_Load = function()
@@ -780,17 +903,21 @@ binds.RDM_Load = function()
     binds.add('v', '/ma "Sleep" <t>');
     binds.add('+v', '/ma "Sleepga" <t>');
     binds.add('t', '/ma "Silence" <t>');
+    binds.add('+t', '/ma "Silena" ' .. cure_type);
 end
 
 binds.RDM_WHM_Load = function()
+    binds.add('e', '/ma "Dia" <t>');
     binds.add('x', '/ja "Divine Seal" <me>');
 end
 
 binds.RDM_BLM_Load = function()
+    binds.add('e', '/ma "Dia" <t>');
     binds.add('x', '/ja "Elemental Seal" <me>');
 end
 
 binds.RDM_NIN_Load = function()
+    binds.add('e', '/ma "Dia" <t>');
     binds.add('x', '/ma "Utsusemi: Ichi" <me>');
     binds.add('+x', '/ma "Utsusemi: Ni" <me>');
 end
@@ -800,6 +927,7 @@ binds.RDM_BST_Load = function()
 end
 
 binds.RDM_THF_Load = function()
+    binds.add('e', '/ma "Dia" <t>');
     binds.add('x', '/ja "Flee" <me>');
 end
 
@@ -1030,7 +1158,7 @@ binds.SMN_Load = function()
     binds.add('x', '/ja "Divine Seal" <me>');
     -- Avatar Commands
     binds.add('v', '/pet "Release" <me>');
-    binds.add('e', '/pet "Assault" <stnpc>');
+    binds.add('e', '/pet "Assault" <t>');
     binds.add('f', '/pet "Retreat" <me>');
 
     -- Avatars
@@ -1069,20 +1197,21 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('8', '/ma "Fenrir" <me>');
         binds.add('9', '/ma "Diabolos" <me>');
     elseif pet == 'Carbuncle' then
-        if print_avatar_tips then print('Carbuncle | 1: Prot/Shell | 2: WS PsnNails | 3: ST Heal | 4: AOE Heal | 5: WS AOE | 6: Attr Buff | 8: 2HR AOE'); end
+        if print_avatar_tips then print('Carbuncle | 1: Prot/Shell | 2: WS PsnNails | 3: ST Heal | 4: AOE Heal | 5: WS AOE | 7: Attr Buff | 8: 2HR AOE'); end
         binds.add('1', '/pet "Shining Ruby" <me>'); -- Protect/Shell
         binds.add('2', '/pet "Poison Nails" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Healing Ruby" <stpc>'); -- ST Heal
         binds.add('4', '/pet "Healing Ruby II" <me>'); -- AOE Heal
         binds.add('5', '/pet "Meteorite" <t>'); -- AOE Blood Pact: Rage
-        binds.add('6', '/pet "Glittering Ruby" <me>'); -- Random Attribute Buff
+        binds.add('7', '/pet "Glittering Ruby" <me>'); -- Random Attribute Buff
         binds.add('8', '/pet "Searing Light" <t>'); -- Needs 2hr AOE
     elseif pet == 'Ifrit' then
-        if print_avatar_tips then print('Ifrit | 1: Attack Up | 2: WS Punch | 3: WS BurnStrk | 4: WS DblPunch | 5: Fire2 | 6: Fire4 | 8: 2HR AOE'); end
-        binds.add('1', '/pet "Crimson Howl" <me>'); -- Attack Up - Blood Pact: Ward
+        if print_avatar_tips then print('Ifrit | 1: Attack Up | 2: WS Punch | 3: WS BurnStrk | 4: WS DblPunch | 5: FlamCrsh | 6: Fire2 | 7: Fire4 | 8: 2HR AOE'); end
+        binds.add('1', '/pet "Crimson Howl" <me>;/tt custom CrimsonHowl 184'); -- Attack Up - Blood Pact: Ward
         binds.add('2', '/pet "Punch" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Burning Strike" <t>'); -- Blood Pact: Rage
         binds.add('4', '/pet "Double Punch" <t>'); -- Blood Pact: Rage
+        binds.add('5', '/pet "Flaming Crush" <t>'); -- Blood Pact: Rage
         binds.add('6', '/pet "Fire II" <t>'); -- Blood Pact: Rage
         binds.add('7', '/pet "Fire IV" <t>'); -- Blood Pact: Rage
         binds.add('8', '/pet "Inferno" <t>'); -- Needs 2hr AOE
@@ -1091,7 +1220,7 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('1', '/pet "Aerial Armor" <me>'); -- Blink - Blood Pact: Ward
         binds.add('2', '/pet "Claw" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Predator Claws" <t>'); -- Blood Pact: Rage
-        binds.add('4', '/pet "Hastega" <me>'); -- Blood Pact: Ward
+        binds.add('4', '/pet "Hastega" <me>;/tt custom Hastega 184'); -- Blood Pact: Ward
         binds.add('5', '/pet "Whispering Wind" <me>'); -- Blood Pact: Ward
         binds.add('6', '/pet "Aero II" <t>'); -- Blood Pact: Rage
         binds.add('7', '/pet "Aero IV" <t>'); -- Blood Pact: Rage
@@ -1101,15 +1230,15 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('1', '/pet "Earthen Ward" <me>'); -- Stoneskin - Blood Pact: Ward
         binds.add('2', '/pet "Rock Throw" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Megalith Throw" <t>'); -- Blood Pact: Rage
-        binds.add('4', '/pet "Rock Buster" <t>;/p 2: Rock Buster --> <t>'); -- Bind - Blood Pact: Rage
+        binds.add('4', '/pet "Rock Buster" <t>'); -- Bind - Blood Pact: Rage
         binds.add('5', '/pet "Mountain Buster" <t>'); -- Bind - Blood Pact: Rage
         binds.add('6', '/pet "Stone II" <t>'); -- Blood Pact: Rage
         binds.add('7', '/pet "Stone IV" <t>'); -- Blood Pact: Rage
         binds.add('8', '/pet "Earthen Fury" <t>'); -- Needs 2hr AOE
     elseif pet == 'Leviathan' then
         if print_avatar_tips then print('Leviathan | 1: Refresh | 2: WS BarrDive | 3: WS TailWhip | 4: WS SpnDive | 5: Slowga | 6: Wat2 | 7: Wat | 8: 2HR AOE'); end
-        binds.add('1', '/pet "Spring Water" <me>'); -- Refresh Blood Pact: Ward
-        binds.add('2', '/pet "Barracuda Dive" <t>;/p 2: Barracude Dive --> <t>'); -- Blood Pact: Rage
+        binds.add('1', '/pet "Spring Water" <me>;/tt custom Refreshga 184'); -- Refresh Blood Pact: Ward
+        binds.add('2', '/pet "Barracuda Dive" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Tail Whip" <t>'); -- Gravity - Blood Pact: Rage
         binds.add('4', '/pet "Spinning Dive" <t>'); -- Blood Pact: Rage
         binds.add('5', '/pet "Slowga" <t>'); -- Blood Pact: Ward
@@ -1138,9 +1267,9 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('8', '/pet "Judgement Bolt" <t>'); -- Needs 2hr AOE
     elseif pet == 'Fenrir' then
         if print_avatar_tips then print('Fenrir | 1: Acc+ Eva+ | 2: WS MoonlitCharge (Blind) | 3: WS CrescntFang (Para) | 4: WS EclpBite | 5: 2x Dispel | 6: PT +Attr | 7: Target -acc -eva | 8: 2HR AOE'); end
-        binds.add('1', '/pet "Ecliptic Howl" <me>'); -- Party +acc +eva Blood Pact: Ward
+        binds.add('1', '/pet "Ecliptic Howl" <me>;/tt custom EclipticHowl 184'); -- Party +acc +eva Blood Pact: Ward
         binds.add('2', '/pet "Moonlit Charge" <t>'); -- Blind Blood Pact: Rage
-        binds.add('3', '/pet "Crescent Fang" <t>'); -- Paralyze Blood Pact: Rage
+        binds.add('3', '/pet "Crescent Fang" <t>;'); -- Paralyze Blood Pact: Rage
         binds.add('4', '/pet "Eclipse Bite" <t>'); -- Blood Pact: Rage
         binds.add('5', '/pet "Lunar Roar" <t>'); -- 2x Dispel Blood Pact: Ward
         binds.add('6', '/pet "Ecliptic Growl" <me>'); -- +Attr Blood Pact: Ward
@@ -1148,7 +1277,7 @@ binds.SMN_Avatar_Load = function(pet)
         binds.add('8', '/pet "Howling Moon" <t>'); -- Needs 2hr AOE
     elseif pet == 'Diabolos' then
         if print_avatar_tips then print('Diabolos | 1: MAB/MDB | 2: WS Camisado | 3: WS NethBlast | 4: WS Somnolence (Gravity) | 5: Sleepga+DOT | 6: Phalanx | 7: Target -ATTR | 8: 2HR AOE'); end
-        binds.add('1', '/pet "Dream Shroud" <me>'); -- MAB+MDB Blood Pact: Ward
+        binds.add('1', '/pet "Dream Shroud" <me>;/tt custom DreamShroud 184'); -- MAB+MDB Blood Pact: Ward
         binds.add('2', '/pet "Camisado" <t>'); -- Blood Pact: Rage
         binds.add('3', '/pet "Nether Blast" <t>'); -- Blood Pact: Rage
         binds.add('4', '/pet "Somnolence" <t>'); -- Gravity Pact: Ward

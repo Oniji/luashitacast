@@ -8,7 +8,7 @@ local macrobooks = gFunc.LoadFile('common/macrobooks.lua');
 local sets = {
     Idle_Priority = {
         Main = {'Blau Dolch', 'Hoplites Harpe', 'Cermet Kukri +1', 'Darksteel Kukri +1', 'Corsair\'s Knife', 'Bone Knife +1', 'Marauder\'s Knife', 'Federation Kukri', 'Federation Knife', 'Mercenary\'s Knife'},
-        Sub = {'Thief\'s Knife', 'Chicken Knife', 'Hornetneedle', 'Bone Knife +1', 'Federation Kukri', 'Federation Knife', 'Mercenary\'s Knife'},
+        Sub = {'Sirocco Kukri', 'Thief\'s Knife', 'Chicken Knife', 'Hornetneedle', 'Bone Knife +1', 'Federation Kukri', 'Federation Knife', 'Mercenary\'s Knife'},
         Head = {'Homam Zucchetto', 'Optical Hat', 'Emperor Hairpin', 'Beetle Mask +1'},
         Neck = {'Peacock Amulet', 'Spike Necklace'},
         Ear1 = {'Merman\'s Earring', 'Spike Earring', 'Beetle Earring +1'},
@@ -135,7 +135,7 @@ local sets = {
     },
     TH = {
         Neck = 'Nanaa\'s Charm',
-        Hands = 'Assassin\'s Armlets',
+        --Hands = 'Assassin\'s Armlets',
     },
     Precast = {
         Ear1 = 'Loquac. Earring',
@@ -160,7 +160,7 @@ local AmmoType = {
 
 local Settings = {
     AmmoType = 'None',
-    TH = false,
+    TH = true,
     Evasion = false,
     CurrentLevel = 0
 };
@@ -257,6 +257,9 @@ profile.HandleDefault = function()
     else
         gFunc.EquipSet(sets.Idle);
         shared.SetCurrentSet('Idle');
+        if Settings.TH then
+            gFunc.Equip('neck', 'Nanaa\'s Charm');
+        end
     end
 
     -- Equip Ammo
@@ -273,6 +276,11 @@ profile.HandleDefault = function()
     profile.EquipSATA();
 
     shared.GearOverride();
+
+    if player.IsMoving then
+        gFunc.Equip('feet', 'Trotter Boots');
+    end
+
 
 end
 

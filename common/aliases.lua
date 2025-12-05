@@ -26,13 +26,14 @@ aliases.Common_Load = function()
     aliases.add('/kick', '/pcmd kick');
 
     -- Addon Related --
-    aliases.add('/dig1', '/addon load hgather');
-    aliases.add('/dig0', '/addon unload hgather');
+    aliases.add('/digon', '/addon load hgather');
+    aliases.add('/digoff', '/addon unload hgather');
     aliases.add('/digclear', '/hgather clear');
     aliases.add('/au', '/addon unload');
     aliases.add('/al', '/addon load');
     aliases.add('/l', '/load');
     aliases.add('/u', '/unload');
+    aliases.add('/lacr', '/addon reload luashitacast');
 
     -- Gear-Swaps --
     aliases.add('/main', '/lac fwd main');
@@ -41,10 +42,13 @@ aliases.Common_Load = function()
     aliases.add('/logging', '/lac fwd logging');
     aliases.add('/logging', '/lac fwd gearmode');
     aliases.add('/warpcudgel', '/lac fwd warpcudgel');
+    aliases.add('/pd', '/lac fwd powder_boots');
+    aliases.add('/pdgo', '/item "Powder Boots" <me>');
     aliases.add('/empband', '/lac fwd empband');
     aliases.add('/gorget', '/lac fwd gorget');
     aliases.add('/naked', '/lac fwd naked');
     aliases.add('/rrh', '/lac fwd reraise_hairpin');
+    aliases.add('/rrhgo', '/item "Reraise Hairpin" <me>');
     aliases.add('/hairpin', '/lac fwd reraise_hairpin');
 
     -- Items --
@@ -234,38 +238,30 @@ aliases.Common_Load = function()
     -- Custom Utilities --
     aliases.add('/zone', '/lac fwd find_zone')
 
-    aliases.Common_BarSpells();
+    aliases.add('/bs', '/ma "Barstonra" <me>');
+    aliases.add('/bw', '/ma "Barwatera" <me>');
+    aliases.add('/ba', '/ma "Baraera" <me>');
+    aliases.add('/bf', '/ma "Barfira" <me>');
+    aliases.add('/bb', '/ma "Barblizzara" <me>');
+    aliases.add('/bt', '/ma "Barthundra" <me>');
+    aliases.add('/bsil', '/ma "Barsilencera" <me>');
+    aliases.add('/bsleep', '/ma "Barsleepra" <me>');
+    aliases.add('/bpara', '/ma "Barparalyzra" <me>');
+    aliases.add('/bpetri', '/ma "Barpetrify" <me>');
+    aliases.add('/bpoison', '/ma "Barpoisonra" <me>');
 
-end
+    aliases.add('/bs1', '/ma "Barstone" <me>');
+    aliases.add('/bw1', '/ma "Barwater" <me>');
+    aliases.add('/ba1', '/ma "Baraero" <me>');
+    aliases.add('/bf1', '/ma "Barfire" <me>');
+    aliases.add('/bb1', '/ma "Barblizzard" <me>');
+    aliases.add('/bt1', '/ma "Barthunder" <me>');
+    aliases.add('/bsil1', '/ma "Barsilence" <me>');
+    aliases.add('/bsleep1', '/ma "Barsleep" <me>');
+    aliases.add('/bpara1', '/ma "Barparalyze" <me>');
+    aliases.add('/bpetri1', '/ma "Barpetrify" <me>');
+    aliases.add('/bpoison1', '/ma "Barpoison" <me>');
 
-aliases.Common_BarSpells = function()
-    local player = gData.GetPlayer();
-    if player.MainJob == 'WHM' or player.SubJob == 'WHM' then
-        aliases.add('/bs', '/ma "Barstonra" <me>');
-        aliases.add('/bw', '/ma "Barwatera" <me>');
-        aliases.add('/ba', '/ma "Baraera" <me>');
-        aliases.add('/bf', '/ma "Barfira" <me>');
-        aliases.add('/bb', '/ma "Barblizzara" <me>');
-        aliases.add('/bt', '/ma "Barthundra" <me>');
-        aliases.add('/bsil', '/ma "Barsilencera" <me>');
-        aliases.add('/bsleep', '/ma "Barsleepra" <me>');
-        aliases.add('/bpara', '/ma "Barparalyzra" <me>');
-        aliases.add('/bpetri', '/ma "Barpetrify" <me>');
-        aliases.add('/bpoison', '/ma "Barpoisonra" <me>');
-
-    else
-        aliases.add('/bs', '/ma "Barstone" <me>');
-        aliases.add('/bw', '/ma "Barwater" <me>');
-        aliases.add('/ba', '/ma "Baraero" <me>');
-        aliases.add('/bf', '/ma "Barfire" <me>');
-        aliases.add('/bb', '/ma "Barblizzard" <me>');
-        aliases.add('/bt', '/ma "Barthunder" <me>');
-        aliases.add('/bsil', '/ma "Barsilence" <me>');
-        aliases.add('/bsleep', '/ma "Barsleep" <me>');
-        aliases.add('/bpara', '/ma "Barparalyze" <me>');
-        aliases.add('/bpetri', '/ma "Barpetrify" <me>');
-        aliases.add('/bpoison', '/ma "Barpoison" <me>');
-    end
 end
 
 aliases.Common_Unload = function()
@@ -280,7 +276,10 @@ aliases.Common_Unload = function()
     aliases.remove('/empband');
     aliases.remove('/gorget');
     aliases.remove('/naked');
+    aliases.remove('/pd');
+    aliases.remove('/pdgo');
     aliases.remove('/rrh');
+    aliases.remove('/rrhgo');
     aliases.remove('/hairpin');
 
     -- Lockstyle --
@@ -291,10 +290,14 @@ aliases.Common_Unload = function()
     aliases.remove('/lsdrg');
     aliases.remove('/lsrdm');
 
+    aliases.remove('/digon');
+    aliases.remove('/digoff');
+    aliases.remove('/digclear');
     aliases.remove('/al');
     aliases.remove('/au');
     aliases.remove('/l');
     aliases.remove('/u');
+    aliases.remove('/lacr');
 
     -- Items --
     aliases.remove('/iwarp');
@@ -543,15 +546,23 @@ end
 --[[ BLM ]]--
 
 aliases.BLM_Load = function()
+    aliases.add('/hnm', '/lac fwd hnm');
+    aliases.add('/acc', '/lac fwd accuracy');
+    aliases.add('/default', '/lac fwd default');
     aliases.add('/2hr', '/ja "Manafont" <me>');
     aliases.add('/sorcring', '/lac fwd sorcring');
+    aliases.add('/magicburst', '/lac fwd magicburst');
     aliases.add('/nuke', '/lac fwd nuke');
     aliases.add('/idle', '/lac fwd idle');
 end
 
 aliases.BLM_Unload = function()
+    aliases.remove('/hnm');
+    aliases.remove('/acc');
+    aliases.remove('/default');
     aliases.remove('/2hr');
     aliases.remove('/sorcring');
+    aliases.remove('/magicburst');
     aliases.remove('/nuke');
     aliases.remove('/idle');
 end
@@ -581,6 +592,26 @@ aliases.SMN_Load = function()
 end
 
 aliases.SMN_Unload = function()
+    aliases.remove('/2hr');
+end
+
+--[[ WAR ]]--
+
+aliases.WAR_Load = function()
+    aliases.add('/2hr', '/ja "Mighty Strikes" <me>');
+end
+
+aliases.WAR_Unload = function()
+    aliases.remove('/2hr');
+end
+
+--[[ MNK ]]--
+
+aliases.MNK_Load = function()
+    aliases.add('/2hr', '/ja "Hundred Fists" <me>');
+end
+
+aliases.MNK_Unload = function()
     aliases.remove('/2hr');
 end
 

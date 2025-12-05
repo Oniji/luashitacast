@@ -72,7 +72,7 @@ local sets = {
         Hands = {'Devotee\'s Mitts'},
         Legs = {'Mahatma Slops', 'Warlock\'s Tights', 'Custom Pants'},
         Back = {'Prism Cape', 'White Cape +1'},
-        Feet = {'Duelist\'s Boots', 'Warlock\'s Boots', 'Angler\'s Boots'}
+        Feet = {'Dls. Boots +1', 'Warlock\'s Boots', 'Angler\'s Boots'}
     },
     MND_Ring_Priority = {
         Ring1 = {'Solace Ring', 'Saintly Ring'},
@@ -105,7 +105,7 @@ local sets = {
         Hands = 'Zenith Mitts', 
         Legs = 'Duelist\'s Tights', 
         Waist = 'Penitent\'s Rope',
-        Feet = 'Duelist\'s Boots',
+        Feet = 'Dls. Boots +1',
         Back = 'Prism Cape',
         Ring1 = 'Snow Ring',
         Ring2 = 'Tamas Ring',
@@ -121,25 +121,26 @@ local sets = {
         Hands = 'Zenith Mitts',
         Legs = 'Mahatma Slops', -- 4
         Waist = 'Penitent\'s Rope', -- 3
-        Feet = 'Duelist\'s Boots',
+        Feet = 'Dls. Boots +1',
         Back = 'Errant Cape', -- 5
         Ring1 = 'Snow Ring',
         Ring2 = 'Tamas Ring', -- 5
     },
     Healing_Priority = {
-        Head = {'Duelist\'s Chapeau', 'Vermillion Cloak', 'Warlock\'s Chapeau'},
+        Head = {'Nashira Turban', 'Duelist\'s Chapeau', 'Vermillion Cloak', 'Warlock\'s Chapeau'},
         Body = {'Duelist\'s Tabard'},
         Neck = {'Justice Badge'},
         Waist = {'Penitent\'s Rope', 'Friar\'s Rope'},
         Hands = {'Devotee\'s Mitts'},
-        Legs = {'Warlock\'s Tights', 'Custom Pants'},
-        Feet = {'Crow Gaiters'},
+        Legs = 'Warlock\'s Tights',
+        Feet = 'Dls. Boots +1',
         Back = 'Errant Cape',
         Ear1 = 'Novia Earring'
     },
     Enhancing = {
         Hands = 'Dls. Gloves +1',
         Legs = 'Warlock\'s Tights',
+        Feet = 'Dls. Boots +1',
     },
     Enfeebling = {
         Head = 'Duelist\'s Chapeau', -- 15
@@ -162,7 +163,7 @@ local sets = {
         Waist = 'Penitent\'s Rope', 
         Hands = 'Devotee\'s Mitts',
         Back = 'Prism Cape',
-        Feet = 'Duelist\'s Boots',
+        Feet = 'Dls. Boots +1',
         Ring1 = 'Solace Ring',
         Ring2 = 'Tamas Ring',
     },
@@ -175,8 +176,11 @@ local sets = {
         Waist = 'Duelist\'s Belt', -- 4
     },
     SIRD = {
-        Main = 'Eremite\'s Wand',
-        Body = 'Warlock\'s Tabard'
+        -- Aquaveil -- 20
+        Head = 'Nashira Turban', -- 10
+        Main = 'Eremite\'s Wand', -- 25
+        Sub = 'Genbu\'s Shield',
+        Body = 'Warlock\'s Tabard' -- 10
     },
     FastCast = {
         Head = 'Warlock\'s Chapeau',
@@ -440,6 +444,10 @@ profile.HandleMidcast = function()
 
     if (Settings.CurrentLevel >= 51) and not Settings.MeleeMode then
         shared.UseElementalStaff(action.Element);
+    end
+
+    if action.Name == 'Invisible' or action.Name == 'Sneak' then
+        gFunc.Equip('back', 'Skulker\'s Cape');
     end
 
 end

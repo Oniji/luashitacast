@@ -70,6 +70,7 @@ local regionMap = T{
     [150] = 'Norvallen', --Monastic Cavern
     [151] = 'Aragoneu', --Castle Oztroja
     [152] = 'Aragoneu', --Altar Room
+    [153] = 'Li\'Telor', -- Boyahda Tree
     [154] = 'Li\'Telor', --Dragon's Aery
     [157] = 'Qufim', --Middle Delkfutt's Tower
     [158] = 'Qufim', --Upper Delkfutt's Tower
@@ -278,7 +279,6 @@ conquest.GetOutsideControl = function()
     if (currentControl == 'Unknown') then
         return false
     end
-
     return (currentControl ~= currentNation)
 end
 

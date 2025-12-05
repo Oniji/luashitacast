@@ -141,6 +141,7 @@ local LockStyleSets = {
     ['SMN'] = 61,
     ['THF'] = 70,
     ['DRK'] = 80,
+    ['MNK'] = 81,
     ['Clamming'] = 16,
     ['Digging'] = 17,
     ['Fishing'] = 18,
@@ -205,6 +206,7 @@ local Settings = {
     UseReraiseHairpin = false,
     UseReraiseGorget = false,
     UseExpRing = false,
+    UsePowderBoots = false,
     GearMode = nil,
     Extras = '', -- Text for displaying additional job information
 };
@@ -320,6 +322,10 @@ shared.ProcessCommand = function(args)
         Settings.UseWarpCudgel = not Settings.UseWarpCudgel;
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Use Warp Cudgel ->> ' .. (Settings.UseWarpCudgel and 'On' or 'Off') .. ' ]--');
         if Settings.UseWarpCudgel then AshitaCore:GetChatManager():QueueCommand(-1, '/tt custom WarpCudgel 33'); end
+    elseif (args[1] == 'powder_boots') then
+        Settings.UsePowderBoots = not Settings.UsePowderBoots;
+        AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Use Powder Boots ->> ' .. (Settings.UsePowderBoots and 'On' or 'Off') .. ' ]--');
+        if Settings.UsePowderBoots then AshitaCore:GetChatManager():QueueCommand(-1, '/tt custom PowderBoots 33'); end
     elseif (args[1] == 'reraise_hairpin') then
         Settings.UseReraiseHairpin = not Settings.UseReraiseHairpin;
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Use Reraise Hairpin ->> ' .. (Settings.UseReraiseHairpin and 'On' or 'Off') .. ' ]--');
@@ -383,6 +389,8 @@ end
 
 shared.GearOverride = function()
 
+    local player = gData.GetPlayer();
+    
     -- Chocobo
     if (Settings.GearMode == 'Digging') then
         gFunc.EquipSet(sets.Chocobo);
@@ -396,6 +404,9 @@ shared.GearOverride = function()
     -- Fishing
     if (Settings.GearMode == 'Logging') then
         gFunc.EquipSet(sets.Logging);
+        if player.IsMoving then
+            gFunc.Equip('legs', 'Blood Cuisses');
+        end
     end
 
     -- Clamming
@@ -406,6 +417,11 @@ shared.GearOverride = function()
     -- Warp Cudgel
     if (Settings.UseWarpCudgel == true) then
         gFunc.Equip('Main','Warp Cudgel');
+    end
+
+    -- Powder Boots
+    if (Settings.UsePowderBoots == true) then
+        gFunc.Equip('Feet','Powder Boots');
     end
 
     -- Exp Band
@@ -441,6 +457,7 @@ shared.UseElementalStaff = function(element)
     gFunc.Equip('Main', ElementalStaffTable[element]);
 
 end
+
 
 shared.UggPendantCheck = function(action)
     local player = gData.GetPlayer();
@@ -727,6 +744,8 @@ shared.SetMidcastDelay = function(precastset, yellowhpset, midcastset, obi)
             DelayYellow:once(yellowhpdelay);
             DelayDisplay:once(midcastdelay);
         end
+    else
+        DelayDisplay:once(midcastdelay);
     end
 
     if verbose then print('Action: ' .. action.Name .. ' | Cast Time (s): ' .. action.CastTime/1000 .. ' | Yellow Gearswap Delay (s): ' .. yellowhpdelay .. ' | Mid Cast Delay (s): ' .. midcastdelay); end

@@ -11,7 +11,7 @@ local sets = {
 
     Idle_Town = {
         Main = 'Orichalcum Lance',
-        Head = 'Wym. Armet +1', 
+        Head = 'Ace\'s Helm',
         Ear1 = 'Brutal Earring', 
         Ear2 = 'Merman\'s Earring',
         Neck = 'Peacock Amulet', 
@@ -29,7 +29,7 @@ local sets = {
     },
     Idle_Priority = {
         Main = {'Orichalcum Lance', 'Gnd.Kgt. Lance', 'Mythril Lance', 'Peregrine', 'Ryl.Sqr. Halberd', 'Obelisk Lance', 'Fuscina'},
-        Head = {'Homam Zucchetto', 'Optical Hat', 'Walkure Mask', 'Centurion\'s Visor'},
+        Head = {'Ace\'s Helm', 'Homam Zucchetto', 'Optical Hat', 'Walkure Mask', 'Centurion\'s Visor'},
         Ear1 = {'Brutal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle earring +1'},
         Ear2 = {'Merman\'s Earring', 'Spike Earring', 'Beetle earring +1'},
         Neck = {'Peacock Amulet', 'Spike necklace'},
@@ -49,7 +49,7 @@ local sets = {
 
     TP_Priority = { -- Default: High Accuracy
         --Main = {'Orichalcum Lance', 'Orichalcum Lance', 'Gnd.Kgt. Lance', 'Mythril Lance', 'Peregrine', 'Ryl.Sqr. Halberd', 'Obelisk Lance', 'Fuscina'},
-        Head = {'Homam Zucchetto', 'Optical Hat', 'Walkure Mask', 'Centurion\'s Visor'},
+        Head = {'Ace\'s Helm', 'Homam Zucchetto', 'Optical Hat', 'Walkure Mask', 'Centurion\'s Visor'},
         Ear1 = {'Brutal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle earring +1'},
         Ear2 = {'Merman\'s Earring', 'Spike Earring', 'Beetle earring +1'},
         Neck = {'Peacock Amulet', 'Spike necklace'},
@@ -65,7 +65,7 @@ local sets = {
         Ammo = {'Tiphia Sting', 'Mille. Sachet'}
     },
     TP_MediumAccuracy = {
-        Head = 'Homam Zucchetto',
+        Head = 'Ace\'s Helm',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
         Neck = 'Peacock Amulet',
@@ -81,7 +81,7 @@ local sets = {
         Ammo = 'Tiphia Sting',
     },
     TP_LowAccuracy = {
-        Head = 'Homam Zucchetto',
+        Head = 'Ace\'s Helm',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
         Neck = 'Peacock Amulet',
@@ -97,7 +97,7 @@ local sets = {
         Ammo = 'Tiphia Sting',
     },
     TP_Tank = {
-        Head = 'Darksteel Cap',
+        Head = 'Ace\'s Helm',
         Body = 'Gavial Mail',
         Hands = 'Darksteel Mittens',
         Legs = 'Gavial Cuisses',
@@ -129,7 +129,7 @@ local sets = {
         Ammo = 'Tiphia Sting',
     },
     WS_MediumAccuracy = {
-        Head = 'Wym. Armet +1',
+        Head = 'Ace\'s Helm',
         Body = 'Hecatomb Harness',
         Ring1 = 'Flame Ring',
         Ring2 = 'Toreador\'s Ring',
@@ -144,7 +144,7 @@ local sets = {
         Ammo = 'Tiphia Sting',
     },
     WS_HighAccuracy = {
-        Head = 'Wym. Armet +1',
+        Head = 'Ace\'s Helm',
         Body = 'Hecatomb Harness',
         Neck = 'Peacock Amulet',
         Hands = 'Hecatomb Mittens',
