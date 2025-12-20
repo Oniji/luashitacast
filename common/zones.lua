@@ -69,6 +69,19 @@ local zone_town = {
     ["Ru'Lude Gardens"] = true
 };
 
+local zone_dynamis = {
+    ["Dynamis - Bastok"] = true,
+    ["Dynamis - Jeuno"] = true,
+    ["Dynamis - San d'Oria"] = true,
+    ["Dynamis - Windurst"] = true,
+    ["Dynamis - Beaucedine"] = true,
+    ["Dynamis - Xarcabard"] = true,
+    ["Dynamis - Buburimu"] = true,
+    ["Dynamis - Qufim"] = true,
+    ["Dynamis - Valkurm"] = true,
+    ["Dynamis - Tavnazia"] = true,
+};
+
 local zone_abbr = {
     ["Bastok Markets"] = "BastokMark",
     ["Bastok Mines"] = "BastokMine",
@@ -282,6 +295,11 @@ end
 zones.IsInTown = function()
     local zone = gData.GetEnvironment().Area;
     return zone_town[zone];
+end
+
+zones.IsInDynamis = function()
+    local zone = gData.GetEnvironment().Area;
+    return zone_dynamis[zone];
 end
 
 zones.GetZoneAbbr = function(search)

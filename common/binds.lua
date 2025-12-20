@@ -804,14 +804,14 @@ binds.MNK_Load = function()
     binds.add('e', '/ja "Chi Blast" <t>');
     binds.add('f', '/ja "Chakra" <me>');
     binds.add('5', '/ja "Counterstance" <me>');
-    binds.add('6', '/ja "Focus" <me>');
+    binds.add('4', '/ja "Focus" <me>');
     --binds.add('1', '/ja "Dodge" <me>');
 
     
 
     --- Weaponskills ---
     --binds.add('+1', '/ws "" <t>');
-    binds.add('+2', '/ws "Combo" <t>');
+    binds.add('+2', '/ws "Raging Fists" <t>');
     binds.add('+3', '/ws "One Inch Punch" <t>');
     --binds.add('+4', '/ws "" <t>');
     
@@ -1162,14 +1162,8 @@ binds.SMN_Load = function()
     binds.add('f', '/pet "Retreat" <me>');
 
     -- Avatars
-    binds.add('+1', '/ma "Fire Spirit" <me>');
-    binds.add('+2', '/ma "Ice Spirit" <me>');
-    binds.add('+3', '/ma "Thunder Spirit" <me>');
-    binds.add('+4', '/ma "Air Spirit" <me>');
-    binds.add('+5', '/ma "Water Spirit" <me>');
-    binds.add('+6', '/ma "Earth Spirit" <me>');
-    binds.add('+7', '/ma "Light Spirit" <me>');
-    binds.add('+8', '/ma "Dark Spirit" <me>');
+    binds.add('+7', '/ma "Blink" <me>');
+    binds.add('+8', '/ma "Stoneskin" <me>');
 
     -- Spells
     binds.add('!1', '/ma "Slow" <t>');

@@ -11,7 +11,7 @@ local conquest = gFunc.LoadFile('common/conquest.lua');
 
 local verbose = false; -- For debugging purposes
 local packetfrequency = 250; -- 250ms packetflow / 400ms default
-local buffer = 250; -- extra buffer to account for latency
+local buffer = 400; -- extra buffer to account for latency
 local minimumcast = 1; -- Minimum cast time to apply midcast delay
 local lockthrottle = 15; -- delay before allowing lockstyle (seconds)
 
@@ -19,7 +19,7 @@ local HP_BLM_RDM = 998; -- hardcoded values for Max HP with Nuke Set equipped (e
 local HP_BLM_WHM = 980; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 744HP is 0.76 Threshold. 236 deficit
 local HP_BLM_NIN = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
 
-local MP_BLM_RDM = 730; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+local MP_BLM_RDM = 793; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
 local MP_BLM_WHM = 749; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
 local MP_BLM_NIN = 671; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
 
@@ -459,7 +459,7 @@ shared.UseElementalStaff = function(element)
 end
 
 
-shared.UggPendantCheck = function(action)
+shared.UggPendantCheck = function(action, nukeMaxMP)
     local player = gData.GetPlayer();
     if player.MainJobSync < 70 then
         -- Current level too low for Ugg Pendant
@@ -467,7 +467,6 @@ shared.UggPendantCheck = function(action)
     end
     -- Only do slow, thorough equipment check if MP will go under an over-estimated threshold
     local mpPercent = 0;
-    local nukeMaxMP = 0;
     if player.MainJob == "BLM" and player.SubJob == "RDM" then
         mpPercent = action.MpAftercast / MP_BLM_RDM;
         nukeMaxMP = MP_BLM_RDM;
@@ -596,7 +595,7 @@ shared.SpellMatchDay = function(spell)
     return (spell.Element == environment.DayElement);
 end
 
-shared.ObiCheck = function(spell, yellowSet)
+shared.ObiCheck = function(spell)
     if not Settings.UseElementalObis then
         return false;
     end
@@ -606,7 +605,6 @@ shared.ObiCheck = function(spell, yellowSet)
         local elemental_obi = ElementalObis[spell.Element];
         if elemental_obi[2] then -- Do you have the relevant Obi?
             gFunc.Equip('Waist', elemental_obi[1]);
-            gFunc.EquipSet(yellowSet); -- Add more -HP to make up for normal yellow HP belt
             if verbose then print("Using Obi: " .. elemental_obi[1] .. " . Element: " .. spell.Element); end
             return true;
         end
@@ -680,8 +678,7 @@ end
 -- Midcast Delay/Yellow Latent 
 -- --------------------------------------------------------
 
-shared.SetMidcastDelay = function(precastset, yellowhpset, midcastset, obi)
-    local player = gData.GetPlayer();
+shared.SetMidcastDelay = function(precastset, yellowhpset, midcastset)
     local action = gData.GetAction();
     local casttime = action.CastTime;
     local weakenedstate = gData.GetBuffCount('Weakness');
@@ -691,12 +688,7 @@ shared.SetMidcastDelay = function(precastset, yellowhpset, midcastset, obi)
     -- Forces yellow hp gear
     local function DelayYellow()
         gFunc.ForceEquipSet(yellowhpset);
-        if obi then
-            gFunc.ForceEquipSet(sets.YellowObi);
-            shared.SetCurrentSet('Yellow HP (Obi)');
-        else
-            shared.SetCurrentSet('Yellow HP');
-        end
+        shared.SetCurrentSet('Yellow HP');
     end
 
     local function DelayDisplay()
