@@ -60,7 +60,7 @@ local sets = {
         Ammo = 'Hedgehog Bomb',
         Neck = 'Uggalepih Pendant',
         --Neck = 'Prudence Torque', -- 5
-        Ear1 = 'Moldavite Earring',
+        Ear1 = 'Novio Earring',
         Ear2 = 'Abyssal Earring',
         Head = 'Wzd. Petasos +1',
         Body = 'Sorcerer\'s Coat',
@@ -72,12 +72,28 @@ local sets = {
         Legs = 'Igqira Lappas', 
         Feet = 'Src. Sabots +1',
     },
+    Idle_Dynamis = {
+        Main = 'Terra\'s Staff',
+        Ammo = 'Hedgehog Bomb',
+        Neck = 'Uggalepih Pendant',
+        Ear1 = 'Merman\'s Earring',
+        Ear2 = 'Merman\'s Earring',
+        Ring1 = 'Merman\'s Ring',
+        Ring2 = 'Merman\'s Ring',
+        Back = 'Hexerei Cape',
+        Waist = 'Hierarch Belt',
+        Head = 'Wzd. Petasos +1',
+        Body = 'Sorcerer\'s Coat',
+        Hands = 'Src. Gloves +1',
+        Legs = 'Sorcerer\'s Tonban',
+        Feet = 'Src. Sabots +1',
+    },
     Nuke = {
         Ammo = 'Phtm. Tathlum',
-        Neck = 'Elemental Torque',
+        Neck = 'Philomath Stole',
         --Neck = 'Prudence Torque', -- 5
         Ear1 = 'Moldavite Earring',
-        Ear2 = 'Abyssal Earring',
+        Ear2 = 'Novio Earring',
         Head = 'Wzd. Petasos +1',
         Body = 'Igqira Weskit',
         Hands = 'Zenith Mitts',
@@ -95,7 +111,7 @@ local sets = {
         Ammo = 'Phtm. Tathlum',
         Neck = 'Elemental Torque', -- 7s
         Ear1 = 'Moldavite Earring',
-        Ear2 = 'Abyssal Earring',
+        Ear2 = 'Novio Earring',
         Head = 'Sorcerer\'s Petas.', -- 2
         Body = 'Igqira Weskit', -- 5s
         Hands = 'Wzd. Gloves +1', -- 2, 15s
@@ -103,23 +119,23 @@ local sets = {
         Ring2 = 'Tamas Ring',
         Back = 'Prism Cape',
         Waist = 'Sorcerer\'s Belt',
-        Legs = 'Mahatma Slops', -- 3
+        Legs = 'Mahatma Slops', -- 4
         Feet = 'Src. Sabots +1', -- 2
     },
     Nuke_HNM = {
-        -- 24 enmity
+        -- 35 + 4 (merits) enmity
         Ammo = 'Phtm. Tathlum',
         Neck = 'Elemental Torque',
-        Ear1 = 'Moldavite Earring',
-        Ear2 = 'Novia Earring',
-        Head = 'Sorcerer\'s Petas.', -- 2
+        Ear1 = 'Novio Earring',
+        Ear2 = 'Novia Earring', -- 7
+        Head = 'Wzd. Petasos +1', -- 4
         Body = 'Errant Hpl.', -- 3
         Hands = 'Wzd. Gloves +1', -- 2
         Ring1 = 'Sorcerer\'s Ring',
         Ring2 = 'Tamas Ring', -- 5
         Back = 'Errant Cape', -- 5
         Waist = 'Penitent\'s Rope', -- 3 
-        Legs = 'Mahatma Slops', -- 3
+        Legs = 'Mahatma Slops', -- 4
         Feet = 'Src. Sabots +1', -- 2
     },
     Nuke_NoSorcRing_Priority = {
@@ -174,22 +190,23 @@ local sets = {
         Ammo = 'Phtm. Tathlum',
         Head = 'Nashira Turban',
         --Body = 'Nashira Manteel', -- 5
-        Body = 'Wizard\'s Coat',
+        Body = 'Wzd. Coat +1',
         Hands = 'Src. Gloves +1', -- 10
         Legs = 'Wizard\'s Tonban', -- 15
         Feet = 'Igqira Huaraches', -- 4
         Neck = 'Dark Torque', -- 7
         Ear1 = 'Abyssal Earring',
-        Ear2 = 'Phantom Earring',
+        Ear2 = 'Loquac. Earring',
         Ring1 = 'Snow Ring',
         Ring2 = 'Tamas Ring',
-        Back = 'Merciful Cape', --5
+        Back = 'Errant Cape',
+        --Back = 'Merciful Cape', --5
         Waist = 'Sorcerer\'s Belt',
     },
     Stun = {
         Ammo = 'Phtm. Tathlum',
         Head = 'Wzd. Petasos +1',
-        Body = 'Wizard\'s Coat',
+        Body = 'Wzd. Coat +1',
         Hands = 'Src. Gloves +1',
         Ear1 = 'Abyssal Earring',
         Ear2 = 'Loquac. Earring',
@@ -204,7 +221,7 @@ local sets = {
         Head = 'Igqira Tiara', -- 10
         Neck = 'Enfeebling Torque', -- 7
         Legs = 'Igqira Lappas', -- 10
-        Body = 'Wizard\'s Coat', -- 10
+        Body = 'Wzd. Coat +1', -- 12
         Hands = 'Nashira Gloves', -- 3
         Feet = 'Nashira Crackows', -- 2
     },
@@ -312,29 +329,50 @@ local sets = {
         Legs = 'Mahatma Slops',
         Feet = 'Igqira Huaraches',
     },
-    YellowHP = {
+    YellowHP = { -- 215 HP - Last Verified 19/12/2025
         Ring1 = 'Ether Ring', -- 30
         Ring2 = 'Astral Ring', -- 25
         Ammo = 'Tiphia Sting', -- 25
         Head = 'Zenith Crown', -- 50
+        Hands = 'Wzd. Gloves +1', -- Not Zenith
         Legs = 'Zenith Slacks', -- 50
         Back = 'Blue Cape', -- 15 
         Waist = 'Penitent\'s Rope', -- 20
     },
-    YellowHNM = {
+    YellowObi = { -- 227 HP - Last Verified 19/12/2025
         Ring1 = 'Ether Ring', -- 30
         Ring2 = 'Astral Ring', -- 25
         Ammo = 'Tiphia Sting', -- 25
         Head = 'Zenith Crown', -- 50
+        Hands = 'Wzd. Gloves +1', -- Not Zenith
         Legs = 'Zenith Slacks', -- 50
         Waist = 'Penitent\'s Rope', -- 20
         Back = 'Blue Cape', -- 15 
-        Neck = 'Checkered Scarf', -- 15
+        Neck = 'Checkered Scarf', -- 12
     },
-    YellowObi = {
+    YellowHNM = { -- 257 HP - Last Verified 19/12/2025
+        Ring1 = 'Ether Ring', -- 30
+        Ring2 = 'Astral Ring', -- 25
+        Ammo = 'Tiphia Sting', -- 25
+        Head = 'Zenith Crown', -- 50
+        Hands = 'Zenith Mitts', -- 50
+        Legs = 'Zenith Slacks', -- 50
         Back = 'Blue Cape', -- 15 
-        Neck = 'Checkered Scarf', -- 15
-    }
+        Neck = 'Checkered Scarf', -- 12
+        Waist = 'Hierarch Belt', -- Ensures 0 HP in this slot
+    },
+    YellowHNMObi = { -- 235 HP - Last Verified 19/12/2025
+        --Ring1 = 'Ether Ring', -- 30
+        Ring2 = 'Astral Ring', -- 25
+        Ammo = 'Tiphia Sting', -- 25
+        Head = 'Zenith Crown', -- 50
+        Hands = 'Zenith Mitts', -- 50
+        Legs = 'Zenith Slacks', -- 50
+        Back = 'Blue Cape', -- 15 
+        --Neck = 'Checkered Scarf', -- 12
+        Waist = 'Penitent\'s Rope', -- 20
+    },
+
 };
 profile.Sets = sets;
 
@@ -342,14 +380,31 @@ local HP_BLM_RDM = 998; -- hardcoded values for Max HP with Nuke Set equipped (e
 local HP_BLM_WHM = 980; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 744HP is 0.76 Threshold. 236 deficit
 local HP_BLM_NIN = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
 
-local MP_BLM_RDM = 730; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
-local MP_BLM_WHM = 749; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
-local MP_BLM_NIN = 671; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+local MP_BLM_RDM = 793; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+local MP_BLM_RDM_HNM = 830; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+local MP_BLM_WHM = 792; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+local MP_BLM_WHM_HNM = 829; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
+
+local SorcRingLatentHP = {
+    RDM = {
+        Default = 998,
+        Default_Obi = 978,
+        HNM = 948,
+        HNM_Obi = 968,
+    },
+    WHM = {
+        Default = 980,
+        Default_Obi = 960,
+        HNM = 930,
+        HNM_Obi = 950,
+    }
+}
 
 local IdleSet = {
     [1] = 'MDT',
     [2] = 'PDT',
     [3] = 'Town',
+    [4] = 'Dynamis',
 };
 
 local NukeSet = {
@@ -360,15 +415,15 @@ local NukeSet = {
 
 
 local Settings = {
-    DisplayThrottle = 1;
-    LastDisplayed = 0;
+    DisplayThrottle = 1,
+    LastDisplayed = 0,
     UseSorcRing = true,
     UseUggPendant = true,
     UseMagicBurst = false,
     CurrentSubJob = nil,
     NukeSet = 'Default',
     IdleSet = '',
-    IdleDT = 'MDT';
+    IdleDT = 'MDT',
     Extras = '',
     CurrentLevel = 0
 };
@@ -492,24 +547,29 @@ profile.HandleDefault = function()
         shared.SetCurrentSet('Resting');
     else
         if not zones.IsInTown() then
-            if Settings.IdleDT == 'MDT' then
-                gFunc.EquipSet(sets.Idle_MDT);
-                shared.SetCurrentSet('Idle - MDT');
-                shared.SetCycleToValue('IdleSet', 'MDT');
+            if zones.IsInDynamis() then
+                gFunc.EquipSet(sets.Idle_Dynamis);
+                shared.SetCurrentSet('Idle - Dynamis');
+                shared.SetCycleToValue('IdleSet', 'Dynamis');
             else
-                gFunc.EquipSet(sets.Idle);
-                shared.SetCurrentSet('Idle - PDT');
-                shared.SetCycleToValue('IdleSet', 'PDT');
+                if Settings.IdleDT == 'MDT' then
+                    gFunc.EquipSet(sets.Idle_MDT);
+                    shared.SetCurrentSet('Idle - MDT');
+                    shared.SetCycleToValue('IdleSet', 'MDT');
+                else
+                    gFunc.EquipSet(sets.Idle_PDT);
+                    shared.SetCurrentSet('Idle - PDT');
+                    shared.SetCycleToValue('IdleSet', 'PDT');
+                end
+                shared.SetCurrentSet('Idle - '.. Settings.IdleDT);
             end
-            shared.SetCurrentSet('Idle - '.. Settings.IdleDT);
+        else
+            gFunc.EquipSet(sets.Idle_Town);
+            shared.SetCurrentSet('Idle - Town');
+            shared.SetCycleToValue('IdleSet', 'Town');
         end
     end
 
-    if zones.IsInTown() then
-        gFunc.EquipSet(sets.Idle_Town);
-        shared.SetCurrentSet('Idle - Town');
-        shared.SetCycleToValue('IdleSet', 'Town');
-    end
     local final_set = shared.DisplacedGearCheck(gData.GetEquipment());
     gFunc.EquipSet(final_set);
 
@@ -538,17 +598,18 @@ profile.HandleMidcast = function()
     local DebuffMND = T{ 'Slow', 'Paralyze', 'Silence' };
     local DebuffINT = T{ 'Blind', 'Bind', 'Gravity', 'Burn', 'Rasp', 'Drown', 'Choke', 'Frost', 'Shock', 'Poison', 'Poison II', 'Poisonga', 'Sleep', 'Sleep II', 'Sleepga' , 'Sleepga II'};
     local action = gData.GetAction();
+    local player = gData.GetPlayer();
     local environment = gData.GetEnvironment();
     local obi_used = false;
-    local diabolos_pole = false;
+    local nukeMaxMP = 0;
 
     if action.Skill == 'Enfeebling Magic' then
         if DebuffMND:contains(action.Name) then
             gFunc.EquipSet(sets.EnfeeblingMND);
-            shared.SetMidcastDelay(sets.Precast, null, 'Enfeebling - MND', null);
+            shared.SetMidcastDelay(sets.Precast, null, 'Enfeebling - MND');
         elseif DebuffINT:contains(action.Name) then
             gFunc.EquipSet(sets.EnfeeblingINT);
-            shared.SetMidcastDelay(sets.Precast, null, 'Enfeebling - INT', null);
+            shared.SetMidcastDelay(sets.Precast, null, 'Enfeebling - INT');
         end
         gFunc.EquipSet(sets.Enfeebling);
         shared.EquipElementalStaff(action);
@@ -558,7 +619,7 @@ profile.HandleMidcast = function()
     elseif action.Skill == 'Elemental Magic' then
         if DebuffINT:contains(action.Name) then
             gFunc.EquipSet(sets.Nuke_DOT);
-            shared.SetMidcastDelay(sets.Precast, null, 'Elemental DOT', null);
+            shared.SetMidcastDelay(sets.Precast, null, 'Elemental DOT');
             shared.EquipElementalStaff(action);
         else
             if Settings.UseSorcRing then
@@ -572,51 +633,77 @@ profile.HandleMidcast = function()
             else
                 gFunc.EquipSet(sets.Nuke_NoSorcRing);
             end
-            shared.UggPendantCheck(action);
-            obi_used = shared.ObiCheck(action, sets.YellowObi);
+            -- Get MaxMP while in specific nuke set/subjob
+            if player.SubJob == "RDM" then
+                if Settings.NukeSet == 'HNM' then
+                    nukeMaxMP = MP_BLM_RDM_HNM;
+                else
+                    nukeMaxMP = MP_BLM_RDM;
+                end
+            elseif player.SubJob == "WHM" then
+                if Settings.NukeSet == 'HNM' then
+                    nukeMaxMP = MP_BLM_WHM_HNM;
+                else
+                    nukeMaxMP = MP_BLM_WHM;
+                end
+            else
+                nukeMaxMP = player.MaxMP;
+            end
+
+            shared.UggPendantCheck(action, nukeMaxMP);
+            obi_used = shared.ObiCheck(action);
             local spellmatchday = shared.SpellMatchDay(action);
             if spellmatchday then
                 gFunc.Equip('Legs', 'Sorcerer\'s Tonban');
             end
             if Settings.UseSorcRing then
                 if Settings.NukeSet == 'HNM' then
-                    shared.SetMidcastDelay(sets.Precast, sets.YellowHNM, "Nuke + Sorc Ring", obi_used);
+                    if obi_used then
+                        shared.SetMidcastDelay(sets.Precast, sets.YellowHNMObi, "Nuke + Sorc Ring");
+                    else
+                        shared.SetMidcastDelay(sets.Precast, sets.YellowHNM, "Nuke + Sorc Ring");
+                    end
                 else
-                    shared.SetMidcastDelay(sets.Precast, sets.YellowHP, "Nuke + Sorc Ring", obi_used);
+                    if obi_used then
+                        shared.SetMidcastDelay(sets.Precast, sets.YellowObi, "Nuke + Sorc Ring");
+                    else
+                        shared.SetMidcastDelay(sets.Precast, sets.YellowHP, "Nuke + Sorc Ring");
+                    end
+                    
                 end
             else 
-                shared.SetMidcastDelay(sets.Precast, null, 'Nuke', obi_used);   
+                shared.SetMidcastDelay(sets.Precast, null, 'Nuke');
             end
             shared.EquipElementalStaff(action);
         end
     elseif (action.Skill == 'Dark Magic') then
         if (action.Name == 'Stun') then
             gFunc.EquipSet(sets.Stun);
-            shared.SetMidcastDelay(sets.Precast, null, 'Stun', null);
+            shared.SetMidcastDelay(sets.Precast, null, 'Stun');
             shared.EquipElementalStaff(action);
             shared.SetCurrentSet('Stun');
-        elseif (action.Name == 'Aspir' or action.Name == 'Drain') and environment.RawWeatherElement == 'Dark' then
+        elseif (action.Name == 'Aspir' or action.Name == 'Drain') and (environment.RawWeatherElement == 'Dark') then
+            gFunc.EquipSet(sets.Dark);
             gFunc.Equip('main', 'Diabolos\'s Pole');
             shared.ObiCheck(action, sets.YellowObi);
-            shared.SetMidcastDelay(sets.Precast, null, 'Drain/Aspir + D.Pole.', null);
-            diabolos_pole = true;
+            shared.SetMidcastDelay(sets.Precast, null, 'Drain/Aspir + D.Pole.');
         else
             gFunc.EquipSet(sets.Dark);
             shared.ObiCheck(action, sets.YellowObi);
             shared.EquipElementalStaff(action);
-            shared.SetMidcastDelay(sets.Precast, null, 'Dark', null);
+            shared.SetMidcastDelay(sets.Precast, null, 'Dark');
         end
     elseif (string.match(action.Name, 'Cure') or string.match(action.Name, 'Curaga')) then
         gFunc.EquipSet(sets.Healing);
         shared.EquipElementalStaff(action);
-        shared.SetMidcastDelay(sets.Precast, null, 'Healing', null);
+        shared.SetMidcastDelay(sets.Precast, null, 'Healing');
     elseif (action.Skill == 'Enhancing Magic') then
         if action.Name == 'Stoneskin' then
             gFunc.EquipSet(sets.Stoneskin);
-            shared.SetMidcastDelay(sets.Precast, null, 'Stoneskin', null);
+            shared.SetMidcastDelay(sets.Precast, null, 'Stoneskin');
         else
             gFunc.EquipSet(sets.Enhancing);
-            shared.SetMidcastDelay(sets.Precast, null, 'Enhancing', null);
+            shared.SetMidcastDelay(sets.Precast, null, 'Enhancing');
         end
         shared.EquipElementalStaff(action);
     end
@@ -628,12 +715,14 @@ profile.HandleMidcast = function()
         gFunc.InterimEquipSet(sets.SIRD_PDT);
         shared.SetCurrentSet('SIRD + PDT');
     end
-
     if action.Name == 'Invisible' or action.Name == 'Sneak' then
         gFunc.Equip('back', 'Skulker\'s Cape');
+        if action.Name == 'Sneak' then
+            gFunc.Equip('feet', 'Dream Boots +1');
+        elseif action.Name == 'Invisible' then
+            gFunc.Equip('hands', 'Dream Mittens +1');
+        end
     end
-    
-
 end
 
 

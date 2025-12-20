@@ -32,6 +32,7 @@ local sets = {
     },
 
     WS_Priority = {
+        Head = 'Voyager Sallet',
         Ring1 = {'Puissance Ring'},
         Ring2 = {'Puissance Ring'},
         Neck = {'Spike Necklace'},
