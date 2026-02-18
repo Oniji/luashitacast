@@ -67,6 +67,7 @@ profile.Packer = {
 };
 
 local Settings = {
+    Character = 'Saraji',
     UseWarpCudgel = false,
     UseExpRing = false,
     CurrentMode = nil,
@@ -75,6 +76,8 @@ local Settings = {
 };
 
 profile.OnLoad = function()
+    shared.Unload();
+
     profile.SetMacroBook_NIN();
     binds.Common_Load();
     binds.NIN_Load();
@@ -83,6 +86,7 @@ profile.OnLoad = function()
     gSettings.AllowAddSet = true;
 
     shared.OnLoad();
+    shared.SetCharacter(Settings.Character)
 end
 
 profile.OnUnload = function()

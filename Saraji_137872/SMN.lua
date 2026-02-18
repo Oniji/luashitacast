@@ -110,9 +110,10 @@ local sets = {
         --Body = 'Summoner\'s Doublet', -- Avatar CritHit
         Hands = {'Summoner\'s Brcr.', 'Austere Cuffs'}, -- 2
         Legs = 'Evoker\'s Spats', -- Avatar Accuracy
-        Feet = 'Summoner\'s Pgch.', -- Avatar Attack
+        --Feet = 'Summoner\'s Pgch.', -- Avatar Attack
+        Feet = 'Nashira Crackows',
         Ring2 = 'Evoker\'s Ring', -- 10
-        --Neck = 'Summoning Torque',
+        Neck = 'Smn. Torque',
     },
     Avatar_Perp = {
         Head = 'Austere Hat',
@@ -146,6 +147,7 @@ local CurrentAvatar = {
 };
 
 local Settings = {
+    Character = 'Saraji',
     LastSummoningElement = '',
     DisplayThrottle = 1,
     LastDisplayed = 0,
@@ -183,12 +185,14 @@ profile.OnLoad = function()
 
     -- Setting up HandleCommand cycles and toggles
     shared.OnLoad();
+    shared.SetCharacter(Settings.Character)
 
     shared.LockStyleSet();
 
 end
 
 profile.OnUnload = function()
+    shared.Unload();
 
     binds.Common_Unload();
     binds.SMN_Unload();
@@ -204,6 +208,21 @@ profile.HandleCommand = function(args)
 
     if (args[1] == 'main') then
         macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
+    elseif (args[1] == 'lockset') then
+        local lockset = args[2]
+        local seconds = args[3]
+        if not lockset or not seconds then
+            shared.Echo("Failed to equip set. Syntax: /lockset setName seconds")
+            return
+        end
+        -- Check if set exists
+        local set = sets[lockset]
+        if not set then
+            shared.Echo("Set (" .. lockset .. ") does not exist.")
+            return
+        end
+        shared.ForceEquipSet(set, seconds)
+        return
     end
     shared.ProcessCommand(args);
 
@@ -344,6 +363,11 @@ profile.HandleMidcast = function()
 
     if action.Name == 'Invisible' or action.Name == 'Sneak' then
         gFunc.Equip('back', 'Skulker\'s Cape');
+        if action.Name == 'Sneak' then
+            gFunc.Equip('feet', 'Dream Boots +1');
+        elseif action.Name == 'Invisible' then
+            gFunc.Equip('hands', 'Dream Mittens +1');
+        end
     end
 
 end

@@ -134,6 +134,8 @@ end
 
 profile.OnLoad = function()
 
+    shared.Unload();
+
     profile.LevelCheck();
     macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
 

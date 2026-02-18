@@ -101,6 +101,8 @@ local Settings = {
 
 
 profile.OnLoad = function()
+    shared.Unload();
+
     profile.SetMacroBook_SAM();
     profile.Keybinds_SAM();
     profile.Keybinds_Common();

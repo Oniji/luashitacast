@@ -33,11 +33,13 @@ local sets = {
 profile.Sets = sets;
 
 local Settings = {
+    Character = 'Saraji',
     CurrentSubJob = nil,
     CurrentLevel = 0
 };
 
 profile.OnLoad = function()
+    shared.Unload();
 
     macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
     binds.Common_Load();
@@ -48,7 +50,7 @@ profile.OnLoad = function()
 
     -- Setting up HandleCommand cycles and toggles
     shared.OnLoad();
-
+    shared.SetCharacter(Settings.Character)
     shared.LockStyleSet();
     
 end

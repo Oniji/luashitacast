@@ -57,9 +57,8 @@ local sets = {
     },
     Idle_Town = {
         Main = 'Aquilo\'s Staff',
-        Ammo = 'Hedgehog Bomb',
-        Neck = 'Uggalepih Pendant',
-        --Neck = 'Prudence Torque', -- 5
+        Ammo = 'Phtm. Tathlum',
+        Neck = 'Prudence Torque',
         Ear1 = 'Novio Earring',
         Ear2 = 'Abyssal Earring',
         Head = 'Wzd. Petasos +1',
@@ -67,7 +66,7 @@ local sets = {
         Hands = 'Zenith Mitts',
         Ring1 = 'Sorcerer\'s Ring',
         Ring2 = 'Tamas Ring',
-        Back = 'Prism Cape',
+        Back = 'Merciful Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Igqira Lappas', 
         Feet = 'Src. Sabots +1',
@@ -76,9 +75,9 @@ local sets = {
         Main = 'Terra\'s Staff',
         Ammo = 'Hedgehog Bomb',
         Neck = 'Uggalepih Pendant',
-        Ear1 = 'Merman\'s Earring',
+        Ear1 = 'Loquac. Earring',
         Ear2 = 'Merman\'s Earring',
-        Ring1 = 'Merman\'s Ring',
+        Ring1 = 'Tamas Ring',
         Ring2 = 'Merman\'s Ring',
         Back = 'Hexerei Cape',
         Waist = 'Hierarch Belt',
@@ -90,8 +89,7 @@ local sets = {
     },
     Nuke = {
         Ammo = 'Phtm. Tathlum',
-        Neck = 'Philomath Stole',
-        --Neck = 'Prudence Torque', -- 5
+        Neck = 'Prudence Torque',
         Ear1 = 'Moldavite Earring',
         Ear2 = 'Novio Earring',
         Head = 'Wzd. Petasos +1',
@@ -99,15 +97,14 @@ local sets = {
         Hands = 'Zenith Mitts',
         Ring1 = 'Sorcerer\'s Ring',
         Ring2 = 'Tamas Ring',
-        Back = 'Prism Cape', 
+        Back = 'Prism Cape',
         Waist = 'Sorcerer\'s Belt',
-        Legs = 'Mahatma Slops', 
+        Legs = 'Mahatma Slops',
         Feet = 'Src. Sabots +1',
     },
     Nuke_Acc = {
         -- 8 enmity
         -- 27 skill
-        -- 
         Ammo = 'Phtm. Tathlum',
         Neck = 'Elemental Torque', -- 7s
         Ear1 = 'Moldavite Earring',
@@ -117,7 +114,7 @@ local sets = {
         Hands = 'Wzd. Gloves +1', -- 2, 15s
         Ring1 = 'Sorcerer\'s Ring',
         Ring2 = 'Tamas Ring',
-        Back = 'Prism Cape',
+        Back = 'Merciful Cape',
         Waist = 'Sorcerer\'s Belt',
         Legs = 'Mahatma Slops', -- 4
         Feet = 'Src. Sabots +1', -- 2
@@ -125,7 +122,7 @@ local sets = {
     Nuke_HNM = {
         -- 35 + 4 (merits) enmity
         Ammo = 'Phtm. Tathlum',
-        Neck = 'Elemental Torque',
+        Neck = 'Prudence Torque',
         Ear1 = 'Novio Earring',
         Ear2 = 'Novia Earring', -- 7
         Head = 'Wzd. Petasos +1', -- 4
@@ -140,7 +137,7 @@ local sets = {
     },
     Nuke_NoSorcRing_Priority = {
         Ammo = {'Phtm. Tathlum', 'Morion Tathlum'},
-        Neck = {'Philomath Stole', 'Black Neckerchief'},
+        Neck = {'Prudence Torque','Philomath Stole', 'Black Neckerchief'},
         Ear1 = {'Moldavite Earring', 'Morion Earring'},
         Ear2 = {'Abyssal Earring', 'Phantom Earring', 'Morion Earring'},
         Head = {'Wzd. Petasos +1', 'Black Cloak', 'Wzd. Petasos +1'},
@@ -156,8 +153,7 @@ local sets = {
     Nuke_DOT = {
         Ammo = 'Phtm. Tathlum', -- 2
         --Main = 'Kirin\'s Pole', -- 10 -- Cannot currently get 150 INT, using Elemental Staves instead for macc
-        Neck = 'Philomath Stole', -- 3
-        --Neck = 'Prudence Torque', -- 5
+        Neck = 'Prudence Torque', -- 5
         Ear1 = 'Phantom Earring', -- 1
         Ear2 = 'Abyssal Earring', -- 2
         Head = 'Wzd. Petasos +1', -- 5
@@ -189,8 +185,7 @@ local sets = {
         Main = 'Pluto\'s Staff',
         Ammo = 'Phtm. Tathlum',
         Head = 'Nashira Turban',
-        --Body = 'Nashira Manteel', -- 5
-        Body = 'Wzd. Coat +1',
+        Body = 'Nashira Manteel', -- 5
         Hands = 'Src. Gloves +1', -- 10
         Legs = 'Wizard\'s Tonban', -- 15
         Feet = 'Igqira Huaraches', -- 4
@@ -199,14 +194,13 @@ local sets = {
         Ear2 = 'Loquac. Earring',
         Ring1 = 'Snow Ring',
         Ring2 = 'Tamas Ring',
-        Back = 'Errant Cape',
-        --Back = 'Merciful Cape', --5
+        Back = 'Merciful Cape', --5
         Waist = 'Sorcerer\'s Belt',
     },
     Stun = {
         Ammo = 'Phtm. Tathlum',
         Head = 'Wzd. Petasos +1',
-        Body = 'Wzd. Coat +1',
+        Body = 'Nashira Manteel', -- 5
         Hands = 'Src. Gloves +1',
         Ear1 = 'Abyssal Earring',
         Ear2 = 'Loquac. Earring',
@@ -216,26 +210,26 @@ local sets = {
         Waist = 'Swift Belt',
         Legs = 'Nashira Seraweels',
         Feet = 'Nashira Crackows',
+        Back = 'Merciful Cape', --5
     },
-    Enfeebling = {
+    Enfeebling = { -- 49 Enfeebling Skill
         Head = 'Igqira Tiara', -- 10
         Neck = 'Enfeebling Torque', -- 7
         Legs = 'Igqira Lappas', -- 10
         Body = 'Wzd. Coat +1', -- 12
         Hands = 'Nashira Gloves', -- 3
         Feet = 'Nashira Crackows', -- 2
+        Back = 'Altruistic Cape', -- 5
     },
     EnfeeblingMND = {
         Ammo = 'Hedgehog Bomb',
         Hands = 'Devotee\'s Mitts',
         Waist = 'Penitent\'s Rope',
-        Back = 'Prism Cape',
         Ring1 = 'Aqua Ring',
         Ring2 = 'Tamas Ring',
     },
     EnfeeblingINT = {
         Waist = 'Sorcerer\'s Belt',
-        Back = 'Prism Cape',
         Ear1 = 'Abyssal Earring',
         Ear2 = 'Phantom Earring',
         Ring1 = 'Snow Ring',
@@ -261,7 +255,7 @@ local sets = {
         Sub = 'Genbu\'s Shield',
         Head = 'Nashira Turban', -- 10
         Neck = 'Willpower Torque', -- 5
-        --Back = 'Umbra Cape', -- PDT
+        Back = 'Cheviot Cape', -- PDT
         Ammo = 'Phtm. Tathlum',
         Feet = 'Wizard\'s Sabots', -- 20
         Body = 'Sorcerer\'s Coat',
@@ -278,7 +272,7 @@ local sets = {
         Sub = 'Genbu\'s Shield',
         Head = 'Nashira Turban', -- 10
         Neck = 'Willpower Torque', -- 5
-        --Back = 'Umbra Cape', -- PDT
+        Back = 'Hexerei Cape', -- DT
         Ammo = 'Phtm. Tathlum',
         Feet = 'Wizard\'s Sabots', -- 20
         Body = 'Sorcerer\'s Coat',
@@ -291,9 +285,6 @@ local sets = {
     },
     Precast = { -- Fast Cast
         -- RDM subjob 15
-        Head = 'Nashira Turban',
-        Legs = 'Nashira Seraweels',
-        Waist = 'Swift Belt',
         Feet = 'Rostrum Pumps', -- 2
         Ear1 = 'Loquac. Earring', -- 2
     },
@@ -308,7 +299,7 @@ local sets = {
         Hands = 'Devotee\'s Mitts',
         Ring1 = 'Aqua Ring',
         Ring2 = 'Tamas Ring',
-        Back = 'Errant Cape',
+        Back = 'Merciful Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
         Feet = 'Igqira Huaraches',
@@ -317,68 +308,78 @@ local sets = {
         Main = 'Kirin\'s Pole',
         Ammo = 'Hedgehog Bomb',
         Head = 'Nashira Turban',
-        Neck = 'Enhancing Torque',
+        Neck = 'Stone Gorget',
         --Ear1 = 'Cmn. Earring',
         --Ear2 = 'Cmn. Earring',
         Body = 'Errant Hpl.',
         Hands = 'Devotee\'s Mitts',
         Ring1 = 'Aqua Ring',
         Ring2 = 'Tamas Ring',
-        Back = 'Prism Cape',
+        Back = 'Merciful Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
         Feet = 'Igqira Huaraches',
     },
-    YellowHP = { -- 215 HP - Last Verified 19/12/2025
-        Ring1 = 'Ether Ring', -- 30
-        Ring2 = 'Astral Ring', -- 25
-        Ammo = 'Tiphia Sting', -- 25
-        Head = 'Zenith Crown', -- 50
-        Hands = 'Wzd. Gloves +1', -- Not Zenith
-        Legs = 'Zenith Slacks', -- 50
-        Back = 'Blue Cape', -- 15 
-        Waist = 'Penitent\'s Rope', -- 20
+    Haste = { -- For enhancing spells that do not scale with enhancing/MND (Haste, Refresh, Blink, Utsusemi)
+        Head = 'Nashira Turban',
+        Body = 'Nashira Manteel',
+        Hands = 'Nashira Gages',
+        Legs = 'Nashira Seraweels',
+        Feet = 'Nashira Crackows',
+        Waist = 'Swift Belt',
+        Ear1 = 'Loquac. Earring',
     },
-    YellowObi = { -- 227 HP - Last Verified 19/12/2025
-        Ring1 = 'Ether Ring', -- 30
-        Ring2 = 'Astral Ring', -- 25
-        Ammo = 'Tiphia Sting', -- 25
-        Head = 'Zenith Crown', -- 50
-        Hands = 'Wzd. Gloves +1', -- Not Zenith
-        Legs = 'Zenith Slacks', -- 50
-        Waist = 'Penitent\'s Rope', -- 20
-        Back = 'Blue Cape', -- 15 
-        Neck = 'Checkered Scarf', -- 12
-    },
-    YellowHNM = { -- 257 HP - Last Verified 19/12/2025
-        Ring1 = 'Ether Ring', -- 30
-        Ring2 = 'Astral Ring', -- 25
-        Ammo = 'Tiphia Sting', -- 25
-        Head = 'Zenith Crown', -- 50
-        Hands = 'Zenith Mitts', -- 50
-        Legs = 'Zenith Slacks', -- 50
-        Back = 'Blue Cape', -- 15 
-        Neck = 'Checkered Scarf', -- 12
-        Waist = 'Hierarch Belt', -- Ensures 0 HP in this slot
-    },
-    YellowHNMObi = { -- 235 HP - Last Verified 19/12/2025
+    YellowHP = { -- 232 HP - Last Verified 19/12/2025
         --Ring1 = 'Ether Ring', -- 30
         Ring2 = 'Astral Ring', -- 25
         Ammo = 'Tiphia Sting', -- 25
         Head = 'Zenith Crown', -- 50
         Hands = 'Zenith Mitts', -- 50
         Legs = 'Zenith Slacks', -- 50
-        Back = 'Blue Cape', -- 15 
-        --Neck = 'Checkered Scarf', -- 12
+        --Back = 'Blue Cape', -- 15 
         Waist = 'Penitent\'s Rope', -- 20
+        Neck = 'Checkered Scarf', -- 12
+    },
+    YellowObi = { -- 277 HP - Last Verified 19/12/2025
+        --Ring1 = 'Ether Ring', -- 30
+        Ring2 = 'Astral Ring', -- 25
+        Ammo = 'Tiphia Sting', -- 25
+        Head = 'Zenith Crown', -- 50
+        Hands = 'Zenith Mitts', -- 50
+        Legs = 'Zenith Slacks', -- 50
+        --Back = 'Blue Cape', -- 15 
+        Waist = 'Penitent\'s Rope', -- 20
+        Neck = 'Checkered Scarf', -- 12
+    },
+    YellowHNM = { -- 257 HP - Last Verified 19/12/2025
+        --Ring1 = 'Ether Ring', -- 30
+        Ring2 = 'Astral Ring', -- 25
+        Ammo = 'Tiphia Sting', -- 25
+        Head = 'Zenith Crown', -- 50
+        Hands = 'Zenith Mitts', -- 50
+        Legs = 'Zenith Slacks', -- 50
+        --Back = 'Blue Cape', -- 15 
+        Waist = 'Penitent\'s Rope', -- 20
+        Neck = 'Checkered Scarf', -- 12
+    },
+    YellowHNMObi = { -- 235 HP - Last Verified 19/12/2025
+        Ring1 = 'Ether Ring', -- 30
+        Ring2 = 'Astral Ring', -- 25
+        Ammo = 'Tiphia Sting', -- 25
+        Head = 'Zenith Crown', -- 50
+        Hands = 'Zenith Mitts', -- 50
+        Legs = 'Zenith Slacks', -- 50
+        --Back = 'Blue Cape', -- 15 
+        Waist = 'Penitent\'s Rope', -- 20
+        --Neck = 'Checkered Scarf', -- 12
     },
 
 };
 profile.Sets = sets;
 
-local HP_BLM_RDM = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
-local HP_BLM_WHM = 980; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 744HP is 0.76 Threshold. 236 deficit
-local HP_BLM_NIN = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
+local HP_BLM_RDM = 958; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
+local HP_BLM_WHM = 930; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 744HP is 0.76 Threshold. 236 deficit
+local HP_BLM_NIN = 948; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
 
 local MP_BLM_RDM = 793; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
 local MP_BLM_RDM_HNM = 830; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
@@ -387,10 +388,10 @@ local MP_BLM_WHM_HNM = 829; -- Amount of MP you have in Nuke Set minus non-visib
 
 local SorcRingLatentHP = {
     RDM = {
-        Default = 998,
-        Default_Obi = 978,
-        HNM = 948,
-        HNM_Obi = 968,
+        Default = 958,
+        Default_Obi = 938,
+        HNM = 958,
+        HNM_Obi = 978,
     },
     WHM = {
         Default = 980,
@@ -415,6 +416,7 @@ local NukeSet = {
 
 
 local Settings = {
+    Character = "Saraji",
     DisplayThrottle = 1,
     LastDisplayed = 0,
     UseSorcRing = true,
@@ -430,6 +432,8 @@ local Settings = {
 
 
 profile.OnLoad = function()
+
+    shared.Unload();
 
     profile.LevelCheck();
     macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
@@ -457,6 +461,7 @@ profile.OnLoad = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Idle Set: ' .. Settings.IdleSet .. ' | Sorc Ring: ' .. (Settings.UseSorcRing and 'Active' or 'Inactive') .. ' ]--');
 
     shared.OnLoad();
+    shared.SetCharacter(Settings.Character)
 
 end
 
@@ -595,7 +600,7 @@ end
 
 profile.HandleMidcast = function()
 
-    local DebuffMND = T{ 'Slow', 'Paralyze', 'Silence' };
+    local DebuffMND = T{ 'Slow', 'Paralyze', 'Silence', 'Dia', 'Dia II' };
     local DebuffINT = T{ 'Blind', 'Bind', 'Gravity', 'Burn', 'Rasp', 'Drown', 'Choke', 'Frost', 'Shock', 'Poison', 'Poison II', 'Poisonga', 'Sleep', 'Sleep II', 'Sleepga' , 'Sleepga II'};
     local action = gData.GetAction();
     local player = gData.GetPlayer();

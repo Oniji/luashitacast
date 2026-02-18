@@ -19,7 +19,7 @@ local sets = {
         Ring1 = 'Merman\'s Ring', -- 5
         Ring2 = 'Merman\'s Ring', -- 5
         Back = 'Hexerei Cape',
-        Waist = 'Penitent\'s Rope',
+        Waist = 'Hierarch Belt',
         Legs = 'Blood Cuisses',
         Feet = 'Crimson Greaves', -- 2
     },
@@ -34,7 +34,7 @@ local sets = {
         Ring1 = 'Jelly Ring', -- 5
         Ring2 = 'Merman\'s Ring', -- 5
         Back = 'Hexerei Cape', -- replace
-        Waist = 'Warwolf Belt',
+        Waist = 'Hierarch Belt',
         Legs = 'Blood Cuisses',
         Feet = 'Crimson Greaves', -- 2
     },
@@ -49,9 +49,24 @@ local sets = {
         Ring1 = 'Merman\'s Ring', -- 5
         Ring2 = 'Merman\'s Ring', -- 5
         Back = 'Hexerei Cape', -- 3
-        Waist = 'Penitent\'s Rope',
+        Waist = 'Hierarch Belt',
         Legs = 'Blood Cuisses',
         Feet = 'Crimson Greaves', -- 2
+    },
+    Idle_HighMP = {
+        Ammo = 'Hedgehog Bomb', -- 30 MP
+        Head = 'Duelist\'s Chapeau', -- Refresh + 14 MP
+        Neck = 'Uggalepih Pendant', -- 30 MP
+        Ear1 = 'Loquac. Earring', -- 30 MP
+        Ear2 = 'Merman\'s Earring', -- 2
+        Body = 'Duelist\'s Tabard', -- 24 MP
+        Hands = 'Dls. Gloves +1', -- MDB +2 + 23 MP
+        Ring1 = 'Tamas Ring', -- 30 MP
+        Ring2 = 'Ether Ring', -- 30 MP - 30 HP
+        Back = 'Errant Cape', -- 30 MP
+        Waist = 'Hierarch Belt', -- 48 MP
+        Legs = 'Blood Cuisses', -- 27 MP
+        Feet = 'Crimson Greaves', -- 15 MP
     },
     Weapon_Default = {
         Main = 'Terra\'s Staff'
@@ -138,15 +153,23 @@ local sets = {
         Ear1 = 'Novia Earring'
     },
     Enhancing = {
+        Head = 'Zenith Crown',
+        Body = 'Errant Hpl.',
         Hands = 'Dls. Gloves +1',
         Legs = 'Warlock\'s Tights',
         Feet = 'Dls. Boots +1',
+        Ring1 = 'Aqua Ring',
+        Ring2 = 'Tamas Ring',
+        Neck = 'Enhancing Torque',
+        Waist = 'Penitent\'s Rope',
+        Back = 'Prism Cape',
     },
     Enfeebling = {
         Head = 'Duelist\'s Chapeau', -- 15
         Body = 'Warlock\'s Tabard', -- 15
         Legs = 'Nashira Seraweels', -- 5
-        Neck = 'Enfeebling Torque',
+        Neck = 'Enfeebling Torque', -- 7
+        Back = 'Altruistic Cape', -- 5
     },
     Enfeebling_INT = {
         Ammo = 'Phtm. Tathlum',
@@ -155,14 +178,12 @@ local sets = {
         Hands = 'Errant Cuffs',
         Waist = 'Penitent\'s Rope',
         Feet = 'Custom F Boots',
-        Back = 'Prism Cape',
         Ring1 = 'Snow Ring', 
         Ring2 = 'Tamas Ring',
     },
     Enfeebling_MND = {
         Waist = 'Penitent\'s Rope', 
         Hands = 'Devotee\'s Mitts',
-        Back = 'Prism Cape',
         Feet = 'Dls. Boots +1',
         Ring1 = 'Solace Ring',
         Ring2 = 'Tamas Ring',
@@ -192,20 +213,50 @@ local sets = {
         Legs = 'Duelist\'s Tights',
     },
     Melee = {
+        Head = 'Duelist\'s Chapeau',
+        Body = 'Scorpion Harness',
+        Hands = 'Custom F Gloves',
+        Legs = 'Nashira Seraweels',
+        Feet = 'Nashira Crackows',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Ethereal Earring',
+        Waist = 'Swift Belt',
+        Back = 'Forager\'s Mantle',
+        Neck = 'Peacock Amulet',
+        Ammo = 'Tiphia Sting',
+
+    },
+    Melee_WS = {
         Head = 'Optical Hat',
         Body = 'Scorpion Harness',
         Hands = 'Custom F Gloves',
         Legs = 'Duelist\'s Tights',
         Feet = 'Crimson Greaves',
-        Ring1 = 'Toreador\'s Ring',
-        Ring2 = 'Toreador\'s Ring',
-        Ear1 = 'Ethereal Earring',
+        Ring1 = 'Spinel Ring',
+        Ring2 = 'Spinel Ring',
+        Ear1 = 'Brutal Earring',
         Ear2 = 'Merman\'s Earring',
-        Waist = 'Life Belt',
+        Waist = 'Warwolf Belt',
         Back = 'Forager\'s Mantle',
         Neck = 'Peacock Amulet',
         Ammo = 'Tiphia Sting',
-
+    },
+    Evasion = {
+        Head = 'Optical Hat',
+        Body = 'Scorpion Harness',
+        Hands = 'Custom F Gloves',
+        Legs = 'Crow Hose',
+        Feet = 'Dance Shoes',
+        Ring1 = 'Toreador\'s Ring',
+        Ring2 = 'Toreador\'s Ring',
+        Ear1 = 'Novia Earring',
+        Ear2 = 'Ethereal Earring',
+        Waist = 'Scouter\'s Rope',
+        --Back = 'Boxer\'s Mantle',
+        Neck = 'Evasion Torque',
+        Ammo = 'Hedgehog Bomb',
     }
 };
 profile.Sets = sets;
@@ -222,7 +273,7 @@ local MP_BLM_NIN = 671; -- Amount of MP you have in Nuke Set minus non-visible s
 local IdleSet = {
     [1] = 'PDT',
     [2] = 'MDT',
-    [3] = 'Town',
+    [3] = 'High MP',
 };
 
 local NukeSet = {
@@ -232,6 +283,7 @@ local NukeSet = {
 };
 
 local Settings = {
+    Character = "Saraji",
     CurrentSubJob = nil,
     CurrentLevel = 0,
     MeleeMode = false,
@@ -245,6 +297,8 @@ local Settings = {
 local SpikeSpells = T{ 'Blaze Spikes','Shock Spikes','Ice Spikes' };
 
 profile.OnLoad = function()
+    shared.Unload();
+
     binds.Unbind_All();
     profile.LevelCheck();
     macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
@@ -270,7 +324,7 @@ profile.OnLoad = function()
 
     -- Setting up HandleCommand cycles and toggles
     shared.OnLoad();
-
+    shared.SetCharacter(Settings.Character)
     shared.LockStyleSet();
 
 end
@@ -298,13 +352,7 @@ profile.HandleCommand = function(args)
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Use Sorc Ring ->> ' .. tostring(Settings.UseSorcRing):gsub("^%l", string.upper) .. ' ]--');
         return;
     elseif (args[1] == 'idle') then
-        if Settings.IdleDT == 'PDT' then
-            Settings.IdleDT = 'MDT';
-            shared.SetCycleToValue('IdleSet', 'MDT');   
-        else
-            Settings.IdleDT = 'PDT';
-            shared.SetCycleToValue('IdleSet', 'PDT');
-        end
+        Settings.IdleDT = shared.AdvanceCycle('IdleSet')
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Idle Set ->> ' .. Settings.IdleDT .. ' ]--');
         return;
     elseif (args[1] == 'nuke') then
@@ -362,6 +410,10 @@ profile.HandleDefault = function()
                 gFunc.EquipSet(sets.Idle_MDT);
                 shared.SetCurrentSet('Idle - MDT');
                 shared.SetCycleToValue('IdleSet', 'MDT');
+            elseif Settings.IdleDT == 'High MP' then
+                gFunc.EquipSet(sets.Idle_HighMP);
+                shared.SetCurrentSet('Idle - High MP');
+                shared.SetCycleToValue('IdleSet', 'High MP');
             else
                 gFunc.EquipSet(sets.Idle_PDT);
                 shared.SetCurrentSet('Idle - PDT');
@@ -382,6 +434,10 @@ profile.HandleDefault = function()
         gFunc.Equip('legs', 'Blood Cuisses');
     end
 
+    if Settings.MeleeMode and not player.IsMoving and player.Status == 'Engaged' then
+        gFunc.Equip('hands', 'Dusk Gloves');
+    end
+
     shared.GearOverride();
 
 end
@@ -400,22 +456,22 @@ profile.HandleMidcast = function()
 
     local player = gData.GetPlayer();
     local mpdeficit = player.MaxMP - player.MP;
-    local MndDebuffs = T{ 'Slow', 'Paralyze', 'Slow II', 'Paralyze II', 'Addle', 'Addle II' };
-    local ElementalDebuffs = T{ 'Burn', 'Rasp', 'Drown', 'Choke', 'Frost', 'Shock', 'Blind' };
+    local DebuffMND = T{ 'Slow', 'Paralyze', 'Silence', 'Dia', 'Dia II' };
+    local DebuffINT = T{ 'Blind', 'Bind', 'Gravity', 'Burn', 'Rasp', 'Drown', 'Choke', 'Frost', 'Shock', 'Poison', 'Poison II', 'Poisonga', 'Sleep', 'Sleep II', 'Sleepga' , 'Sleepga II'};
     local action = gData.GetAction();
     
     if (action.Skill == 'Enfeebling Magic') then
-        if (MndDebuffs:contains(action.Name)) then
+        if (DebuffMND:contains(action.Name)) then
             gFunc.EquipSet(sets.Enfeebling);
             gFunc.EquipSet(sets.Enfeebling_MND);
-        elseif (ElementalDebuffs:contains(action.Name)) then
+        elseif (DebuffINT:contains(action.Name)) then
             gFunc.EquipSet(sets.Enfeebling);
             gFunc.EquipSet(sets.Enfeebling_INT);
         end
         gFunc.EquipSet(sets.Enfeebling);
         shared.SetCurrentSet('Enfeebling');
     elseif (action.Skill == 'Elemental Magic') then
-        if (ElementalDebuffs:contains(action.Name)) then
+        if (DebuffINT:contains(action.Name)) then
             gFunc.EquipSet(sets.Enfeebling);
             gFunc.EquipSet(sets.Enfeebling_INT);
             shared.SetCurrentSet('Enfeebling');
@@ -460,6 +516,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
+    gFunc.EquipSet(sets.Melee_WS);
 end
 
 profile.SubjobCheck = function()

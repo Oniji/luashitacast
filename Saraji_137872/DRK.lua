@@ -78,6 +78,8 @@ local Settings = {
 
 profile.OnLoad = function()
 
+    shared.Unload();
+
     binds.Unbind_All();
     macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
     binds.Common_Load();

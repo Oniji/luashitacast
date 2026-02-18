@@ -8,12 +8,12 @@ local macrobooks = gFunc.LoadFile('common/macrobooks.lua');
 local sets = {
     Idle_Priority = {
         Main = {'Blau Dolch', 'Hoplites Harpe', 'Cermet Kukri +1', 'Darksteel Kukri +1', 'Corsair\'s Knife', 'Bone Knife +1', 'Marauder\'s Knife', 'Federation Kukri', 'Federation Knife', 'Mercenary\'s Knife'},
-        Sub = {'Sirocco Kukri', 'Thief\'s Knife', 'Chicken Knife', 'Hornetneedle', 'Bone Knife +1', 'Federation Kukri', 'Federation Knife', 'Mercenary\'s Knife'},
+        --Sub = {'Tatami Shield', 'Sirocco Kukri', 'Thief\'s Knife', 'Chicken Knife', 'Hornetneedle', 'Bone Knife +1', 'Federation Kukri', 'Federation Knife', 'Mercenary\'s Knife'},
         Head = {'Homam Zucchetto', 'Optical Hat', 'Emperor Hairpin', 'Beetle Mask +1'},
         Neck = {'Peacock Amulet', 'Spike Necklace'},
-        Ear1 = {'Merman\'s Earring', 'Spike Earring', 'Beetle Earring +1'},
-        Ear2 = {'Merman\'s Earring', 'Spike Earring', 'Beetle Earring +1'},
-        Body = {'Rapparee Harness', 'Brigandine', 'Mrc.Cpt. Doublet', 'Beetle Harness +1'},
+        Ear1 = {'Brutal Earring', 'Spike Earring', 'Beetle Earring +1'},
+        Ear2 = {'Ethereal Earring', 'Merman\'s Earring', 'Spike Earring', 'Beetle Earring +1'},
+        Body = {'Homam Corazza', 'Rapparee Harness', 'Brigandine', 'Mrc.Cpt. Doublet', 'Beetle Harness +1'},
         Hands = {'Homam Manopolas', 'Battle Gloves'},
         Ring1 = {'Toreador\'s Ring', 'Sniper\'s Ring', 'Deft Ring', 'Balance Ring'},
         Ring2 = {'Toreador\'s Ring', 'Sniper\'s Ring', 'Balance Ring'},
@@ -159,6 +159,7 @@ local AmmoType = {
 
 
 local Settings = {
+    Character = 'Saraji',
     AmmoType = 'None',
     TH = true,
     Evasion = false,
@@ -167,6 +168,7 @@ local Settings = {
 
 
 profile.OnLoad = function()
+    shared.Unload();
 
     binds.Unbind_All();
     macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
@@ -183,6 +185,7 @@ profile.OnLoad = function()
     shared.CreateCycle('AmmoType', AmmoType);
     Settings.AmmoType = shared.GetCycle('AmmoType');
     shared.OnLoad();
+    shared.SetCharacter(Settings.Character)
 
 end
 
@@ -304,6 +307,15 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
+    local action = gData.GetAction();
+    if action.Name == 'Invisible' or action.Name == 'Sneak' then
+        --gFunc.Equip('back', 'Skulker\'s Cape');
+        if action.Name == 'Sneak' then
+            gFunc.Equip('feet', 'Dream Boots +1');
+        elseif action.Name == 'Invisible' then
+            gFunc.Equip('hands', 'Dream Mittens +1');
+        end
+    end
 end
 
 profile.HandlePreshot = function()
@@ -367,6 +379,9 @@ profile.SubjobCheck = function()
         elseif (subjob == "BST") then
             binds.THF_Load();
             binds.THF_BST_Load();
+        elseif (subjob == "WAR") then
+            binds.THF_Load();
+            binds.THF_WAR_Load();
         end
         AshitaCore:GetChatManager():QueueCommand(-1, '/echo --[ Sub Job Binds ->> ' .. subjob .. ' ]--');
         macrobooks.SetMacroBook(macrobooks.BookTypes.JOBS);
