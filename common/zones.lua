@@ -273,13 +273,14 @@ zones.sets = sets;
 
 zones.CityGear = function()
     local zone = gData.GetEnvironment().Area;
-    if zone_nation[zone] and ducal_aketon then
+    local player = gData.GetPlayer()
+    if zone_nation[zone] and ducal_aketon and player.IsMoving then
         gFunc.Equip('Body','Ducal Aketon');
-    elseif zone_sandoria[zone] and kingdom_aketon then
+    elseif zone_sandoria[zone] and kingdom_aketon and player.IsMoving then
         gFunc.Equip('Body','Kingdom Aketon');
-    elseif zone_windurst[zone] and republic_aketon then
+    elseif zone_windurst[zone] and republic_aketon and player.IsMoving then
         gFunc.Equip('Body','Federation Aketon');
-    elseif zone_bastok[zone] and republic_aketon then
+    elseif zone_bastok[zone] and republic_aketon and player.IsMoving then
         gFunc.Equip('Body','Republic Aketon');
     end
 end

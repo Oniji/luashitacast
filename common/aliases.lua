@@ -9,6 +9,11 @@ aliases.Common_Load = function()
 
     -- HELM --
     aliases.add('/logging_binds', '/lac fwd logging_binds');
+    aliases.add('/mining_binds', '/lac fwd mining_binds');
+    aliases.add('/digging_binds', '/lac fwd digging_binds');
+    aliases.add('/lbinds', '/lac fwd logging_binds');
+    aliases.add('/mbinds', '/lac fwd mining_binds');
+    aliases.add('/dbinds', '/lac fwd digging_binds');
 
     -- Lockstyle --
     aliases.add('/lsfsh', '/lac fwd lsfsh');
@@ -34,6 +39,8 @@ aliases.Common_Load = function()
     aliases.add('/l', '/load');
     aliases.add('/u', '/unload');
     aliases.add('/lacr', '/addon reload luashitacast');
+    aliases.add('/lockset', '/lac fwd lockset')
+    aliases.add('/chocobo', '/lac fwd chocobo')
 
     -- Gear-Swaps --
     aliases.add('/main', '/lac fwd main');
@@ -236,6 +243,7 @@ aliases.Common_Load = function()
     aliases.add('/ranged_bloody_bolt', '/lac fwd ranged_bloody_bolt');
 
     -- Custom Utilities --
+    aliases.add('/borrowed', '/lac fwd borrowed') -- Used for when alt is borrowing gear from main
     aliases.add('/zone', '/lac fwd find_zone')
 
     aliases.add('/bs', '/ma "Barstonra" <me>');
@@ -298,6 +306,7 @@ aliases.Common_Unload = function()
     aliases.remove('/l');
     aliases.remove('/u');
     aliases.remove('/lacr');
+    aliases.remove('/chocobo');
 
     -- Items --
     aliases.remove('/iwarp');

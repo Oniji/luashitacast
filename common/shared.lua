@@ -15,9 +15,9 @@ local buffer = 400; -- extra buffer to account for latency
 local minimumcast = 1; -- Minimum cast time to apply midcast delay
 local lockthrottle = 15; -- delay before allowing lockstyle (seconds)
 
-local HP_BLM_RDM = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
-local HP_BLM_WHM = 980; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 744HP is 0.76 Threshold. 236 deficit
-local HP_BLM_NIN = 998; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
+local HP_BLM_RDM = 958; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
+local HP_BLM_WHM = 930; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 744HP is 0.76 Threshold. 236 deficit
+local HP_BLM_NIN = 958; -- hardcoded values for Max HP with Nuke Set equipped (excluding Convert pieces) 758HP is 0.76 Threshold. 240 deficit
 
 local MP_BLM_RDM = 793; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
 local MP_BLM_WHM = 749; -- Amount of MP you have in Nuke Set minus non-visible slots and minus convert pieces - Used for Ugg Pendant calc
@@ -73,9 +73,16 @@ local sets = {
         Ammo = 'Fly Lure'
     },
     Logging = {
+        Ammo = 'Hedgehog Bomb',
         Body = 'Field Tunica',
         Hands = 'Field Gloves',
-        Legs = 'Field Hose'
+        Legs = 'Field Hose',
+        Feet = 'Field Boots',
+        Ear1 = 'Loquac. Earring',
+        Back = 'Merciful Cape',
+        Neck = 'Rep.Gold Medal',
+        Ring1 = 'Ether Ring',
+        Ring2 = 'Tamas Ring',
     },
     Clamming = {
         Body = 'Hume Top +1',
@@ -98,7 +105,7 @@ local GearMode = {
     [5] = 'Clamming',
 };
 
-local ElementalStaffTable = T{
+local ElementalStaffTable_Saraji = T{
     ['Fire'] = 'Vulcan\'s Staff',
     ['Earth'] = 'Terra\'s Staff',
     ['Water'] = 'Neptune\'s Staff',
@@ -107,6 +114,62 @@ local ElementalStaffTable = T{
     ['Thunder'] = 'Jupiter\'s Staff',
     ['Light'] = 'Light Staff',
     ['Dark'] = 'Pluto\'s Staff'
+};
+
+local ElementalStaffTable_Oniji = T{
+    ['Fire'] = 'Fire Staff',
+    ['Earth'] = 'Earth Staff',
+    ['Water'] = 'Water Staff',
+    ['Wind'] = 'Wind Staff',
+    ['Ice'] = 'Ice Staff',
+    ['Thunder'] = 'Thunder Staff',
+    ['Light'] = 'Light Staff',
+    ['Dark'] = 'Dark Staff'
+};
+
+local ElementalStaffTable_OnijiSpecial = T{
+    ['Fire'] = 'Fire Staff',
+    ['Earth'] = 'Earth Staff',
+    ['Water'] = 'Water Staff',
+    ['Wind'] = 'Wind Staff',
+    ['Ice'] = 'Aquilo\'s Staff',
+    ['Thunder'] = 'Jupiter\'s Staff',
+    ['Light'] = 'Light Staff',
+    ['Dark'] = 'Pluto\'s Staff'
+};
+
+local ElementalStaffTable_Default = T{
+    ['Fire'] = 'Fire Staff',
+    ['Earth'] = 'Earth Staff',
+    ['Water'] = 'Water Staff',
+    ['Wind'] = 'Wind Staff',
+    ['Ice'] = 'Ice Staff',
+    ['Thunder'] = 'Thunder Staff',
+    ['Light'] = 'Light Staff',
+    ['Dark'] = 'Dark Staff'
+};
+
+
+local ElementalObis_Saraji = T{
+    ['Earth'] = {'Dorin Obi', false},
+    ['Wind'] = {'Furin Obi', true},
+    ['Ice'] = {'Hyorin Obi', true},
+    ['Fire'] = {'Karin Obi', true},
+    ['Water'] = {'Suirin Obi', false},
+    ['Thunder'] = {'Rairin Obi', true},
+    ['Light'] = {'Korin Obi', false},
+    ['Dark'] = {'Anrin Obi', true}
+};
+
+local ElementalObis_Oniji = T{
+    ['Earth'] = {'Dorin Obi', false},
+    ['Wind'] = {'Furin Obi', false},
+    ['Ice'] = {'Hyorin Obi', false},
+    ['Fire'] = {'Karin Obi', false},
+    ['Water'] = {'Suirin Obi', false},
+    ['Thunder'] = {'Rairin Obi', false},
+    ['Light'] = {'Korin Obi', false},
+    ['Dark'] = {'Anrin Obi', false}
 };
 
 local ElementalWeakness = T{
@@ -122,9 +185,9 @@ local ElementalWeakness = T{
 
 local ElementalObis = T{
     ['Earth'] = {'Dorin Obi', false},
-    ['Wind'] = {'Furin Obi', false},
+    ['Wind'] = {'Furin Obi', true},
     ['Ice'] = {'Hyorin Obi', true},
-    ['Fire'] = {'Karin Obi', false},
+    ['Fire'] = {'Karin Obi', true},
     ['Water'] = {'Suirin Obi', false},
     ['Thunder'] = {'Rairin Obi', true},
     ['Light'] = {'Korin Obi', false},
@@ -162,8 +225,8 @@ local SubtractMP = T{
 
 local FastCastValues = T{
     ["Rostrum Pumps"] = 2,
-    ["Loquacious Earring"] = 2,
-    ["Homam Cosciales"] = 4,
+    ["Loquac. Earring"] = 2,
+    ["Homam Cosciales"] = 5,
     ["Duelist\'s Tabard"] = 10,
     ["Duelist\'s Tabard +1"] = 10,
     ["Warlock\'s Chapeau"] = 10,
@@ -197,6 +260,7 @@ local CycleDisplayNames = {
 };
 
 local Settings = {
+    CurrentCharacter = nil,
     FillModeState = true,
     CurrentSet = 'None',
     LastLocked = nil,
@@ -223,6 +287,7 @@ shared.OnLoad = function()
         ashita.events.unregister('d3d_present', 'shareddisplay_present_cb')
         if verbose then print('Destroying Font Object...'); end
     end
+    ashita.events.unregister('d3d_present', 'shareddisplay_present_cb')
     shared.FontObject = fonts.new(fontSettings);
 
     shared.CreateCycle('GearMode', GearMode);
@@ -342,6 +407,8 @@ shared.ProcessCommand = function(args)
         shared.CheckSets();
     elseif (args[1] == 'lockstyle') then
         shared.LockStyleSet();
+    elseif (args[1] == 'lockset') then
+        shared.ForceEquipSet()
     elseif (args[1] == 'lsfsh') then
         shared.LockStyleSet();
     elseif (args[1] == 'lsbot') then
@@ -356,6 +423,10 @@ shared.ProcessCommand = function(args)
         shared.LockStyleSet();
     elseif (args[1] == 'logging_binds') then
         binds.Logging_Load();
+    elseif (args[1] == 'mining_binds') then
+        binds.Mining_Load();
+    elseif (args[1] == 'digging_binds') then
+        binds.Digging_Load();
     elseif (args[1] == 'fillmodetoggle') then
         Settings.FillModeState = not Settings.FillModeState;
         if not Settings.FillModeState then
@@ -383,7 +454,15 @@ end
 
 shared.EquipElementalStaff = function(action)
     if action then
-        gFunc.Equip('main', ElementalStaffTable[action.Element]);
+        if Settings.CurrentCharacter == 'Saraji' then
+            gFunc.Equip('main', ElementalStaffTable_Saraji[action.Element]);
+        elseif Settings.CurrentCharacter == 'Oniji' then
+            gFunc.Equip('main', ElementalStaffTable_Oniji[action.Element]);
+        elseif Settings.CurrentCharacter == 'Oniji_Special' then
+            gFunc.Equip('main', ElementalStaffTable_OnijiSpecial[action.Element]);
+        else
+            gFunc.Equip('main', ElementalStaffTable_Default[action.Element]);
+        end
     end
 end
 
@@ -453,9 +532,15 @@ end
 
 
 shared.UseElementalStaff = function(element)
-
-    gFunc.Equip('Main', ElementalStaffTable[element]);
-
+    if Settings.CurrentCharacter == 'Saraji' then
+        gFunc.Equip('main', ElementalStaffTable_Saraji[element]);
+    elseif Settings.CurrentCharacter == 'Oniji' then
+        gFunc.Equip('main', ElementalStaffTable_Oniji[element]);
+    elseif Settings.CurrentCharacter == 'Oniji_Special' then
+        gFunc.Equip('main', ElementalStaffTable_OnijiSpecial[element]);
+    else
+        gFunc.Equip('main', ElementalStaffTable_Default[element]);
+    end
 end
 
 
@@ -602,7 +687,14 @@ shared.ObiCheck = function(spell)
     local environment = gData.GetEnvironment();
     if spell.Element == environment.WeatherElement or spell.Element == environment.DayElement then
         if verbose then print('Spell Type: ' .. spell.Element); end
-        local elemental_obi = ElementalObis[spell.Element];
+        local elemental_obi = ''
+        if Settings.CurrentCharacter == 'Saraji' then
+            elemental_obi = ElementalObis_Saraji[spell.Element];
+        elseif Settings.CurrentCharacter == 'Oniji' then
+            elemental_obi = ElementalObis_Oniji[spell.Element];
+        else
+            elemental_obi = ElementalObis[spell.Element];
+        end
         if elemental_obi[2] then -- Do you have the relevant Obi?
             gFunc.Equip('Waist', elemental_obi[1]);
             if verbose then print("Using Obi: " .. elemental_obi[1] .. " . Element: " .. spell.Element); end
@@ -672,6 +764,12 @@ shared.GetCycleNext = function(name)
 		nextIndex = 1;
 	end
     return ctable.Array[nextIndex];
+end
+
+shared.SetCharacter = function(character)
+    if character then
+        Settings.CurrentCharacter = character
+    end
 end
 
 -- --------------------------------------------------------
@@ -911,10 +1009,43 @@ end
 
 shared.GetElementalStaff = function(element)
     if element then
-        return ElementalStaffTable[element];
+        if Settings.CurrentCharacter == 'Saraji' then 
+            return ElementalStaffTable_Saraji[element];
+        elseif Settings.CurrentCharacter == 'Oniji' then 
+            return ElementalStaffTable_Oniji[element];
+        elseif Settings.CurrentCharacter == 'Oniji_Special' then 
+            return ElementalStaffTable_OnijiSpecial[element];
+        else 
+            return ElementalStaffTable_Default[element]; end
     else
         return '';
     end
+end
+
+shared.ForceEquipSet = function(set, seconds)
+    local function DelayNotify()
+        shared.Echo("Sets unlocked")
+    end
+    if not set or not seconds then
+        return
+    end
+    seconds = tonumber(seconds)
+    if seconds then
+        gFunc.LockSet(set, seconds)
+        shared.Echo("Set locked for " .. tostring(seconds) .. " seconds.")
+        DelayNotify:once(seconds)
+    end
+end
+
+-- Prints to chat as an echo
+shared.Echo = function(output, colour)
+    if not output then
+        return
+    end
+    if not colour then
+        colour = 255
+    end
+    gFunc.Echo(colour, output)
 end
 
 return shared;

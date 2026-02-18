@@ -729,7 +729,7 @@ binds.THF_Load = function()
     binds.add('+f', '/ma "Utsusemi: Ni" <me>');
     binds.add('8', '/ja "Ancient Circle" <me>');
     binds.add('q', '/attack');
-    binds.add('e', '/range <t>');
+    --binds.add('e', '/range <t>');
     binds.add('+e', '/ja "Bully" <t>');
     binds.add('c', '/ja "Flee" <me>');
     binds.add('x', '/ja "Steal" <t>');
@@ -759,6 +759,10 @@ binds.THF_BST_Load = function()
     binds.add('^4', '/pet "Stay" <me>');
     binds.add('^5', '/lac fwd ammocycle');
     binds.add('^6', '/lac fwd pettype');
+end
+
+binds.THF_WAR_Load = function()
+    binds.add('e', '/ja "Provoke" <t>');
 end
 
 binds.THF_Unload = function()
@@ -879,8 +883,9 @@ binds.RDM_Load = function()
     binds.add('[', '/ma "Paralyna" ' .. cure_type);
     binds.add(']', '/ma "Silena" ' .. cure_type);
 
-    binds.add('+1', '/ws "Evisceration" <t>');
-    binds.add('+2', '/ma "Enthunder" <me>');
+    binds.add('+1', '/ma "Enthunder" <me>');
+    binds.add('+2', '/ws "Evisceration" <t>');
+    binds.add('+3', '/ws "Energy Steal" <t>');
     binds.add('g', '/ma "Gravity" <t>');
     binds.add('+g', '/ma "Dispel" <t>');
     binds.add('+6', '/ma "Enthunder" <me>');
@@ -928,7 +933,7 @@ end
 
 binds.RDM_THF_Load = function()
     binds.add('e', '/ma "Dia" <t>');
-    binds.add('x', '/ja "Flee" <me>');
+    binds.add('x', '/ja "Flee" <me>;/sl blink');
 end
 
 binds.RDM_DRK_Load = function()
@@ -1550,6 +1555,24 @@ binds.Logging_Load = function()
     binds.add('2', '/item "Hatchet" <stnpc>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;/wait 5;/item "Hatchet" <lastst>;');
     binds.add('3', '/party x');
     binds.add('f', '/ja "Flee" <me>');
+end
+
+binds.Mining_Load = function()
+    local player = gData.GetPlayer();
+    if player.MainJob == 'THF' or player.SubJob == 'THF' then
+        binds.add('1', '/ja "Hide" <me>;');
+        binds.add('2', '/item "Pickaxe" <t>;');
+        binds.add('3', '/ja "Flee" <me>');
+        binds.add('4', '/ma "Sneak" <me>');
+        binds.add('5', '/ma "Invisible" <me>');
+    elseif player.MainJob == 'RDM' then
+        binds.add('e', '/targetnpc;/item "Pickaxe" <t>;');
+        binds.add('2', '/item "Pickaxe" <t>;');
+        binds.add('3', '/ma "Cure IV" <me>;');
+        binds.add('6', '/ma "Tonko: Ni" <me>;');
+        binds.add('+1', '/ma "Enwater" <me>;');
+    end
+    --binds.add('6', '/ja "Hide" <me>');
 end
 
 binds.Digging_Load = function()
